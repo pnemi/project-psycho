@@ -1,0 +1,19 @@
+{
+  "name": "project-psycho",
+  "version": "1.0.0",
+  "description": "Backend for Project Psycho game.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pnemi/project-psycho.git"
+  },
+  "author": "Petr Němeček",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pnemi/project-psycho/issues"
+  },
+  "homepage": "https://github.com/pnemi/project-psycho#readme"
+}
