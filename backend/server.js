@@ -1,7 +1,10 @@
 import express from 'express'
+import config from 'config'
 
 const app = express()
 
+const PORT = config.get('PORT')
+
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(8888, () => console.log('Example app listening on port 3000!'))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))

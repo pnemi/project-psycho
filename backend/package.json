@@ -4,8 +4,11 @@
   "description": "Backend for Project Psycho game.",
   "main": "server.js",
   "scripts": {
-    "run:dev": "babel-node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=development nodemon server.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "serve": "node dist/server.js",
+    "lint": "eslint",
+    "test": "standard && cross-env NODE_ENV=test mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -18,11 +21,22 @@
   },
   "homepage": "https://github.com/pnemi/project-psycho#readme",
   "dependencies": {
+    "config": "^2.0.1",
     "express": "^4.16.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.0.0"
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "axios": "^0.18.0",
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0",
+    "standard": "^12.0.1"
   }
 }
