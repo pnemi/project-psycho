@@ -1,0 +1,54 @@
+[
+  {
+    "code": "investigation",
+    "translations": {
+      "cs": {
+        "name": "Pátrací",
+        "description": "Přežít a najít vraha."
+      },
+      "en": {
+        "name" : "Investigation",
+        "description": "Survive and find psycho murderer."
+      }
+    }
+  },
+  {
+    "code": "psycho",
+    "translations": {
+      "cs": {
+        "name": "Psycho",
+        "description": "Vyhladit všechny členy pátracího teamu."
+      },
+      "en": {
+        "name" : "Psycho",
+        "description": "Exterminate all the members of the search team."
+      }
+    }
+  },
+  {
+    "code": "civilian",
+    "translations": {
+      "cs": {
+        "name": "Civilisté",
+        "description": "Přežít a najít vraha."
+      },
+      "en": {
+        "name" : "Civilians",
+        "description": "Survive and find psycho murderer."
+      }
+    }
+  },
+  {
+    "code": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Neutrální",
+        "description": "Mohou se rozhodnout na čí stranu se připojí."
+      },
+      "en": {
+        "name" : "Neutral",
+        "description": "Can decide by themselves which team to join."
+      }
+    }
+  }
+]

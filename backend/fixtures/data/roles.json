@@ -1,0 +1,170 @@
+[
+  {
+    "code": "director",
+    "team": "investigation",
+    "translations": {
+      "cs": {
+        "name": "Ředitel psychiatrické léčebny",
+        "description": ""
+      },
+      "en": {
+        "name": "Psychiatric Hospital Director",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "nurse",
+    "team": "investigation",
+    "translations": {
+      "cs": {
+        "name": "Staniční sestra",
+        "description": ""
+      },
+      "en": {
+        "name": "Head Nurse",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "detective",
+    "team": "investigation",
+    "translations": {
+      "cs": {
+        "name": "Detektiv – Vedoucí pátrání",
+        "description": ""
+      },
+      "en": {
+        "name": "Detective – Head of Investigation",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "psychof",
+    "team": "psycho",
+    "translations": {
+      "cs": {
+        "name": "Psychooo",
+        "description": ""
+      },
+      "en": {
+        "name": "Psycho",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "addict",
+    "team": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Drogově závislý",
+        "description": ""
+      },
+      "en": {
+        "name": "Drug Addict",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "pathologist",
+    "team": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Patolog",
+        "description": ""
+      },
+      "en": {
+        "name": "Pathologist",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "anesthesiologist",
+    "team": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Šílený anesteziolog",
+        "description": ""
+      },
+      "en": {
+        "name": "Crazy Anesthesiologist",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "doctor",
+    "team": "civilian",
+    "translations": {
+      "cs": {
+        "name": "Doktor",
+        "description": ""
+      },
+      "en": {
+        "name": "Doctor",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "survivor",
+    "team": "civilian",
+    "translations": {
+      "cs": {
+        "name": "Přeživší",
+        "description": ""
+      },
+      "en": {
+        "name": "Survivor",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "necro",
+    "team": "civilian",
+    "translations": {
+      "cs": {
+        "name": "Člověk trpící nekrofobii",
+        "description": ""
+      },
+      "en": {
+        "name": "Person Suffering From Necrofobia",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "bomber",
+    "team": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Atentátník",
+        "description": ""
+      },
+      "en": {
+        "name": "Suicide Bomber",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "dealer",
+    "team": "neutral",
+    "translations": {
+      "cs": {
+        "name": "Obchodník na černém trhu",
+        "description": ""
+      },
+      "en": {
+        "name": "Black Market Dealer",
+        "description": ""
+      }
+    }
+  }
+]
