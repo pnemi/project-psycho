@@ -1,0 +1,26 @@
+version: "3"
+services:
+  app:
+    build: .
+    command: yarn dev
+    ports:
+      - 127.0.0.1:8888:8888
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - MONGO_CONNECTION_STRING=mongodb://db:23456/psycho
+
+  db:
+    image: mongo
+    command: mongod --port 23456
+    ports:
+      - 127.0.0.1:23456:23456
+    volumes:
+      - db-data:/data/db
+
+volumes:
+  db-data:
