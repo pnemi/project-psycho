@@ -1,10 +1,22 @@
-import express from 'express'
 import config from 'config'
-
-const app = express()
+import express from 'express'
+import { ApolloServer, gql } from 'apollo-server-express'
+import schema from './schema'
+import resolvers from './resolvers'
 
 const PORT = config.get('PORT')
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const app = express()
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+const typeDefs = gql(schema)
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+})
+
+server.applyMiddleware({ app })
+
+app.get('/', (req, res) => res.send('Creepy'))
+
+app.listen(PORT, () => console.log(`Psycho is listening on port ${PORT} 🔪`))
