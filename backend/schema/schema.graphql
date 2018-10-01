@@ -1,36 +1,32 @@
-type Language {
-  name: String,
+input TranslationInput {
   code: String
 }
 
 type Team {
   code: String,
-  translations: [Translation]
-}
-
-type Role {
-  code: String,
-  team: Team,
-  name: String,
-  translations: [Translation],
-  translation: Translation
-}
-
-input TranslationInput {
-  locale: String
-}
-
-type Translation {
-  locale: Language
   name: String,
   description: String
 }
 
-type Query {
-  languages: [Language],
-  teams(where: TranslationInput): [Team],
-  roles(where: TranslationInput): [Role],
+type Role {
+  code: String,
+  name: String,
+  description: String,
+  team: Team
+}
 
-  team(where: TranslationInput): Team,
-  role(code: String, where: TranslationInput): Role
+type Language {
+  name: String,
+  code: String
+}
+
+type Query {
+
+  role(code: String, lang: TranslationInput): Role,
+  roles(lang: TranslationInput): [Role],
+
+  team(code: String, lang: TranslationInput): Team,
+  teams(lang: TranslationInput): [Team],
+
+  languages: [Language]
 }
