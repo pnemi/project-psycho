@@ -3,6 +3,7 @@ import config from 'config'
 import Role from './model/Role'
 import Language from './model/Language'
 import Team from './model/Team'
+import Preset from './model/Preset'
 
 const MONGO_CONNECTION_STRING = config.get('MONGO_CONNECTION_STRING')
 
@@ -16,5 +17,6 @@ mongoose.connect(MONGO_CONNECTION_STRING, mongooseConfig)
 export {
   Role,
   Language,
-  Team
+  Team,
+  Preset
 }

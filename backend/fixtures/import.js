@@ -1,10 +1,12 @@
 import teams from './data/teams'
 import languages from './data/languages'
 import roles from './data/roles'
-import { Team, Language, Role } from '../db'
+import presets from './data/presets'
+import { Team, Language, Role, Preset } from '../db'
 
 const langDocs = {}
 const teamDocs = {}
+const roleDocs = {}
 
 async function importLanguages () {
   await Language.deleteMany({})
@@ -58,6 +60,7 @@ async function importRoles () {
         description: role.translations[lang].description
       }))
     })
+    roleDocs[role.code] = roleDoc
     await roleDoc.save(function (err) {
       if (err) {
         console.log(err)
@@ -68,10 +71,29 @@ async function importRoles () {
   }))
 }
 
+async function importPresets () {
+  await Preset.deleteMany({})
+
+  await Promise.all(presets.map(async (preset) => {
+    const presetDoc = new Preset({
+      name: preset.name,
+      roles: preset.roles.map((role) => roleDocs[role])
+    })
+    await presetDoc.save(function (err) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(`Preset ${preset.name} saved`)
+      }
+    })
+  }))
+}
+
 async function importAll () {
   await importLanguages()
   await importTeams()
   await importRoles()
+  await importPresets()
 }
 
 importAll()

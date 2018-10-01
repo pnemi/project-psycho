@@ -71,10 +71,10 @@ const getRolesPipeline = (lang) => ([
 ])
 
 const roleResolver = async (parent, { code, lang }) => (
-  Role.aggregate([
+  (await Role.aggregate([
     ...getRoleMatchPipeline(code),
     ...getRolesPipeline(await Language.findOne({ code: lang.code }))
-  ])[0]
+  ]))[0]
 )
 
 const rolesResolver = async (parent, { lang }) => (

@@ -1,5 +1,6 @@
 import { roleResolver, rolesResolver } from './Role'
 import { teamResolver, teamsResolver } from './Team'
+import { presetsResolver } from './Preset'
 import { languagesResolver } from './Language'
 
 export default {
@@ -10,6 +11,8 @@ export default {
 
     team: teamResolver,
     teams: teamsResolver,
+
+    presets: presetsResolver,
 
     languages: languagesResolver
   }

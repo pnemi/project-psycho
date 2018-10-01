@@ -1,0 +1,20 @@
+[
+  {
+    "name": "basic",
+    "roles": [
+      "director", "nurse", "detective", "psycho"
+    ]
+  },
+  {
+    "name": "hospital",
+    "roles": [
+      "director", "nurse", "detective", "psycho", "addict", "doctor"
+    ]
+  },
+  {
+    "name": "explosive",
+    "roles": [
+      "director", "nurse", "detective", "psycho", "bomber", "dealer"
+    ]
+  }
+]

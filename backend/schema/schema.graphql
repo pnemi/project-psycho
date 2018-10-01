@@ -15,6 +15,11 @@ type Role {
   team: Team
 }
 
+type Preset {
+  name: String,
+  roles: [String]
+}
+
 type Language {
   name: String,
   code: String
@@ -27,6 +32,8 @@ type Query {
 
   team(code: String, lang: TranslationInput): Team,
   teams(lang: TranslationInput): [Team],
+
+  presets: [Preset],
 
   languages: [Language]
 }

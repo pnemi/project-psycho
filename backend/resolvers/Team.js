@@ -38,10 +38,10 @@ const getTeamsPipeline = (lang) => ([
 ])
 
 const teamResolver = async (parent, { code, lang }) => (
-  Team.aggregate([
+  (await Team.aggregate([
     ...getTeamMatchPipeline(code),
     ...getTeamsPipeline(await Language.findOne({ code: lang.code }))
-  ])[0]
+  ]))[0]
 )
 
 const teamsResolver = async (parent, { lang }) => (
