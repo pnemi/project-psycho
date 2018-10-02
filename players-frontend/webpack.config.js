@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.js',
   mode: 'development',
   module: {
-    roles: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
@@ -26,8 +26,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
-    port: 3000,
-    publicPath: 'http://localhost:3000/dist/',
+    port: 3333,
+    publicPath: 'http://localhost:3333/dist/',
     hotOnly: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
