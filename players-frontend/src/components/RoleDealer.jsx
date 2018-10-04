@@ -2,6 +2,8 @@ import React from 'react'
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+import { shuffle } from '../utils/utils'
+
 const RoleDealer = () => (
   <Query
     query={gql`
@@ -17,7 +19,7 @@ const RoleDealer = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
 
-      return data.roles.map(({ code, name }) => (
+      return shuffle(data.roles).map(({ code, name }) => (
         <div key={code}>
           <p>{`${code}: ${name}`}</p>
         </div>
