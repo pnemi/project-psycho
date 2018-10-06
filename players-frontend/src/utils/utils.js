@@ -5,3 +5,5 @@ export const shuffle = (array) => {
   }
   return array
 }
+
+export const truncate = (str, n) => `${str.substr(0, n - 1)}${(str.length > n ? '...' : '')}`

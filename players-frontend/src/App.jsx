@@ -2,7 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import ApolloClient from "apollo-boost"
 import { ApolloProvider } from 'react-apollo'
-import RoleDealer from './components/RoleDealer'
+import Layout from './components/Layout'
 
 const client = new ApolloClient({
   uri: "http://localhost:8888/graphql"
@@ -10,7 +10,7 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <RoleDealer />
+    <Layout />
   </ApolloProvider>
 )
 

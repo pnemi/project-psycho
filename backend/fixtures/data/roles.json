@@ -5,7 +5,7 @@
     "translations": {
       "cs": {
         "name": "Ředitel psychiatrické léčebny",
-        "description": ""
+        "description": "Členem pátracího týmu. Může být zástupcem u nahlášení podezřelého."
       },
       "en": {
         "name": "Psychiatric Hospital Director",
@@ -19,7 +19,7 @@
     "translations": {
       "cs": {
         "name": "Staniční sestra",
-        "description": ""
+        "description": "Člen pátracího týmu. Může být zástupcem u nahlášení podezřelého."
       },
       "en": {
         "name": "Head Nurse",
@@ -33,7 +33,7 @@
     "translations": {
       "cs": {
         "name": "Detektiv – Vedoucí pátrání",
-        "description": ""
+        "description": "Člen pátracího týmu. Může být jako zástupce u nahlášení podezřelého. Zná dokonale profil Psycho a pro jeho usvědčení nepotřebuje další svědky."
       },
       "en": {
         "name": "Detective – Head of Investigation",
@@ -47,24 +47,10 @@
     "translations": {
       "cs": {
         "name": "Psycho",
-        "description": ""
+        "description": "Snaží se uprchnout a vyhladit pátrací team. Může neomezeně zabíjet. Během hry si volí zvěda a dlužníka otázkou “Budeš můj zvěd/dlužník?”. Nikdo jiný tuto otázku klást nemůže."
       },
       "en": {
         "name": "Psycho",
-        "description": ""
-      }
-    }
-  },
-  {
-    "code": "addict",
-    "team": "neutral",
-    "translations": {
-      "cs": {
-        "name": "Drogově závislý",
-        "description": ""
-      },
-      "en": {
-        "name": "Drug Addict",
         "description": ""
       }
     }
@@ -75,7 +61,7 @@
     "translations": {
       "cs": {
         "name": "Patolog",
-        "description": ""
+        "description": "Může mluvit s mrtvolami. Mrtvoly nemohou sdělit kdo je vrah. Mrtvoly mohou sdělovat, co viděli pouze během toho, co jsou mrtvé. Ostatní se za něj nemohou vydávat."
       },
       "en": {
         "name": "Pathologist",
@@ -89,7 +75,7 @@
     "translations": {
       "cs": {
         "name": "Šílený anesteziolog",
-        "description": ""
+        "description": "Může uspat jednoho hráče v jeden čas, když mu řekne “Spi!”. Hráč se musí probudit až po rožnutí světla. Poté může být znovu uspán. Chová se jako mrtvola, ale nesmí odpovídat na žádnou otázku. Ostatní se za něj nemohou vydávat."
       },
       "en": {
         "name": "Crazy Anesthesiologist",
@@ -103,7 +89,7 @@
     "translations": {
       "cs": {
         "name": "Doktor",
-        "description": ""
+        "description": "Rozpozná zda je člověk (opravdu) mrtvý nebo spí, nebo ne. Doktorovy se nesmí lhát ohledně otázky “Jsi mrtvý / Spíš?”. Nelze se za něj vydávat."
       },
       "en": {
         "name": "Doctor",
@@ -117,7 +103,7 @@
     "translations": {
       "cs": {
         "name": "Přeživší",
-        "description": ""
+        "description": "Nemůže zemřít, pokud se jej někdo pokusí zabít, může tuto smrt ignorovat, nebo jí hrát. Posléze však nemůže jakkoliv sdělit kdo byl vrahem a nemůže ani svědčit."
       },
       "en": {
         "name": "Survivor",
@@ -131,7 +117,7 @@
     "translations": {
       "cs": {
         "name": "Člověk trpící nekrofobii",
-        "description": ""
+        "description": "Jakmile tento člověk uvidí první mrtvolu dostavá panický strach, zakřičí a získává možnost jednoho libovolného zabití."
       },
       "en": {
         "name": "Person Suffering From Necrofobia",
@@ -145,7 +131,7 @@
     "translations": {
       "cs": {
         "name": "Atentátník",
-        "description": ""
+        "description": "Pokud uvidí skupinku 3 nebo více lidí spolu, může spáchat atentát až na 2 z nich tím způsobem, že se jich dotkne rukou na rameno a řekne \"BOOM!\". Atentátník umírá spolu se svými obětmi."
       },
       "en": {
         "name": "Suicide Bomber",
@@ -159,7 +145,7 @@
     "translations": {
       "cs": {
         "name": "Obchodník na černém trhu",
-        "description": ""
+        "description": "Na začátku hry umístí někam krabičky. Jeho roli tedy všichni znají.\n\nPokud člověk kontaktuje obchodníka na černém trhu, může se s ním domluvit na předání zbraně nebo lékárničky. Obchodník prozradí pouze místnost, ve které se krabička nachází. V případě zbraně člověk získá možnost jednoho zabítí. V případě lékárničky život navíc (podobně jako přeživší).\n\nObchodník může za jednu hru “prodat” pouze jednu zbraň a jednu lékárničku. Předání probíhá slovně a kupce může dále předmět darovat další osobě. Po použití o předmět přichází a nelze jej dále předat. Původní obchodník sám nemůže tyto předměty použít."
       },
       "en": {
         "name": "Black Market Dealer",
