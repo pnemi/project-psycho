@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import PropTypes from 'prop-types'
+import { Query } from "react-apollo"
+import gql from "graphql-tag"
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -11,7 +11,9 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
-import { truncate } from '../utils/utils'
+import RolesDealer from './RolesDealer'
+
+import { shuffle, truncate } from '../utils/utils'
 
 const styles = {
   loading: {
@@ -29,7 +31,8 @@ class RolesList extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      checked: this.loadCheckedRoles()
+      checked: this.loadCheckedRoles(),
+      dealingRoles: false
     }
   }
 
@@ -42,6 +45,7 @@ class RolesList extends Component {
 
   render () {
     const { classes } = this.props
+    const { dealingRoles } = this.state
 
     return (
       <Query
@@ -56,12 +60,21 @@ class RolesList extends Component {
         `}
       >
         {({ loading, error, data }) => {
+          if (dealingRoles) return <RolesDealer roles={shuffle(data.roles)} />
           if (loading) return <CircularProgress className={classes.loading} size={30} thickness={5} />
           if (error) return <p>Error</p>
 
           return (
             <div>
-              <Button variant="contained" size="large" color="secondary" className={classes.playButton}>
+              <Button
+                variant="contained"
+                size="large"
+                color="secondary"
+                className={classes.playButton}
+                onClick={() => this.setState({
+                  dealingRoles: true
+                })}
+              >
                 Play
               </Button>
               <List>
