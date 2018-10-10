@@ -48,6 +48,8 @@
     "react": "^16.5.2",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.3.11"
+    "react-hot-loader": "^4.3.11",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }
