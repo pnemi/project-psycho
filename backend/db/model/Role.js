@@ -3,6 +3,10 @@ import mongoose from 'mongoose'
 const roleSchema = new mongoose.Schema({
   code: { type: String, unique: true },
   team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
+  required: { type: Boolean },
+  listed: { type: Boolean },
+  complement: { type: Boolean },
+  assignedDuringGame: { type: Boolean },
   translations: [{
     locale: { type: mongoose.Schema.Types.ObjectId, ref: 'Language' },
     name: { type: String },

@@ -11,7 +11,8 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
-import RolesDealer from './RolesDealer'
+import NumberOfPlayersPicker from './NumberOfPlayersPicker'
+import RolesAssigner from './RolesAssigner'
 
 import { shuffle, truncate } from '../utils/utils'
 
@@ -32,15 +33,26 @@ class RolesList extends Component {
     super(props)
     this.state = {
       checked: this.loadCheckedRoles(),
+      numberOfPlayers: null,
       dealingRoles: false
     }
   }
 
-  loadCheckedRoles() {
+  shouldComponentUpdate = (nextProps, nextState) => {
+    return true
+  }
+
+  loadCheckedRoles = () => {
     return {}
   }
 
-  handleToggle (value) {
+  handleToggle = (value) => {
+  }
+
+  handleNumberOfPlayersChange = (numberOfPlayers) => {
+    this.setState({
+      numberOfPlayers
+    })
   }
 
   render () {
@@ -60,12 +72,13 @@ class RolesList extends Component {
         `}
       >
         {({ loading, error, data }) => {
-          if (dealingRoles) return <RolesDealer roles={shuffle(data.roles)} />
+          if (dealingRoles) return <RolesAssigner roles={shuffle(data.roles)} />
           if (loading) return <CircularProgress className={classes.loading} size={30} thickness={5} />
           if (error) return <p>Error</p>
 
           return (
             <div>
+              <NumberOfPlayersPicker onChange={this.handleNumberOfPlayersChange} />
               <Button
                 variant="contained"
                 size="large"

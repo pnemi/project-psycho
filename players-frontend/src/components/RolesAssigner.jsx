@@ -8,7 +8,7 @@ const styles = {
 
 }
 
-class RolesDealer extends Component {
+class RolesAssigner extends Component {
 
   constructor(props) {
     super(props)
@@ -89,9 +89,9 @@ class RolesDealer extends Component {
 
 }
 
-RolesDealer.propTypes = {
+RolesAssigner.propTypes = {
   classes: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired
 }
 
-export default withStyles(styles)(RolesDealer)
+export default withStyles(styles)(RolesAssigner)

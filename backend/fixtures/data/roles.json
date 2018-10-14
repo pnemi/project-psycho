@@ -2,6 +2,10 @@
   {
     "code": "director",
     "team": "investigation",
+    "required": true,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Ředitel psychiatrické léčebny",
@@ -16,6 +20,10 @@
   {
     "code": "nurse",
     "team": "investigation",
+    "required": true,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Staniční sestra",
@@ -30,6 +38,10 @@
   {
     "code": "detective",
     "team": "investigation",
+    "required": true,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Detektiv – Vedoucí pátrání",
@@ -44,6 +56,10 @@
   {
     "code": "psycho",
     "team": "psycho",
+    "required": true,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Psycho",
@@ -56,8 +72,48 @@
     }
   },
   {
+    "code": "accomplice",
+    "team": "psycho",
+    "required": true,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": true,
+    "translations": {
+      "cs": {
+        "name": "Komplic",
+        "description": "Člověk zvolený Psycho během hry. Spolupracovník Psycha, může zabít jednoho člověka ve hře. Hráč ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí."
+      },
+      "en": {
+        "name": "Accomplice",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "informant",
+    "team": "psycho",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": true,
+    "translations": {
+      "cs": {
+        "name": "Zvěd",
+        "description": "Zvěda si Psycho volí během hry. Zvěd pouze spolupracuje. Člověk, který je zvolen na Zvěda ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí."
+      },
+      "en": {
+        "name": "Informant",
+        "description": ""
+      }
+    }
+  },
+  {
     "code": "pathologist",
     "team": "neutral",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Patolog",
@@ -72,6 +128,10 @@
   {
     "code": "anesthesiologist",
     "team": "neutral",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Šílený anesteziolog",
@@ -86,6 +146,10 @@
   {
     "code": "doctor",
     "team": "civilian",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Doktor",
@@ -100,6 +164,10 @@
   {
     "code": "survivor",
     "team": "civilian",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Přeživší",
@@ -114,6 +182,10 @@
   {
     "code": "necro",
     "team": "civilian",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Člověk trpící nekrofobii",
@@ -128,6 +200,10 @@
   {
     "code": "bomber",
     "team": "neutral",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Atentátník",
@@ -142,6 +218,10 @@
   {
     "code": "dealer",
     "team": "neutral",
+    "required": false,
+    "listed": true,
+    "complement": false,
+    "assignedDuringGame": false,
     "translations": {
       "cs": {
         "name": "Obchodník na černém trhu",
@@ -149,6 +229,24 @@
       },
       "en": {
         "name": "Black Market Dealer",
+        "description": ""
+      }
+    }
+  },
+  {
+    "code": "civilian",
+    "team": "civilian",
+    "required": false,
+    "listed": false,
+    "complement": true,
+    "assignedDuringGame": false,
+    "translations": {
+      "cs": {
+        "name": "Civilista",
+        "description": "Běžný občan. Je na něm, na čí stranu se připojí."
+      },
+      "en": {
+        "name": "Civilian",
         "description": ""
       }
     }

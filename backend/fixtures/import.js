@@ -52,7 +52,7 @@ async function importRoles () {
 
   await Promise.all(roles.map(async (role) => {
     const roleDoc = new Role({
-      code: role.code,
+      ...role,
       team: teamDocs[role.team],
       translations: Object.keys(langDocs).map((lang) => ({
         locale: langDocs[lang],
