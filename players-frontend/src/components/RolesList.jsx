@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
+import { withApollo } from 'react-apollo'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -13,12 +14,16 @@ import { withStyles } from '@material-ui/core/styles'
 
 import NumberOfPlayersPicker from './NumberOfPlayersPicker'
 import RolesAssigner from './RolesAssigner'
-
+import * as rolesActions from '../reducers/rolesActions'
 import { shuffle, truncate } from '../utils/utils'
 
 const styles = {
   loading: {
-    color: 'red'
+    color: 'red',
+    alignSelf: 'center'
+  },
+  error: {
+    alignSelf: 'center'
   },
   playButton: {
     boxShadow: 'none',
@@ -42,6 +47,10 @@ class RolesList extends Component {
     return true
   }
 
+  componentDidMount = () => {
+    this.props.fetchRoles()
+  }
+
   loadCheckedRoles = () => {
     return {}
   }
@@ -56,72 +65,85 @@ class RolesList extends Component {
   }
 
   render () {
-    const { classes } = this.props
+
     const { dealingRoles } = this.state
+    const { data, loading, error, classes } = this.props
+
+    if (dealingRoles) {
+      return <RolesAssigner roles={shuffle(data.roles)} />
+    }
+
+    if (loading) {
+      return <CircularProgress className={classes.loading} size={30} thickness={5} />
+    }
+
+    if (error) {
+      return <p className={classes.error}>{error.message}</p>
+    }
 
     return (
-      <Query
-        query={gql`
-          {
-            roles(lang: {code: "cs"}) {
-              code,
-              name,
-              description
-            }
-          }
-        `}
-      >
-        {({ loading, error, data }) => {
-          if (dealingRoles) return <RolesAssigner roles={shuffle(data.roles)} />
-          if (loading) return <CircularProgress className={classes.loading} size={30} thickness={5} />
-          if (error) return <p>Error</p>
-
-          return (
-            <div>
-              <NumberOfPlayersPicker onChange={this.handleNumberOfPlayersChange} />
-              <Button
-                variant="contained"
-                size="large"
-                color="secondary"
-                className={classes.playButton}
-                onClick={() => this.setState({
-                  dealingRoles: true
-                })}
-              >
-                Play
-              </Button>
-              <List>
-                {data.roles.map(({ code, name, description }) => (
-                  <ListItem
-                    key={code}
-                    role={undefined}
-                    dense
-                    button
-                    onClick={() => this.handleToggle(code)}
-                    className={classes.listItem}
-                  >
-                    <Checkbox
-                      checked
-                      tabIndex={-1}
-                      disableRipple
-                    />
-                  <ListItemText
-                    primary={name}
-                    secondary={truncate(description, 40)}
-                  />
-                  </ListItem>
-                ))}
-              </List>
-            </div>
-          )
-        }}
-      </Query>
+      <div>
+        <NumberOfPlayersPicker onChange={this.handleNumberOfPlayersChange} />
+        <Button
+          variant="contained"
+          size="large"
+          color="secondary"
+          className={classes.playButton}
+          onClick={() => this.setState({
+            dealingRoles: true
+          })}
+        >
+          Play
+        </Button>
+        <List>
+          {data.map(({ code, name, description }) => (
+            <ListItem
+              key={code}
+              role={undefined}
+              dense
+              button
+              onClick={() => this.handleToggle(code)}
+              className={classes.listItem}
+            >
+              <Checkbox
+                checked
+                tabIndex={-1}
+                disableRipple
+              />
+            <ListItemText
+              primary={name}
+              secondary={truncate(description, 40)}
+            />
+            </ListItem>
+          ))}
+        </List>
+      </div>
     )
   }
 }
 
-RolesList.propTypes = {
-  classes: PropTypes.object.isRequired
+const mapStateToProps = (state) => {
+  return {
+    data: state.roles.data,
+    loading: state.roles.loading,
+    error: state.roles.error
+  }
 }
 
-export default withStyles(styles)(RolesList)
+const mapDispatchToProps = (dispatch, { client }) => ({
+  fetchRoles: () => dispatch(rolesActions.fetchRoles(client))
+})
+
+RolesList.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+  fetchRoles: PropTypes.func.isRequired
+}
+
+export default compose(
+  withApollo,
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles)
+)(RolesList)

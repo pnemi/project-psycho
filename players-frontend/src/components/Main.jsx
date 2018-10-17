@@ -6,7 +6,8 @@ import RolesList from './RolesList'
 
 const styles = {
   root: {
-    paddingTop: '56px',
+    minHeight: '100vh',
+    paddingTop: '56px'
   }
 };
 

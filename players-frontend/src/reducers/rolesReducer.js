@@ -1,25 +1,39 @@
-import { ADD_ROLE, REMOVE_ROLE } from './roleActions'
+import {
+  FETCH_ROLES_BEGIN,
+  FETCH_ROLES_SUCCESS,
+  FETCH_ROLES_FAILURE
+} from './rolesActions'
 
 const initialState = {
-  roles: [{
-    code: 'init'
-  }]
+  data: [],
+  loading: false,
+  error: null
 }
 
-const rolesReducer = (state = initialState, action) => {
+const roles = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ROLE:
-      return [
+    case FETCH_ROLES_BEGIN:
+      return {
         ...state,
-        {
-          code: action.code
-        }
-      ]
-    case REMOVE_ROLE:
-      return state.roles.filter((role) => role.code !== action.code)
+        loading: true,
+        error: null
+      }
+    case FETCH_ROLES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload.data
+      }
+    case FETCH_ROLES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        data: []
+      }
     default:
       return state
   }
 }
 
-export default rolesReducer
+export default roles

@@ -21,7 +21,7 @@ const styles = {
 const Header = ({ classes }) => (
   <AppBar className={classes.root} position="fixed" color="default">
     <Toolbar className={classes.toolbar}>
-      <Typography className={classes.title} variant="title" color="inherit">
+      <Typography className={classes.title} variant="h6" color="inherit">
         Psycho
       </Typography>
     </Toolbar>
