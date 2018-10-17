@@ -55,6 +55,15 @@ class RolesList extends Component {
     return {}
   }
 
+  handlePlayButtonClick = () => {
+    const { numberOfPlayers } = this.state
+    if (numberOfPlayers) {
+      this.setState({
+        dealingRoles: true
+      })
+    }
+  }
+
   handleToggle = (value) => {
   }
 
@@ -89,9 +98,7 @@ class RolesList extends Component {
           size="large"
           color="secondary"
           className={classes.playButton}
-          onClick={() => this.setState({
-            dealingRoles: true
-          })}
+          onClick={() => this.handlePlayButtonClick()}
         >
           Play
         </Button>
