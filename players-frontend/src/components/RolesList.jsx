@@ -64,7 +64,10 @@ class RolesList extends Component {
     }
   }
 
-  handleToggle = (value) => {
+  handleToggle = (code, required) => {
+    if (!required) {
+      this.props.toggleRole(code) 
+    }
   }
 
   handleNumberOfPlayersChange = (numberOfPlayers) => {
@@ -103,17 +106,18 @@ class RolesList extends Component {
           Play
         </Button>
         <List>
-          {data.map(({ code, name, description }) => (
+          {data.map(({ code, name, description, checked, required }) => (
             <ListItem
               key={code}
               role={undefined}
               dense
               button
-              onClick={() => this.handleToggle(code)}
+              onClick={() => this.handleToggle(code, required)}
               className={classes.listItem}
             >
               <Checkbox
-                checked
+                disabled={required}
+                checked={checked}
                 tabIndex={-1}
                 disableRipple
               />
@@ -138,7 +142,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, { client }) => ({
-  fetchRoles: () => dispatch(rolesActions.fetchRoles(client))
+  fetchRoles: () => dispatch(rolesActions.fetchRoles(client)),
+  toggleRole: (code) => dispatch(rolesActions.toggleRole(code))
 })
 
 RolesList.propTypes = {
@@ -146,7 +151,8 @@ RolesList.propTypes = {
   data: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
-  fetchRoles: PropTypes.func.isRequired
+  fetchRoles: PropTypes.func.isRequired,
+  toggleRole: PropTypes.func.isRequired
 }
 
 export default compose(
