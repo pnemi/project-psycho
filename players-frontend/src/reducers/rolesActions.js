@@ -29,7 +29,11 @@ export const fetchRoles = (client) => {
           roles(lang: {code: "cs"}) {
             code,
             name,
-            description
+            description,
+            required,
+            listed,
+            complement,
+            assignedDuringGame
           }
         }
         `

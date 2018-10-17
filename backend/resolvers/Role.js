@@ -30,6 +30,10 @@ const getRolesPipeline = (lang) => ([
         }
       },
       code: 1,
+      required: 1,
+      listed: 1,
+      complement: 1,
+      assignedDuringGame: 1,
       'team.code': 1,
       'team.translation': {
         $filter: {

@@ -12,6 +12,10 @@ type Role {
   code: String,
   name: String,
   description: String,
+  required: Boolean,
+  listed: Boolean,
+  complement: Boolean,
+  assignedDuringGame: Boolean,
   team: Team
 }
 
