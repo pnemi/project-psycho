@@ -9,7 +9,7 @@ type Team {
 }
 
 type Role {
-  order: Number,
+  order: Int,
   code: String,
   name: String,
   description: String,
