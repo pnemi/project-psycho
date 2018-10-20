@@ -29,6 +29,7 @@ const getRolesPipeline = (lang) => ([
           cond: { $eq: ['$$translation.locale', lang._id] }
         }
       },
+      order: 1,
       code: 1,
       required: 1,
       listed: 1,

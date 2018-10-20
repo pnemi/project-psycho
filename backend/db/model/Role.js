@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const roleSchema = new mongoose.Schema({
+  order: { type: Number, unique: true },
   code: { type: String, unique: true },
   team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
   required: { type: Boolean },
