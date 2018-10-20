@@ -33,6 +33,7 @@ export const fetchRoles = (client) => {
         query: gql`
         {
           roles(lang: {code: "cs"}) {
+            order,
             code,
             name,
             description,
