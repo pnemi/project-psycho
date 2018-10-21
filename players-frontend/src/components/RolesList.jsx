@@ -15,7 +15,7 @@ import { withStyles } from '@material-ui/core/styles'
 import NumberOfPlayersPicker from './NumberOfPlayersPicker'
 import RolesAssigner from './RolesAssigner'
 import * as rolesActions from '../reducers/rolesActions'
-import { shuffle, truncate } from '../utils/utils'
+import { truncate } from '../utils/utils'
 
 const styles = {
   loading: {
@@ -66,13 +66,13 @@ class RolesList extends Component {
 
   handleToggle = (code, required) => {
     if (!required) {
-      this.props.toggleRole(code) 
+      this.props.toggleRole(code)
     }
   }
 
   handleNumberOfPlayersChange = (numberOfPlayers) => {
     this.setState({
-      numberOfPlayers
+      numberOfPlayers: parseInt(numberOfPlayers, 10)
     })
   }
 
@@ -82,7 +82,7 @@ class RolesList extends Component {
     const { data, loading, error, classes } = this.props
 
     if (dealingRoles) {
-      return <RolesAssigner roles={shuffle(data.roles)} />
+      return <RolesAssigner numberOfPlayers={this.state.numberOfPlayers} />
     }
 
     if (loading) {
@@ -99,14 +99,17 @@ class RolesList extends Component {
         <Button
           variant="contained"
           size="large"
-          color="secondary"
+          color="primary"
           className={classes.playButton}
           onClick={() => this.handlePlayButtonClick()}
         >
           Play
         </Button>
         <List>
-          {data.map(({ code, name, description, checked, required }) => (
+          {data
+            .filter((role) => role.listed)
+            .sort((prevRole, currRole) => prevRole.order - currRole.order)
+            .map(({ order, code, name, description, checked, required }) => (
             <ListItem
               key={code}
               role={undefined}

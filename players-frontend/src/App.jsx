@@ -6,7 +6,10 @@ import thunk from 'redux-thunk'
 import { hot } from 'react-hot-loader'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
 import Layout from './components/Layout'
 import rootReducer from './reducers'
 
@@ -18,6 +21,24 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     suppressDeprecationWarnings: true
+  },
+  palette: {
+    background: {
+      default: '#38383A'
+    },
+    text: {
+      primary: '#fff',
+      secondary: '#A9A9A9'
+    },
+    primary: {
+      main: '#AA261E',
+      dark: '#95231C'
+    },
+    secondary: {
+      main: '#ccc',
+      dark: '#eee',
+      contrastText: '#333'
+    }
   }
 })
 
@@ -32,6 +53,7 @@ const App = () => (
   <Provider store={store}>
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
+        <CssBaseline />
         <Layout />
       </MuiThemeProvider>
     </ApolloProvider>

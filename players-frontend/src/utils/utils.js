@@ -7,3 +7,5 @@ export const shuffle = (array) => {
 }
 
 export const truncate = (str, n) => `${str.substr(0, n - 1)}${(str.length > n ? '...' : '')}`
+
+export const randArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)]
