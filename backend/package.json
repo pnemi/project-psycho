@@ -4,12 +4,15 @@
   "description": "Backend for Project Psycho game.",
   "main": "server.js",
   "scripts": {
+    "start": "node dist/server.js",
+    "preinstall": "babel lib -d dist",
     "dev": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 nodemon server.js --exec babel-node BABEL_DISABLE_CACHE=1",
-    "build": "babel lib -d dist",
-    "serve": "node dist/server.js",
     "import": "cross-env NODE_ENV=development babel-node fixtures/import.js",
     "lint": "eslint",
     "test": "standard && cross-env NODE_ENV=test mocha --require @babel/register"
+  },
+  "engines": {
+    "node": "10.12.x"
   },
   "repository": {
     "type": "git",
