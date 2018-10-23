@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "postinstall": "./node_modules/.bin/babel lib -d dist",
+    "postinstall": "./node_modules/.bin/babel-node lib -d dist",
     "dev": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 nodemon server.js --exec babel-node BABEL_DISABLE_CACHE=1",
     "import": "cross-env NODE_ENV=development babel-node fixtures/import.js",
     "lint": "eslint",
