@@ -1,5 +1,4 @@
 {
   "MONGO_CONNECTION_STRING": "mongodb://127.0.0.1:23456/psycho",
-  "HOST": "http://localhost",
   "PORT": 8888
 }

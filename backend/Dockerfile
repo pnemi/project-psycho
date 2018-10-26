@@ -1,5 +1,5 @@
 # use latest node image
-FROM node:latest
+FROM node:10
 
 # install yarn
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash

@@ -93,7 +93,9 @@ async function importAll () {
   await importLanguages()
   await importTeams()
   await importRoles()
-  await importPresets()
+  // await importPresets()
 }
 
-importAll()
+setTimeout(function () {
+  importAll()
+}, 15000)
