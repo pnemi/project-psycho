@@ -96,6 +96,4 @@ async function importAll () {
   // await importPresets()
 }
 
-setTimeout(function () {
-  importAll()
-}, 15000)
+importAll()
