@@ -21,7 +21,9 @@ const server = new ApolloServer({
 
 server.applyMiddleware({
   app,
-  cors: false
+  cors: {
+    origin: 'http://localhost:3333'
+  }
 })
 
 app.get('/', (req, res) => res.send('Creepy'))
