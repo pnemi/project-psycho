@@ -1,7 +1,6 @@
 import '@babel/polyfill'
 import config from 'config'
 import express from 'express'
-import cors from 'cors'
 import { ApolloServer, gql } from 'apollo-server-express'
 import schema from './schema'
 import resolvers from './resolvers'
@@ -10,19 +9,17 @@ const PORT = config.get('PORT')
 
 const app = express()
 
-app.use(cors())
-
 const typeDefs = gql(schema)
 
 const server = new ApolloServer({
-  cors: false,
+  cors: true,
   typeDefs,
   resolvers
 })
 
 server.applyMiddleware({
   app,
-  cors: false
+  cors: true
 })
 
 app.get('/', (req, res) => res.send('Creepy'))
