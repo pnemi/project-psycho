@@ -17,7 +17,9 @@ import rootReducer from './reducers'
 dotenv.config()
 
 const client = new ApolloClient({
-  uri: process.env.GQL_ENDPOINT
+  uri: process.env.NODE_ENV === 'development'
+       ? 'http://localhost:8888/graphql'
+       : 'https://project-psycho.herokuapp.com/graphql'
 })
 
 const theme = createMuiTheme({
