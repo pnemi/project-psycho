@@ -19,7 +19,10 @@ const server = new ApolloServer({
   resolvers
 })
 
-server.applyMiddleware({ app })
+server.applyMiddleware({
+  app,
+  cors: false
+})
 
 app.get('/', (req, res) => res.send('Creepy'))
 
