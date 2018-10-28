@@ -6,6 +6,7 @@ import thunk from 'redux-thunk'
 import { hot } from 'react-hot-loader'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import dotenv from 'dotenv'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
@@ -13,8 +14,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Layout from './components/Layout'
 import rootReducer from './reducers'
 
+dotenv.config()
+
 const client = new ApolloClient({
-  uri: 'http://localhost:8888/graphql'
+  uri: process.env.GQL_ENDPOINT
 })
 
 const theme = createMuiTheme({

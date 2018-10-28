@@ -1,9 +1,11 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
+  node: {
+    fs: "empty"
+  },
   module: {
     rules: [
       {
@@ -24,18 +26,7 @@ module.exports = {
     publicPath: './',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'public/'),
-    port: 3333,
-    publicPath: 'http://localhost:3333/dist/',
-    hotOnly: true
-  },
   plugins: [
-     ...(
-       process.env.NODE_ENV !== 'production'
-       ? [new webpack.HotModuleReplacementPlugin()]
-       : []
-     ),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/index.html'

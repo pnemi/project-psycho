@@ -4,9 +4,8 @@
   "description": "Players frontend for Project Psycho game.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production webpack-dev-server --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development",
-    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -46,7 +45,8 @@
     "style-loader": "^0.23.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "@material-ui/core": "^3.2.2",
@@ -54,6 +54,7 @@
     "apollo-boost": "^0.1.16",
     "classnames": "^2.2.6",
     "cross-env": "^5.2.0",
+    "dotenv": "^6.1.0",
     "graphql": "^14.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
