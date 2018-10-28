@@ -15,15 +15,14 @@ app.use(cors())
 const typeDefs = gql(schema)
 
 const server = new ApolloServer({
+  cors: false,
   typeDefs,
   resolvers
 })
 
 server.applyMiddleware({
   app,
-  cors: {
-    origin: 'http://localhost:3333'
-  }
+  cors: false
 })
 
 app.get('/', (req, res) => res.send('Creepy'))
