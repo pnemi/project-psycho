@@ -2,6 +2,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const path = require('path')
 const common = require('./webpack.common.js')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -12,6 +13,10 @@ module.exports = merge(common, {
     hotOnly: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({
+      path: path.join(__dirname, '.env.development'),
+      systemvars: true,
+    })
   ]
 });
