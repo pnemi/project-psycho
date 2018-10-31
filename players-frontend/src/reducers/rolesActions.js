@@ -1,4 +1,5 @@
-import gql from "graphql-tag"
+import gql from 'graphql-tag'
+import { save } from '../utils/storage'
 
 export const FETCH_ROLES_BEGIN = 'FETCH_ROLES_BEGIN'
 export const FETCH_ROLES_SUCCESS = 'FETCH_ROLES_SUCCESS'
@@ -20,10 +21,17 @@ export const fetchRolesError = (error) => ({
   payload: { error }
 })
 
-export const toggleRole = (code) => ({
-  type: TOGGLE_ROLE,
-  payload: { code }
-})
+export const toggleRole = (code) => {
+  return (dispatch, getState) => {
+    const { checked } = getState().roles.data.find((role) => role.code === code)
+    save(`${code}.checked`, !checked)
+    
+    dispatch({
+      type: TOGGLE_ROLE,
+      payload: { code }
+    })
+  }
+}
 
 export const fetchRoles = (client) => {
   return dispatch => {

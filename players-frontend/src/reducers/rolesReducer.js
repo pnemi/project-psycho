@@ -5,6 +5,15 @@ import {
   TOGGLE_ROLE
 } from './rolesActions'
 
+import { load } from '../utils/storage'
+
+const shouldRoleBeChecked = (role) => {
+  const savedChecked = load(`${role.code}.checked`)
+  return !role.required && savedChecked !== null
+    ? savedChecked
+    : true
+}
+
 const initialState = {
   data: [],
   loading: false,
@@ -23,7 +32,10 @@ const roles = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        data: payload.data.map((item) => ({ ...item, checked: true }))
+        data: payload.data.map((item) => ({
+          ...item,
+          checked: shouldRoleBeChecked(item)
+        }))
       }
     case FETCH_ROLES_FAILURE:
       return {
