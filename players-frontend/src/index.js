@@ -1,5 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  <BrowserRouter basename={process.env.ROUTER_BASENAME}>
+    <App />
+  </BrowserRouter>
+, document.getElementById('app'))

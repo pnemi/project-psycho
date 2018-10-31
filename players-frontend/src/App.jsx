@@ -9,6 +9,7 @@ import { ApolloProvider } from 'react-apollo'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import themeStyles from './theme'
 
 import Layout from './components/Layout'
 import rootReducer from './reducers'
@@ -17,30 +18,7 @@ const client = new ApolloClient({
   uri: process.env.GQL_ENDPOINT
 })
 
-const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-    suppressDeprecationWarnings: true
-  },
-  palette: {
-    background: {
-      default: '#38383A'
-    },
-    text: {
-      primary: '#fff',
-      secondary: '#A9A9A9'
-    },
-    primary: {
-      main: '#AA261E',
-      dark: '#95231C'
-    },
-    secondary: {
-      main: '#ccc',
-      dark: '#eee',
-      contrastText: '#333'
-    }
-  }
-})
+const theme = createMuiTheme(themeStyles)
 
 const store = createStore(
   rootReducer,

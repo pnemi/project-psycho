@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import { Link } from 'react-router-dom'
+
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -28,7 +31,7 @@ const Header = ({ classes }) => (
   <AppBar className={classes.root} position="fixed" color="default">
     <Toolbar className={classes.toolbar}>
       <Typography className={classes.title} variant="h6" color="inherit">
-        <a href="/">Psycho</a>
+        <Link to="/">Psycho</Link>
       </Typography>
     </Toolbar>
   </AppBar>
