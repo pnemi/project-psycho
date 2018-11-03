@@ -104,11 +104,9 @@ class RolesList extends Component {
 
   handleNumberOfPlayersChange = (e) => {
     const { value } = e.target
-    if (value !== '') {
-      this.setState({
-        numberOfPlayers: Number(String(value).replace(/[^0-9]/, ''))
-      })
-    }
+    this.setState({
+      numberOfPlayers: Number(String(value).replace(/[^0-9]/, ''))
+    })
   }
 
   render () {

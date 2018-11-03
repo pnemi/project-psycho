@@ -20,12 +20,13 @@ const NumberOfPlayersPicker = ({ classes, onChange, numberOfPlayers, minNumberOf
     label="Number of Players"
     value={numberOfPlayers || ''}
     onChange={onChange}
-    type="number"
+    type="text"
     InputLabelProps={{
       shrink: true,
     }}
     inputProps={{
-      min: minNumberOfPlayers
+      min: minNumberOfPlayers,
+      pattern: '[0-9]*'
     }}
     margin="normal"
   />
