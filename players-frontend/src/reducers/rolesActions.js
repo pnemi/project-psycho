@@ -25,7 +25,7 @@ export const toggleRole = (code) => {
   return (dispatch, getState) => {
     const { checked } = getState().roles.data.find((role) => role.code === code)
     save(`${code}.checked`, !checked)
-    
+
     dispatch({
       type: TOGGLE_ROLE,
       payload: { code }
@@ -33,7 +33,7 @@ export const toggleRole = (code) => {
   }
 }
 
-export const fetchRoles = (client) => {
+export const fetchRoles = (client, onDone) => {
   return dispatch => {
     dispatch(fetchRolesBegin())
     client
@@ -53,7 +53,12 @@ export const fetchRoles = (client) => {
         }
         `
       })
-      .then(({ data }) => dispatch(fetchRolesSuccess(data.roles)))
+      .then(({ data }) => {
+        dispatch(fetchRolesSuccess(data.roles))
+        if (onDone && typeof onDone === 'function') {
+          onDone()
+        }
+      })
       .catch(err => dispatch(fetchRolesError(err)))
   }
 }

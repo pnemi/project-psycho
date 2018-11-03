@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
-import NumberOfPlayersPicker from './NumberOfPlayersPicker'
+import TextInputPicker from './Pickers/TextInput'
 import RolesAssigner from './RolesAssigner'
 import * as rolesActions from '../reducers/rolesActions'
 import { truncate } from '../utils/utils'
@@ -28,7 +28,13 @@ const styles = {
   playButton: {
     boxShadow: 'none',
     width: '100%',
-    marginTop: '15px'
+    margin: '15px 0'
+  },
+  rolesList: {
+    padding: '0'
+  },
+  rolesListItem: {
+
   }
 }
 
@@ -38,17 +44,37 @@ class RolesList extends Component {
     super(props)
     this.state = {
       checked: this.loadCheckedRoles(),
-      numberOfPlayers: null,
+      numberOfPlayers: 0,
+      minNumberOfPlayers: 0,
       dealingRoles: false
     }
   }
 
-  shouldComponentUpdate = (nextProps, nextState) => {
-    return true
+  countCheckedRoles = (roles) => {
+    return roles.reduce((acc, role) => ~~(role.checked) + acc, 0)
+  }
+
+  onFetchDone = () => {
+    const { data } = this.props
+    const numberOfCheckedRoles = this.countCheckedRoles(data)
+    this.setState({
+      numberOfPlayers: numberOfCheckedRoles,
+      minNumberOfPlayers: numberOfCheckedRoles
+    })
   }
 
   componentDidMount = () => {
-    this.props.fetchRoles()
+    this.props.fetchRoles(this.onFetchDone)
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    const { data } = this.props
+    const numberOfCheckedRoles = this.countCheckedRoles(data)
+    if (prevState.minNumberOfPlayers !== numberOfCheckedRoles) {
+      this.setState({
+        minNumberOfPlayers: numberOfCheckedRoles
+      })
+    }
   }
 
   loadCheckedRoles = () => {
@@ -64,25 +90,39 @@ class RolesList extends Component {
     }
   }
 
+  handleBackButtonClick = () => {
+    this.setState({
+      dealingRoles: false
+    })
+  }
+
   handleToggle = (code, required) => {
     if (!required) {
       this.props.toggleRole(code)
     }
   }
 
-  handleNumberOfPlayersChange = (numberOfPlayers) => {
-    this.setState({
-      numberOfPlayers: parseInt(numberOfPlayers, 10)
-    })
+  handleNumberOfPlayersChange = (e) => {
+    const { value } = e.target
+    if (value !== '') {
+      this.setState({
+        numberOfPlayers: Number(String(value).replace(/[^0-9]/, ''))
+      })
+    }
   }
 
   render () {
 
-    const { dealingRoles } = this.state
+    const { numberOfPlayers, minNumberOfPlayers, dealingRoles } = this.state
     const { data, loading, error, classes } = this.props
 
     if (dealingRoles) {
-      return <RolesAssigner numberOfPlayers={this.state.numberOfPlayers} />
+      return (
+        <RolesAssigner
+          numberOfPlayers={numberOfPlayers}
+          onBackClick={this.handleBackButtonClick}
+        />
+      )
     }
 
     if (loading) {
@@ -94,8 +134,12 @@ class RolesList extends Component {
     }
 
     return (
-      <div>
-        <NumberOfPlayersPicker onChange={this.handleNumberOfPlayersChange} />
+      <Fragment>
+        <TextInputPicker
+          numberOfPlayers={numberOfPlayers}
+          minNumberOfPlayers={minNumberOfPlayers}
+          onChange={this.handleNumberOfPlayersChange}
+        />
         <Button
           variant="contained"
           size="large"
@@ -105,11 +149,10 @@ class RolesList extends Component {
         >
           Play
         </Button>
-        <List>
-          {data
-            .filter((role) => role.listed)
-            .sort((prevRole, currRole) => prevRole.order - currRole.order)
-            .map(({ order, code, name, description, checked, required }) => (
+        <List
+          className={classes.rolesList}
+        >
+          {data.map(({ order, code, name, description, checked, required }) => (
             <ListItem
               key={code}
               role={undefined}
@@ -131,21 +174,23 @@ class RolesList extends Component {
             </ListItem>
           ))}
         </List>
-      </div>
+      </Fragment>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    data: state.roles.data,
+    data: state.roles.data
+      .filter((role) => role.listed)
+      .sort((prevRole, currRole) => prevRole.order - currRole.order),
     loading: state.roles.loading,
     error: state.roles.error
   }
 }
 
 const mapDispatchToProps = (dispatch, { client }) => ({
-  fetchRoles: () => dispatch(rolesActions.fetchRoles(client)),
+  fetchRoles: (onDone) => dispatch(rolesActions.fetchRoles(client, onDone)),
   toggleRole: (code) => dispatch(rolesActions.toggleRole(code))
 })
 

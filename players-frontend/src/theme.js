@@ -8,7 +8,7 @@ export default {
       default: '#38383A'
     },
     text: {
-      primary: '#fff',
+      primary: '#DDDDDD',
       secondary: '#A9A9A9'
     },
     primary: {

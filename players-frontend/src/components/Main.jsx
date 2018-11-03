@@ -2,18 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
-import RolesList from './RolesList'
+import Routes from './Routes'
 
 const styles = {
-  root: {
+  main: {
     minHeight: '100vh',
-    paddingTop: '64px'
+    paddingTop: 'calc(65px + 15px)'
   }
 }
 
 const Main = ({ classes }) => (
-  <Grid className={classes.root} container justify="center">
-    <RolesList />
+  <Grid
+    container
+    className={classes.main}
+    justify="center"
+    component="main"
+  >
+    <Routes />
   </Grid>
 )
 

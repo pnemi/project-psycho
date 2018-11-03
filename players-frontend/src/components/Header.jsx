@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   root: {
-    margin: 0,
+    margin: '0',
     background: '#38383A',
     borderBottom: '1px solid #5D5E5F',
     boxShadow: 'none'

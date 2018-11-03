@@ -4,6 +4,8 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
 import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBack from '@material-ui/icons/ArrowBack'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
@@ -14,24 +16,47 @@ import { shuffle, randArrayItem } from '../utils/utils'
 
 const styles = {
   root: {
-    padding: '20px',
+    padding: '0 0 20px 0',
   },
   roleInfo: {
     textAlign: 'center',
     alignSelf: 'center',
     flex: '1',
+    maxWidth: '650px',
+    '@media screen and (max-width: 768px)': {
+      maxWidth: 'auto'
+    }
   },
   roleName: {
     fontSize: '36px',
     fontWeight: '800',
-    marginBottom: '15px'
+    marginBottom: '15px',
+    '@media screen and (max-width: 768px)': {
+      fontSize: '22px',
+    }
   },
   roleDescription: {
     fontSize: '18px',
-    fontWeight: '400'
+    fontWeight: '400',
+    color: '#A9A9A9',
+    maxHeight: '30vh',
+    overflow: 'auto',
+    '@media screen and (max-width: 768px)': {
+      fontSize: '14px',
+    }
   },
-  button: {
-    margin: '0 5px',
+  backButton: {
+    color: 'white',
+    alignSelf: 'flex-start'
+  },
+  assignerButtons: {
+    whiteSpace: 'nowrap',
+    '&:first-child': {
+      marginRight: '5px'
+    },
+    '@media screen and (max-width: 768px)': {
+      fontSize: '12px',
+    }
   },
   stepper: {
     background: 'none',
@@ -92,7 +117,7 @@ class RolesAssigner extends Component {
 
   render () {
 
-    const { classes, numberOfPlayers } = this.props
+    const { classes, numberOfPlayers, onBackClick } = this.props
     const { assignedRole, roleHidden, rolesAssigned } = this.state
 
     const roleInfo = (
@@ -113,19 +138,32 @@ class RolesAssigner extends Component {
 
     return (
       <Grid container className={classes.root} direction="column" alignItems="center" justify="space-between">
+        <IconButton
+          className={classes.backButton}
+          aria-label="Back"
+          onClick={onBackClick}
+        >
+          <ArrowBack />
+        </IconButton>
         <Grid container className={classes.roleInfo} direction="column" justify="center" alignItems="center">
           <Typography className={classes.roleName} variant="h1">
             {roleInfo}
           </Typography>
-          <Typography className={classes.roleDescription} variant="subtitle1">
+          <Typography className={classes.roleDescription}>
             {roleDescription}
           </Typography>
         </Grid>
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          wrap="nowrap"
+        >
           <Button
             variant="contained"
             color="primary"
-            className={classes.button}
+            className={classes.assignerButtons}
             size="large"
             onClick={() => this.assignRole()}
             disabled={assignedRole && !roleHidden}
@@ -135,19 +173,18 @@ class RolesAssigner extends Component {
           <Button
             variant="contained"
             color="secondary"
-            className={classes.button}
+            className={classes.assignerButtons}
             size="large"
             onClick={() => this.hideRole()}
             disabled={!assignedRole || roleHidden}
           >
             Schovej mou roli
           </Button>
-          <Stepper
-            steps={numberOfPlayers}
-            activeStep={rolesAssigned}
-          />
         </Grid>
-
+        <Stepper
+          steps={numberOfPlayers}
+          activeStep={rolesAssigned}
+        />
       </Grid>
     )
   }
@@ -167,7 +204,8 @@ RolesAssigner.propTypes = {
   roles: PropTypes.array.isRequired,
   complementRoles: PropTypes.array.isRequired,
   selectedRoles: PropTypes.array.isRequired,
-  numberOfPlayers: PropTypes.number.isRequired
+  numberOfPlayers: PropTypes.number.isRequired,
+  onBackClick: PropTypes.func.isRequired
 }
 
 export default compose(

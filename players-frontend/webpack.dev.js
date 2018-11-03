@@ -8,8 +8,10 @@ module.exports = merge(common, {
   mode: 'development',
   devServer: {
     contentBase: path.join(__dirname, 'public/'),
+    host: '0.0.0.0',
     port: 3333,
-    publicPath: 'http://localhost:3333/',
+    disableHostCheck: true,
+    publicPath: '/',
     hotOnly: true
   },
   plugins: [
