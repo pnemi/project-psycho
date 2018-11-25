@@ -13,22 +13,19 @@ const styles = {
     width: 'calc((100% / var(--steps)) - 5px)',
     height: '5px',
     background: '#ccc',
-    transition: 'background 1s'
+    transition: 'background 1s',
   },
   activeStep: {
-    background: 'red'
-  }
+    background: 'red',
+  },
 }
 
 class Stepper extends Component {
-
   constructor(props) {
     super(props)
-
   }
 
   render() {
-
     const { classes, steps, activeStep } = this.props
 
     return (
@@ -38,10 +35,10 @@ class Stepper extends Component {
             key={step}
             className={classnames({
               [classes.step]: true,
-              [classes.activeStep]: step < activeStep
+              [classes.activeStep]: step < activeStep,
             })}
             style={{
-              '--steps': steps
+              '--steps': steps,
             }}
           />
         ))}
@@ -53,7 +50,7 @@ class Stepper extends Component {
 Stepper.propTypes = {
   classes: PropTypes.object.isRequired,
   steps: PropTypes.number.isRequired,
-  activeStep: PropTypes.number.isRequired
+  activeStep: PropTypes.number.isRequired,
 }
 
 export default withStyles(styles)(Stepper)

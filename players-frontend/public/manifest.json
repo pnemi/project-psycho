@@ -1,6 +1,7 @@
 {
   "name": "Project Psycho",
-  "short_name": "Psycho", 
-  "start_url": "index.html",
-  "display": "standalone"
+  "short_name": "Psycho",
+  "start_url": "index.html?utm_source=a2hs",
+  "display": "standalone",
+  "background_color": "#38383A"
 }

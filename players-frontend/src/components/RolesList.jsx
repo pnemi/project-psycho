@@ -20,38 +20,36 @@ import { truncate } from '../utils/utils'
 const styles = {
   loading: {
     color: 'red',
-    alignSelf: 'center'
+    alignSelf:
+      'centercentercentercentercentercentercentercentercentercentercentercentercentercenter',
   },
   error: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   playButton: {
     boxShadow: 'none',
     width: '100%',
-    margin: '15px 0'
+    margin: '15px 0',
   },
   rolesList: {
-    padding: '0'
+    padding: '0',
   },
-  rolesListItem: {
-
-  }
+  rolesListItem: {},
 }
 
 class RolesList extends Component {
-
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       checked: this.loadCheckedRoles(),
       numberOfPlayers: 0,
       minNumberOfPlayers: 0,
-      dealingRoles: false
+      dealingRoles: false,
     }
   }
 
   countCheckedRoles = (roles) => {
-    return roles.reduce((acc, role) => ~~(role.checked) + acc, 0)
+    return roles.reduce((acc, role) => ~~role.checked + acc, 0)
   }
 
   onFetchDone = () => {
@@ -59,7 +57,7 @@ class RolesList extends Component {
     const numberOfCheckedRoles = this.countCheckedRoles(data)
     this.setState({
       numberOfPlayers: numberOfCheckedRoles,
-      minNumberOfPlayers: numberOfCheckedRoles
+      minNumberOfPlayers: numberOfCheckedRoles,
     })
   }
 
@@ -72,7 +70,7 @@ class RolesList extends Component {
     const numberOfCheckedRoles = this.countCheckedRoles(data)
     if (prevState.minNumberOfPlayers !== numberOfCheckedRoles) {
       this.setState({
-        minNumberOfPlayers: numberOfCheckedRoles
+        minNumberOfPlayers: numberOfCheckedRoles,
       })
     }
   }
@@ -82,17 +80,17 @@ class RolesList extends Component {
   }
 
   handlePlayButtonClick = () => {
-    const { numberOfPlayers } = this.state
-    if (numberOfPlayers) {
+    const { numberOfPlayers, minNumberOfPlayers } = this.state
+    if (numberOfPlayers >= minNumberOfPlayers) {
       this.setState({
-        dealingRoles: true
+        dealingRoles: true,
       })
     }
   }
 
   handleBackButtonClick = () => {
     this.setState({
-      dealingRoles: false
+      dealingRoles: false,
     })
   }
 
@@ -105,12 +103,11 @@ class RolesList extends Component {
   handleNumberOfPlayersChange = (e) => {
     const { value } = e.target
     this.setState({
-      numberOfPlayers: Number(String(value).replace(/[^0-9]/, ''))
+      numberOfPlayers: Number(String(value).replace(/[^0-9]/, '')),
     })
   }
 
-  render () {
-
+  render() {
     const { numberOfPlayers, minNumberOfPlayers, dealingRoles } = this.state
     const { data, loading, error, classes } = this.props
 
@@ -124,7 +121,9 @@ class RolesList extends Component {
     }
 
     if (loading) {
-      return <CircularProgress className={classes.loading} size={30} thickness={5} />
+      return (
+        <CircularProgress className={classes.loading} size={30} thickness={5} />
+      )
     }
 
     if (error) {
@@ -143,13 +142,12 @@ class RolesList extends Component {
           size="large"
           color="primary"
           className={classes.playButton}
-          onClick={() => this.handlePlayButtonClick()}
+          onClick={this.handlePlayButtonClick}
+          disabled={numberOfPlayers < minNumberOfPlayers}
         >
           Play
         </Button>
-        <List
-          className={classes.rolesList}
-        >
+        <List className={classes.rolesList}>
           {data.map(({ order, code, name, description, checked, required }) => (
             <ListItem
               key={code}
@@ -165,10 +163,10 @@ class RolesList extends Component {
                 tabIndex={-1}
                 disableRipple
               />
-            <ListItemText
-              primary={name}
-              secondary={truncate(description, 40)}
-            />
+              <ListItemText
+                primary={name}
+                secondary={truncate(description, 40)}
+              />
             </ListItem>
           ))}
         </List>
@@ -181,15 +179,16 @@ const mapStateToProps = (state) => {
   return {
     data: state.roles.data
       .filter((role) => role.listed)
-      .sort((prevRole, currRole) => prevRole.order - currRole.order),
+      .sort((prevRole, currRole) => prevRole.order - currRole.order)
+      .sort((prevRole, currRole) => prevRole.required - currRole.required),
     loading: state.roles.loading,
-    error: state.roles.error
+    error: state.roles.error,
   }
 }
 
 const mapDispatchToProps = (dispatch, { client }) => ({
   fetchRoles: (onDone) => dispatch(rolesActions.fetchRoles(client, onDone)),
-  toggleRole: (code) => dispatch(rolesActions.toggleRole(code))
+  toggleRole: (code) => dispatch(rolesActions.toggleRole(code)),
 })
 
 RolesList.propTypes = {
@@ -198,11 +197,14 @@ RolesList.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
   fetchRoles: PropTypes.func.isRequired,
-  toggleRole: PropTypes.func.isRequired
+  toggleRole: PropTypes.func.isRequired,
 }
 
 export default compose(
   withApollo,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withStyles(styles)
 )(RolesList)

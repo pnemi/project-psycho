@@ -12,13 +12,13 @@ module.exports = merge(common, {
     port: 3333,
     disableHostCheck: true,
     publicPath: '/',
-    hotOnly: true
+    hotOnly: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({
       path: path.join(__dirname, '.env.development'),
       systemvars: true,
-    })
-  ]
-});
+    }),
+  ],
+})

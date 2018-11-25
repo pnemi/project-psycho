@@ -9,12 +9,17 @@ const styles = {
     margin: '0',
     '& input::-webkit-inner-spin-button, input::-webkit-outer-spin-button': {
       WebkitAppearance: 'none',
-      margin: '0'
-    }
-  }
+      margin: '0',
+    },
+  },
 }
 
-const NumberOfPlayersPicker = ({ classes, onChange, numberOfPlayers, minNumberOfPlayers }) => (
+const NumberOfPlayersPicker = ({
+  classes,
+  onChange,
+  numberOfPlayers,
+  minNumberOfPlayers,
+}) => (
   <TextField
     className={classes.field}
     label="Number of Players"
@@ -26,7 +31,7 @@ const NumberOfPlayersPicker = ({ classes, onChange, numberOfPlayers, minNumberOf
     }}
     inputProps={{
       min: minNumberOfPlayers,
-      pattern: '[0-9]*'
+      pattern: '[0-9]*',
     }}
     margin="normal"
   />
@@ -36,7 +41,7 @@ NumberOfPlayersPicker.propTypes = {
   classes: PropTypes.object.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
   minNumberOfPlayers: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(NumberOfPlayersPicker)

@@ -8,15 +8,12 @@ import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   layout: {
-    padding: '0 15px'
-  }
+    padding: '0 15px',
+  },
 }
 
 const Layout = ({ classes }) => (
-  <Grid
-    container
-    className={classes.layout}
-  >
+  <Grid container className={classes.layout}>
     <CssBaseline />
     <Header />
     <Main />

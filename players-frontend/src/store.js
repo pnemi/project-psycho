@@ -6,9 +6,7 @@ import rootReducer from './reducers'
 export default function configureStore() {
   const store = createStore(
     rootReducer,
-    composeWithDevTools(
-      applyMiddleware(thunk)
-    )
+    composeWithDevTools(applyMiddleware(thunk))
   )
 
   if (module.hot) {

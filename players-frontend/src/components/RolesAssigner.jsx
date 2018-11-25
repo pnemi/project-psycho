@@ -24,8 +24,8 @@ const styles = {
     flex: '1',
     maxWidth: '650px',
     '@media screen and (max-width: 768px)': {
-      maxWidth: 'auto'
-    }
+      maxWidth: 'auto',
+    },
   },
   roleName: {
     fontSize: '36px',
@@ -33,7 +33,7 @@ const styles = {
     marginBottom: '15px',
     '@media screen and (max-width: 768px)': {
       fontSize: '22px',
-    }
+    },
   },
   roleDescription: {
     fontSize: '18px',
@@ -43,36 +43,35 @@ const styles = {
     overflow: 'auto',
     '@media screen and (max-width: 768px)': {
       fontSize: '14px',
-    }
+    },
   },
   backButton: {
     color: 'white',
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   assignerButtons: {
     whiteSpace: 'nowrap',
     '&:first-child': {
-      marginRight: '5px'
+      marginRight: '5px',
     },
     '@media screen and (max-width: 768px)': {
       fontSize: '12px',
-    }
+    },
   },
   stepper: {
     background: 'none',
     justifyContent: 'center',
-  }
+  },
 }
 
 class RolesAssigner extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       rolesAssigned: 0,
       rolesPool: [],
       assignedRole: null,
-      roleHidden: false
+      roleHidden: false,
     }
   }
 
@@ -86,15 +85,14 @@ class RolesAssigner extends Component {
     this.setState({
       rolesPool: shuffle([
         ...selectedRoles,
-        ...Array
-          .from({ length: numberOfPlayers - selectedRoles.length })
-          .map(() => randArrayItem(complementRoles))
-      ])
+        ...Array.from({ length: numberOfPlayers - selectedRoles.length }).map(
+          () => randArrayItem(complementRoles)
+        ),
+      ]),
     })
-
   }
 
-  assignRole () {
+  assignRole() {
     if (this.state.rolesPool.length <= 0) return
 
     const newRoles = [...this.state.rolesPool]
@@ -103,41 +101,39 @@ class RolesAssigner extends Component {
       assignedRole,
       rolesPool: newRoles,
       rolesAssigned: this.state.rolesAssigned + 1,
-      roleHidden: false
+      roleHidden: false,
     })
   }
 
-  hideRole () {
+  hideRole() {
     if (!this.state.roleHidden) {
       this.setState({
-        roleHidden: true
+        roleHidden: true,
       })
     }
   }
 
-  render () {
-
+  render() {
     const { classes, numberOfPlayers, onBackClick } = this.props
     const { assignedRole, roleHidden, rolesAssigned } = this.state
 
-    const roleInfo = (
-      roleHidden
+    const roleInfo = roleHidden
       ? ''
-      : (
-        assignedRole
-        ? assignedRole.name
-        : 'Vygeneruj si roli'
-      )
-    )
+      : assignedRole
+      ? assignedRole.name
+      : 'Vygeneruj si roli'
 
-    const roleDescription = (
-      roleHidden || !assignedRole
-      ? ''
-      : assignedRole.description
-    )
+    const roleDescription =
+      roleHidden || !assignedRole ? '' : assignedRole.description
 
     return (
-      <Grid container className={classes.root} direction="column" alignItems="center" justify="space-between">
+      <Grid
+        container
+        className={classes.root}
+        direction="column"
+        alignItems="center"
+        justify="space-between"
+      >
         <IconButton
           className={classes.backButton}
           aria-label="Back"
@@ -145,7 +141,13 @@ class RolesAssigner extends Component {
         >
           <ArrowBack />
         </IconButton>
-        <Grid container className={classes.roleInfo} direction="column" justify="center" alignItems="center">
+        <Grid
+          container
+          className={classes.roleInfo}
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
           <Typography className={classes.roleName} variant="h1">
             {roleInfo}
           </Typography>
@@ -181,21 +183,17 @@ class RolesAssigner extends Component {
             Schovej mou roli
           </Button>
         </Grid>
-        <Stepper
-          steps={numberOfPlayers}
-          activeStep={rolesAssigned}
-        />
+        <Stepper steps={numberOfPlayers} activeStep={rolesAssigned} />
       </Grid>
     )
   }
-
 }
 
 const mapStateToProps = (state) => {
   return {
     roles: state.roles.data,
     selectedRoles: state.roles.data.filter((role) => role.listed),
-    complementRoles: state.roles.data.filter((role) => role.complement)
+    complementRoles: state.roles.data.filter((role) => role.complement),
   }
 }
 
@@ -205,7 +203,7 @@ RolesAssigner.propTypes = {
   complementRoles: PropTypes.array.isRequired,
   selectedRoles: PropTypes.array.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
 }
 
 export default compose(

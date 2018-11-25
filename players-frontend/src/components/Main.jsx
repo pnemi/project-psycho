@@ -7,23 +7,18 @@ import Routes from './Routes'
 const styles = {
   main: {
     minHeight: '100vh',
-    paddingTop: 'calc(65px + 15px)'
-  }
+    paddingTop: 'calc(65px + 15px)',
+  },
 }
 
 const Main = ({ classes }) => (
-  <Grid
-    container
-    className={classes.main}
-    justify="center"
-    component="main"
-  >
+  <Grid container className={classes.main} justify="center" component="main">
     <Routes />
   </Grid>
 )
 
 Main.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(Main)
