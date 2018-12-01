@@ -22,24 +22,10 @@ class RolesList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      checked: this.loadCheckedRoles(),
       numberOfPlayers: 0,
       minNumberOfPlayers: 0,
-      dealingRoles: false,
+      isAssigning: false,
     }
-  }
-
-  countCheckedRoles = (roles) => {
-    return roles.reduce((acc, role) => ~~role.checked + acc, 0)
-  }
-
-  onFetchDone = () => {
-    const { data } = this.props
-    const numberOfCheckedRoles = this.countCheckedRoles(data)
-    this.setState({
-      numberOfPlayers: numberOfCheckedRoles,
-      minNumberOfPlayers: numberOfCheckedRoles,
-    })
   }
 
   componentDidMount = () => {
@@ -56,22 +42,31 @@ class RolesList extends Component {
     }
   }
 
-  loadCheckedRoles = () => {
-    return {}
+  countCheckedRoles = (roles) => {
+    return roles.reduce((acc, role) => ~~role.checked + acc, 0)
+  }
+
+  onFetchDone = () => {
+    const { data } = this.props
+    const numberOfCheckedRoles = this.countCheckedRoles(data)
+    this.setState({
+      numberOfPlayers: numberOfCheckedRoles,
+      minNumberOfPlayers: numberOfCheckedRoles,
+    })
   }
 
   handlePlayButtonClick = () => {
     const { numberOfPlayers, minNumberOfPlayers } = this.state
     if (numberOfPlayers >= minNumberOfPlayers) {
       this.setState({
-        dealingRoles: true,
+        isAssigning: true,
       })
     }
   }
 
-  handleBackButtonClick = () => {
+  handleStopAssigning = () => {
     this.setState({
-      dealingRoles: false,
+      isAssigning: false,
     })
   }
 
@@ -89,14 +84,14 @@ class RolesList extends Component {
   }
 
   render() {
-    const { numberOfPlayers, minNumberOfPlayers, dealingRoles } = this.state
+    const { numberOfPlayers, minNumberOfPlayers, isAssigning } = this.state
     const { data, loading, error, classes } = this.props
 
-    if (dealingRoles) {
+    if (isAssigning) {
       return (
         <RolesAssigner
           numberOfPlayers={numberOfPlayers}
-          onBackClick={this.handleBackButtonClick}
+          handleStopAssigning={this.handleStopAssigning}
         />
       )
     }

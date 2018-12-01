@@ -1,35 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import ArrowBack from '@material-ui/icons/ArrowBack'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-
-import styles from './styles'
-import Stepper from '../Stepper'
+import RolesAssignerPure from './RolesAssignerPure'
 import { shuffle, randArrayItem } from '../../utils/utils'
 
 class RolesAssigner extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      rolesAssigned: 0,
+      numberOfAssignedRoles: 0,
       rolesPool: [],
       assignedRole: null,
-      roleHidden: false,
+      isRoleHidden: true,
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.newGame()
   }
 
-  newGame() {
+  newGame = () => {
     const { numberOfPlayers, selectedRoles, complementRoles } = this.props
 
     this.setState({
@@ -42,7 +33,7 @@ class RolesAssigner extends Component {
     })
   }
 
-  assignRole() {
+  assignRole = () => {
     if (this.state.rolesPool.length <= 0) return
 
     const newRoles = [...this.state.rolesPool]
@@ -50,93 +41,43 @@ class RolesAssigner extends Component {
     this.setState({
       assignedRole,
       rolesPool: newRoles,
-      rolesAssigned: this.state.rolesAssigned + 1,
-      roleHidden: false,
+      numberOfAssignedRoles: this.state.numberOfAssignedRoles + 1,
+      isRoleHidden: false,
     })
   }
 
-  hideRole() {
-    if (!this.state.roleHidden) {
+  hideRole = () => {
+    if (!this.state.isRoleHidden) {
       this.setState({
-        roleHidden: true,
+        isRoleHidden: true,
       })
     }
   }
 
   render() {
-    const { classes, numberOfPlayers, onBackClick } = this.props
-    const { assignedRole, roleHidden, rolesAssigned } = this.state
-
-    const roleInfo = roleHidden
-      ? ''
-      : assignedRole
-      ? assignedRole.name
-      : 'Vygeneruj si roli'
-
-    const roleDescription =
-      roleHidden || !assignedRole ? '' : assignedRole.description
+    const { numberOfPlayers, handleStopAssigning } = this.props
+    const { assignedRole, isRoleHidden, numberOfAssignedRoles } = this.state
 
     return (
-      <Grid
-        container
-        className={classes.root}
-        direction="column"
-        alignItems="center"
-        justify="space-between"
-      >
-        <IconButton
-          className={classes.backButton}
-          aria-label="Back"
-          onClick={onBackClick}
-        >
-          <ArrowBack />
-        </IconButton>
-        <Grid
-          container
-          className={classes.roleInfo}
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Typography className={classes.roleName} variant="h1">
-            {roleInfo}
-          </Typography>
-          <Typography className={classes.roleDescription}>
-            {roleDescription}
-          </Typography>
-        </Grid>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          wrap="nowrap"
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.assignerButtons}
-            size="large"
-            onClick={() => this.assignRole()}
-            disabled={assignedRole && !roleHidden}
-          >
-            Přiřaď mi roli
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.assignerButtons}
-            size="large"
-            onClick={() => this.hideRole()}
-            disabled={!assignedRole || roleHidden}
-          >
-            Schovej mou roli
-          </Button>
-        </Grid>
-        <Stepper steps={numberOfPlayers} activeStep={rolesAssigned} />
-      </Grid>
+      <RolesAssignerPure
+        numberOfPlayers={numberOfPlayers}
+        numberOfAssignedRoles={numberOfAssignedRoles}
+        assignedRole={assignedRole}
+        isRoleHidden={isRoleHidden}
+        handleStopAssigning={handleStopAssigning}
+        handleAssignRole={this.assignRole}
+        handleHideRole={this.hideRole}
+      />
     )
   }
+}
+
+RolesAssigner.propTypes = {
+  roles: PropTypes.array.isRequired,
+  complementRoles: PropTypes.array.isRequired,
+  selectedRoles: PropTypes.array.isRequired,
+  numberOfPlayers: PropTypes.number.isRequired,
+  handleStopAssigning: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
@@ -147,16 +88,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-RolesAssigner.propTypes = {
-  classes: PropTypes.object.isRequired,
-  roles: PropTypes.array.isRequired,
-  complementRoles: PropTypes.array.isRequired,
-  selectedRoles: PropTypes.array.isRequired,
-  numberOfPlayers: PropTypes.number.isRequired,
-  onBackClick: PropTypes.func.isRequired,
-}
-
-export default compose(
-  connect(mapStateToProps),
-  withStyles(styles)
-)(RolesAssigner)
+export default connect(mapStateToProps)(RolesAssigner)
