@@ -21,7 +21,9 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ['*', '.mjs', '.js', '.jsx'] },
+  resolve: { alias: {
+      '@components': path.resolve(__dirname, 'src/components/'),
+      extensions: ['*', '.mjs', '.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'dist/'),
     publicPath: './',
