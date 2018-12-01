@@ -1,16 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Grid from '@material-ui/core/Grid'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { withStyles } from '@material-ui/core/styles'
+
 import Header from '../Header'
 import Main from '../Main'
 
-const styles = {
-  layout: {
-    padding: '0 15px',
-  },
-}
+import styles from './styles'
 
 const Layout = ({ classes }) => (
   <Grid container className={classes.layout}>

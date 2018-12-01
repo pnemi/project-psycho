@@ -12,29 +12,11 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
+import styles from './styles'
 import * as rolesActions from '../../reducers/rolesActions'
 import { TextInputPicker } from '../Pickers'
 import RolesAssigner from '../RolesAssigner'
 import { truncate } from '../../utils/utils'
-
-const styles = {
-  loading: {
-    color: 'red',
-    alignSelf: 'center',
-  },
-  error: {
-    alignSelf: 'center',
-  },
-  playButton: {
-    boxShadow: 'none',
-    width: '100%',
-    margin: '15px 0',
-  },
-  rolesList: {
-    padding: '0',
-  },
-  rolesListItem: {},
-}
 
 class RolesList extends Component {
   constructor(props) {

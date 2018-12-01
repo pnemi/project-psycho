@@ -1,18 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 
-const styles = {
-  field: {
-    width: '100%',
-    margin: '0',
-    '& input::-webkit-inner-spin-button, input::-webkit-outer-spin-button': {
-      WebkitAppearance: 'none',
-      margin: '0',
-    },
-  },
-}
+import styles from './TextInputStyles.js'
 
 const NumberOfPlayersPicker = ({
   classes,

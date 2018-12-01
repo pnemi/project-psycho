@@ -1,22 +1,12 @@
 import React, { useState } from 'react'
 import createUseStyles from 'react-jss-hook'
+
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 
-const useStyles = createUseStyles({
-  icon: {
-    fill: 'white',
-  },
-  select: {
-    minHeight: 'auto',
-    '&:focus': {
-      background: 'none',
-    },
-  },
-  selectItem: {
-    backgroundColor: 'none',
-  },
-})
+import styles from './styles'
+
+const useStyles = createUseStyles(styles)
 
 const LanguageSwitch = () => {
   const classes = useStyles()
