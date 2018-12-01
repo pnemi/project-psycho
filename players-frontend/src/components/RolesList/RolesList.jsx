@@ -12,16 +12,15 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
-import TextInputPicker from './Pickers/TextInput'
-import RolesAssigner from './RolesAssigner'
-import * as rolesActions from '../reducers/rolesActions'
-import { truncate } from '../utils/utils'
+import * as rolesActions from '../../reducers/rolesActions'
+import { TextInputPicker } from '../Pickers'
+import RolesAssigner from '../RolesAssigner'
+import { truncate } from '../../utils/utils'
 
 const styles = {
   loading: {
     color: 'red',
-    alignSelf:
-      'centercentercentercentercentercentercentercentercentercentercentercentercentercenter',
+    alignSelf: 'center',
   },
   error: {
     alignSelf: 'center',

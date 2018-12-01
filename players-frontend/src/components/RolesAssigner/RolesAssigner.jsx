@@ -10,9 +10,8 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
-import Stepper from './Stepper'
-
-import { shuffle, randArrayItem } from '../utils/utils'
+import Stepper from '../Stepper'
+import { shuffle, randArrayItem } from '../../utils/utils'
 
 const styles = {
   root: {
@@ -21,7 +20,7 @@ const styles = {
   roleInfo: {
     textAlign: 'center',
     alignSelf: 'center',
-    flex: '1',
+    flex: 1,
     maxWidth: '650px',
     '@media screen and (max-width: 768px)': {
       maxWidth: 'auto',
