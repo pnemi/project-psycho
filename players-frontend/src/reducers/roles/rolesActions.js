@@ -33,7 +33,7 @@ export const toggleRole = (code) => {
   }
 }
 
-export const fetchRoles = (client, onDone) => {
+export const fetchRoles = (client) => {
   return (dispatch) => {
     dispatch(fetchRolesBegin())
     client
@@ -53,12 +53,7 @@ export const fetchRoles = (client, onDone) => {
           }
         `,
       })
-      .then(({ data }) => {
-        dispatch(fetchRolesSuccess(data.roles))
-        if (onDone && typeof onDone === 'function') {
-          onDone()
-        }
-      })
+      .then(({ data }) => dispatch(fetchRolesSuccess(data.roles)))
       .catch((err) => dispatch(fetchRolesError(err)))
   }
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { withApollo } from 'react-apollo'
+import classnames from 'classnames'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -29,37 +30,36 @@ class RolesList extends Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchRoles(this.onFetchDone)
+    this.props.fetchRoles()
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    const { data } = this.props
-    const numberOfCheckedRoles = this.countCheckedRoles(data)
+    const numberOfCheckedRoles = this.countCheckedRoles()
     if (prevState.minNumberOfPlayers !== numberOfCheckedRoles) {
       this.setState({
         minNumberOfPlayers: numberOfCheckedRoles,
       })
+      if (prevState.numberOfPlayers === 0) {
+        this.setState({
+          numberOfPlayers: numberOfCheckedRoles,
+        })
+      }
     }
   }
 
-  countCheckedRoles = (roles) => {
+  countCheckedRoles = () => {
+    const { data: roles } = this.props
     return roles.reduce((acc, role) => ~~role.checked + acc, 0)
   }
 
-  onFetchDone = () => {
-    const { data } = this.props
-    const numberOfCheckedRoles = this.countCheckedRoles(data)
-    this.setState({
-      numberOfPlayers: numberOfCheckedRoles,
-      minNumberOfPlayers: numberOfCheckedRoles,
-    })
-  }
-
   handlePlayButtonClick = () => {
-    const { numberOfPlayers, minNumberOfPlayers } = this.state
-    if (numberOfPlayers >= minNumberOfPlayers) {
+    if (this.sufficientNumberOfPlayers()) {
       this.setState({
         isAssigning: true,
+      })
+    } else {
+      this.setState({
+        numberOfPlayers: this.countCheckedRoles(),
       })
     }
   }
@@ -81,6 +81,10 @@ class RolesList extends Component {
     this.setState({
       numberOfPlayers: Number(String(value).replace(/[^0-9]/, '')),
     })
+  }
+
+  sufficientNumberOfPlayers = () => {
+    return this.state.numberOfPlayers >= this.state.minNumberOfPlayers
   }
 
   render() {
@@ -117,11 +121,15 @@ class RolesList extends Component {
           variant="contained"
           size="large"
           color="primary"
-          className={classes.playButton}
+          className={classnames({
+            [classes.button]: true,
+            [classes.refillButton]: !this.sufficientNumberOfPlayers(),
+          })}
           onClick={this.handlePlayButtonClick}
-          disabled={numberOfPlayers < minNumberOfPlayers}
         >
-          Play
+          {this.sufficientNumberOfPlayers()
+            ? `Play`
+            : `Set number of players to minimum of ${minNumberOfPlayers}`}
         </Button>
         <List className={classes.rolesList}>
           {data.map(({ order, code, name, description, checked, required }) => (
