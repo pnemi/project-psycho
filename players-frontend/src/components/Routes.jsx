@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import RolesList from './RolesList'
-import Rules from './Rules'
-import NotFound from './NotFound'
+import RolesList from '@components/RolesList'
+import Rules from '@components/Rules'
+import NotFound from '@components/NotFound'
 
 const Routes = () => (
   <Switch>

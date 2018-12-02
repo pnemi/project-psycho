@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import RolesAssignerPure from './RolesAssignerPure'
-import { shuffle, randArrayItem } from '../../utils/utils'
+import { shuffle, randArrayItem } from '@utils/utils'
 
 class RolesAssigner extends Component {
   constructor(props) {

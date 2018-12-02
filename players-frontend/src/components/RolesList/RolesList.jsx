@@ -13,10 +13,10 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
-import * as rolesActions from '../../reducers/rolesActions'
-import { TextInputPicker } from '../Pickers'
-import RolesAssigner from '../RolesAssigner'
-import { truncate } from '../../utils/utils'
+import { TextInputPicker } from '@components/Pickers'
+import RolesAssigner from '@components/RolesAssigner'
+import * as rolesActions from '@reducers/roles/rolesActions'
+import { truncate } from '@utils/utils'
 
 class RolesList extends Component {
   constructor(props) {

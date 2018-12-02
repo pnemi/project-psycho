@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import roles from './rolesReducer'
+import roles from './roles/rolesReducer'
 
 const reducers = combineReducers({
   roles,

@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { withStyles } from '@material-ui/core/styles'
 
-import Header from '../Header'
-import Main from '../Main'
+import Header from '@components/Header'
+import Main from '@components/Main'
 
 import styles from './styles'
 

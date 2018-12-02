@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
-import Routes from '../Routes'
+import Routes from '@components/Routes'
 
 const Main = ({ classes }) => (
   <Grid container className={classes.main} justify="center" component="main">

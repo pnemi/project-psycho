@@ -5,7 +5,7 @@ import {
   TOGGLE_ROLE,
 } from './rolesActions'
 
-import { load } from '../utils/storage'
+import { load } from '@utils/storage'
 
 const shouldRoleBeChecked = (role) => {
   const savedChecked = load(`${role.code}.checked`)

@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { save } from '../utils/storage'
+import { save } from '@utils/storage'
 
 export const FETCH_ROLES_BEGIN = 'FETCH_ROLES_BEGIN'
 export const FETCH_ROLES_SUCCESS = 'FETCH_ROLES_SUCCESS'

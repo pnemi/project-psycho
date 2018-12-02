@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
-import LanguageSwitch from '../LanguageSwitch'
+import LanguageSwitch from '@components/LanguageSwitch'
 
 const Header = ({ classes }) => (
   <AppBar className={classes.appBar} position="fixed" color="default">
