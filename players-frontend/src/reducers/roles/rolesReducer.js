@@ -18,42 +18,35 @@ const initialState = {
   error: null,
 }
 
-const roles = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case FETCH_ROLES_BEGIN:
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      }
-    case FETCH_ROLES_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        data: payload.data.map((item) => ({
-          ...item,
-          checked: shouldRoleBeChecked(item),
-        })),
-      }
-    case FETCH_ROLES_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: payload.error,
-        data: [],
-      }
-    case TOGGLE_ROLE:
-      return {
-        ...state,
-        data: state.data.map((role) =>
-          role.code === payload.code
-            ? { ...role, checked: !role.checked }
-            : role
-        ),
-      }
-    default:
-      return state
-  }
+const reducers = {
+  [FETCH_ROLES_BEGIN]: (state, action) => ({
+    ...state,
+    loading: true,
+    error: null,
+  }),
+  [FETCH_ROLES_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    loading: false,
+    data: payload.data.map((item) => ({
+      ...item,
+      checked: shouldRoleBeChecked(item),
+    })),
+  }),
+  [FETCH_ROLES_FAILURE]: (state, { payload }) => ({
+    ...state,
+    loading: false,
+    error: payload.error,
+    data: [],
+  }),
+  [TOGGLE_ROLE]: (state, { payload }) => ({
+    ...state,
+    data: state.data.map((role) =>
+      role.code === payload.code ? { ...role, checked: !role.checked } : role
+    ),
+  }),
 }
 
-export default roles
+export default (state = initialState, action) =>
+  reducers.hasOwnProperty(action.type)
+    ? reducers[action.type](state, action)
+    : state
