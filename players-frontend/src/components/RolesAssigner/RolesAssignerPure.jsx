@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBack from '@material-ui/icons/ArrowBack'
+import DoneIcon from '@material-ui/icons/Done'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
@@ -20,66 +21,92 @@ const RolesAssignerPure = ({
   handleHideRole,
   assignedRole,
   isRoleHidden,
-}) => (
-  <Grid
-    container
-    className={classes.root}
-    direction="column"
-    alignItems="center"
-    justify="space-between"
-  >
-    <IconButton
-      className={classes.backButton}
-      aria-label="Back"
-      onClick={handleStopAssigning}
-    >
-      <ArrowBack />
-    </IconButton>
+  isAssigningDone,
+}) => {
+  const renderInfo = () => {
+    if (isRoleHidden) {
+      if (numberOfAssignedRoles >= numberOfPlayers) {
+        return (
+          <Typography className={classes.roleName} variant="h1">
+            <DoneIcon /> Hotovo
+          </Typography>
+        )
+      }
+      return (
+        <Typography className={classes.roleName} variant="h1">
+          Vygeneruj si roli
+        </Typography>
+      )
+    } else {
+      return (
+        <Fragment>
+          <Typography className={classes.roleName} variant="h1">
+            {assignedRole.name}
+          </Typography>
+          <Typography className={classes.roleDescription}>
+            {assignedRole.description}
+          </Typography>
+        </Fragment>
+      )
+    }
+  }
+
+  return (
     <Grid
       container
-      className={classes.roleInfo}
+      className={classes.root}
       direction="column"
-      justify="center"
       alignItems="center"
+      justify="space-between"
     >
-      <Typography className={classes.roleName} variant="h1">
-        {isRoleHidden ? 'Vygeneruj si roli' : assignedRole.name}
-      </Typography>
-      <Typography className={classes.roleDescription}>
-        {!isRoleHidden && assignedRole.description}
-      </Typography>
-    </Grid>
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      wrap="nowrap"
-    >
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.assignerButtons}
-        size="large"
-        onClick={handleAssignRole}
-        disabled={assignedRole && !isRoleHidden}
+      <IconButton
+        className={classes.backButton}
+        aria-label="Back"
+        onClick={handleStopAssigning}
       >
-        Přiřaď mi roli
-      </Button>
-      <Button
-        variant="contained"
-        color="secondary"
-        className={classes.assignerButtons}
-        size="large"
-        onClick={handleHideRole}
-        disabled={!assignedRole || isRoleHidden}
+        <ArrowBack />
+      </IconButton>
+      <Grid
+        container
+        className={classes.roleInfo}
+        direction="column"
+        justify="center"
+        alignItems="center"
       >
-        Schovej mou roli
-      </Button>
+        {renderInfo()}
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        wrap="nowrap"
+      >
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.assignerButtons}
+          size="large"
+          onClick={handleAssignRole}
+          disabled={isAssigningDone || !isRoleHidden}
+        >
+          Přiřaď mi roli
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.assignerButtons}
+          size="large"
+          onClick={handleHideRole}
+          disabled={isRoleHidden}
+        >
+          Schovej mou roli
+        </Button>
+      </Grid>
+      <Stepper steps={numberOfPlayers} activeStep={numberOfAssignedRoles} />
     </Grid>
-    <Stepper steps={numberOfPlayers} activeStep={numberOfAssignedRoles} />
-  </Grid>
-)
+  )
+}
 
 RolesAssignerPure.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -87,6 +114,7 @@ RolesAssignerPure.propTypes = {
   numberOfAssignedRoles: PropTypes.number.isRequired,
   assignedRole: PropTypes.object,
   isRoleHidden: PropTypes.bool.isRequired,
+  isAssigningDone: PropTypes.bool.isRequired,
   handleStopAssigning: PropTypes.func.isRequired,
   handleHideRole: PropTypes.func.isRequired,
   handleAssignRole: PropTypes.func.isRequired,

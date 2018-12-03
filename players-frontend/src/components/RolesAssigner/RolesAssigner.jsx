@@ -21,12 +21,12 @@ class RolesAssigner extends Component {
   }
 
   newGame = () => {
-    const { numberOfPlayers, selectedRoles, complementRoles } = this.props
+    const { numberOfPlayers, selectionRoles, complementRoles } = this.props
 
     this.setState({
       rolesPool: shuffle([
-        ...selectedRoles,
-        ...Array.from({ length: numberOfPlayers - selectedRoles.length }).map(
+        ...selectionRoles,
+        ...Array.from({ length: numberOfPlayers - selectionRoles.length }).map(
           () => randArrayItem(complementRoles)
         ),
       ]),
@@ -64,6 +64,7 @@ class RolesAssigner extends Component {
         numberOfAssignedRoles={numberOfAssignedRoles}
         assignedRole={assignedRole}
         isRoleHidden={isRoleHidden}
+        isAssigningDone={numberOfAssignedRoles >= numberOfPlayers}
         handleStopAssigning={handleStopAssigning}
         handleAssignRole={this.assignRole}
         handleHideRole={this.hideRole}
@@ -75,7 +76,7 @@ class RolesAssigner extends Component {
 RolesAssigner.propTypes = {
   roles: PropTypes.array.isRequired,
   complementRoles: PropTypes.array.isRequired,
-  selectedRoles: PropTypes.array.isRequired,
+  selectionRoles: PropTypes.array.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
   handleStopAssigning: PropTypes.func.isRequired,
 }
@@ -83,7 +84,9 @@ RolesAssigner.propTypes = {
 const mapStateToProps = (state) => {
   return {
     roles: state.roles.data,
-    selectedRoles: state.roles.data.filter((role) => role.listed),
+    selectionRoles: state.roles.data.filter(
+      (role) => role.checked && !role.assignedDuringGame
+    ),
     complementRoles: state.roles.data.filter((role) => role.complement),
   }
 }

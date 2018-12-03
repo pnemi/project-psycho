@@ -34,7 +34,7 @@ class RolesList extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    const numberOfCheckedRoles = this.countCheckedRoles()
+    const numberOfCheckedRoles = this.countMinimumPlayers()
     if (prevState.minNumberOfPlayers !== numberOfCheckedRoles) {
       this.setState({
         minNumberOfPlayers: numberOfCheckedRoles,
@@ -47,9 +47,12 @@ class RolesList extends Component {
     }
   }
 
-  countCheckedRoles = () => {
+  countMinimumPlayers = () => {
     const { data: roles } = this.props
-    return roles.reduce((acc, role) => ~~role.checked + acc, 0)
+    return roles.reduce(
+      (acc, role) => ~~(role.checked && !role.assignedDuringGame) + acc,
+      0
+    )
   }
 
   handlePlayButtonClick = () => {
@@ -59,7 +62,7 @@ class RolesList extends Component {
       })
     } else {
       this.setState({
-        numberOfPlayers: this.countCheckedRoles(),
+        numberOfPlayers: this.countMinimumPlayers(),
       })
     }
   }
@@ -132,27 +135,39 @@ class RolesList extends Component {
             : `Set number of players to minimum of ${minNumberOfPlayers}`}
         </Button>
         <List className={classes.rolesList}>
-          {data.map(({ order, code, name, description, checked, required }) => (
-            <ListItem
-              key={code}
-              role={undefined}
-              dense
-              button
-              onClick={() => this.handleToggle(code, required)}
-              className={classes.listItem}
-            >
-              <Checkbox
-                disabled={required}
-                checked={checked}
-                tabIndex={-1}
-                disableRipple
-              />
-              <ListItemText
-                primary={name}
-                secondary={truncate(description, 40)}
-              />
-            </ListItem>
-          ))}
+          {data.map(
+            ({
+              order,
+              code,
+              name,
+              description,
+              checked,
+              required,
+              assignedDuringGame,
+            }) => (
+              <ListItem
+                key={code}
+                role={undefined}
+                dense
+                button
+                onClick={() => this.handleToggle(code, required)}
+              >
+                <Checkbox
+                  disabled={required}
+                  checked={checked}
+                  tabIndex={-1}
+                  disableRipple
+                />
+                <ListItemText
+                  primary={name}
+                  secondary={truncate(description, 40)}
+                  className={classnames({
+                    [classes.assignedDuringGame]: assignedDuringGame,
+                  })}
+                />
+              </ListItem>
+            )
+          )}
         </List>
       </Fragment>
     )

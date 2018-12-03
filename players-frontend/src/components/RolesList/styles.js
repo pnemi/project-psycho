@@ -22,4 +22,9 @@ export default {
   rolesList: {
     padding: 0,
   },
+  assignedDuringGame: {
+    '& span': {
+      color: '#FDCC11',
+    },
+  },
 }
