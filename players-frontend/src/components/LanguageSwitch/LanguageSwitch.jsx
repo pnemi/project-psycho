@@ -7,15 +7,15 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 
 import * as langActions from '@reducers/lang/langActions'
-import { save, load } from '@utils/storage'
+import { load, save } from '@utils/storage'
 
 import styles from './styles'
 
 const useStyles = createUseStyles(styles)
 
-const LanguageSwitch = ({ switchLang }) => {
+const LanguageSwitch = ({ currentLang, switchLang }) => {
   const classes = useStyles()
-  const [lang, setLang] = useState(() => load('currentLang', 'cs'))
+  const [lang, setLang] = useState(currentLang)
 
   useEffect(() => save('currentLang', lang), [lang])
 
@@ -53,6 +53,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 LanguageSwitch.propTypes = {
   switchLang: PropTypes.func.isRequired,
+  currentLang: PropTypes.string.isRequired,
+}
+
+LanguageSwitch.defaultProps = {
+  currentLang: load('currentLang', 'cs'),
 }
 
 export default connect(

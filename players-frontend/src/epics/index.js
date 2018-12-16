@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable'
-import rolesEpic from './roles'
+import * as rolesEpics from './roles'
+import * as langEpics from './lang'
 
-const epics = combineEpics(rolesEpic)
+const epics = [...Object.values(rolesEpics), ...Object.values(langEpics)]
 
-export default epics
+export default combineEpics(...epics)

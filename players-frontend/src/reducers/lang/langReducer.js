@@ -1,7 +1,8 @@
 import { SWITCH_LANG } from './langActions'
+import { load } from '@utils/storage'
 
 export const initialState = {
-  currentLang: 'cs',
+  currentLang: load('currentLang', 'cs'),
 }
 
 export const reducers = {

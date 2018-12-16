@@ -1,4 +1,4 @@
-import * as actions from '@reducers/roles/rolesActions'
+import * as rolesActions from '@reducers/roles/rolesActions'
 import { from } from 'rxjs'
 import { ofType } from 'redux-observable'
 import { mergeMap, map } from 'rxjs/operators'
@@ -7,8 +7,8 @@ import gql from 'graphql-tag'
 import { gqlQuery } from '../gql-client'
 
 const ROLES_QUERY = gql`
-  {
-    roles(lang: { code: "cs" }) {
+  query Roles($lang: String!) {
+    roles(lang: { code: $lang }) {
       order
       code
       name
@@ -21,15 +21,14 @@ const ROLES_QUERY = gql`
   }
 `
 
-const fetchRolesEpic = (action$) =>
+export const fetchRolesEpic = (action$, state$) =>
   action$.pipe(
-    ofType(actions.FETCH_ROLES_BEGIN),
-
+    ofType(rolesActions.FETCH_ROLES_BEGIN),
     mergeMap(() =>
-      from(gqlQuery(ROLES_QUERY)).pipe(
-        map(({ data }) => actions.fetchRolesSuccess(data.roles))
-      )
+      from(
+        gqlQuery(ROLES_QUERY, {
+          lang: state$.value.lang.currentLang,
+        })
+      ).pipe(map(({ data }) => rolesActions.fetchRolesSuccess(data.roles)))
     )
   )
-
-export default fetchRolesEpic

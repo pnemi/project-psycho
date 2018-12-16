@@ -7,5 +7,9 @@ export const save = (key, value) => {
 
 export const load = (key, def = '') => {
   const serializedValue = window.localStorage.getItem(`${prefix}_${key}`)
-  return JSON.parse(serializedValue) || def
+  try {
+    return JSON.parse(serializedValue)
+  } catch {
+    return def
+  }
 }
