@@ -5,7 +5,7 @@ export const save = (key, value) => {
   window.localStorage.setItem(`${prefix}_${key}`, serializedValue)
 }
 
-export const load = (key) => {
+export const load = (key, def = '') => {
   const serializedValue = window.localStorage.getItem(`${prefix}_${key}`)
-  return JSON.parse(serializedValue)
+  return JSON.parse(serializedValue) || def
 }

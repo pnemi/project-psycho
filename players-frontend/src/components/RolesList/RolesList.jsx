@@ -179,16 +179,14 @@ class RolesList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    data: state.roles.data
-      .filter((role) => role.listed)
-      .sort((prevRole, currRole) => prevRole.order - currRole.order)
-      .sort((prevRole, currRole) => prevRole.required - currRole.required),
-    loading: state.roles.loading,
-    error: state.roles.error,
-  }
-}
+const mapStateToProps = (state) => ({
+  data: state.roles.data
+    .filter((role) => role.listed)
+    .sort((prevRole, currRole) => prevRole.order - currRole.order)
+    .sort((prevRole, currRole) => prevRole.required - currRole.required),
+  loading: state.roles.loading,
+  error: state.roles.error,
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchRoles: () => dispatch(rolesActions.fetchRoles()),
