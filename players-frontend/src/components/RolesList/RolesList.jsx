@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { withApollo } from 'react-apollo'
 import classnames from 'classnames'
 
 import List from '@material-ui/core/List'
@@ -18,6 +17,7 @@ import { TextInputPicker } from '@components/Pickers'
 import RolesAssigner from '@components/RolesAssigner'
 import * as rolesActions from '@reducers/roles/rolesActions'
 import { truncate } from '@utils/utils'
+import { save } from '@utils/storage'
 
 class RolesList extends Component {
   constructor(props) {
@@ -73,9 +73,10 @@ class RolesList extends Component {
     })
   }
 
-  handleToggle = (code, required) => {
-    if (!required) {
-      this.props.toggleRole(code)
+  handleToggle = (role) => {
+    if (!role.required) {
+      save(`${role.code}.checked`, !role.checked)
+      this.props.toggleRole(role.code)
     }
   }
 
@@ -136,21 +137,25 @@ class RolesList extends Component {
         </Button>
         <List className={classes.rolesList}>
           {data.map(
-            ({
-              order,
-              code,
-              name,
-              description,
-              checked,
-              required,
-              assignedDuringGame,
-            }) => (
+            (
+              {
+                order,
+                code,
+                name,
+                description,
+                checked,
+                required,
+                assignedDuringGame,
+              },
+              i,
+              roles
+            ) => (
               <ListItem
                 key={code}
                 role={undefined}
                 dense
                 button
-                onClick={() => this.handleToggle(code, required)}
+                onClick={() => this.handleToggle(roles[i])}
               >
                 <Checkbox
                   disabled={required}
@@ -185,8 +190,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, { client }) => ({
-  fetchRoles: (onDone) => dispatch(rolesActions.fetchRoles(client, onDone)),
+const mapDispatchToProps = (dispatch) => ({
+  fetchRoles: () => dispatch(rolesActions.fetchRoles()),
   toggleRole: (code) => dispatch(rolesActions.toggleRole(code)),
 })
 
@@ -200,7 +205,6 @@ RolesList.propTypes = {
 }
 
 export default compose(
-  withApollo,
   connect(
     mapStateToProps,
     mapDispatchToProps

@@ -1,16 +1,13 @@
 import React from 'react'
 import { hot, setConfig } from 'react-hot-loader'
-import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import themeStyles from './theme'
 
-import Layout from './components/Layout'
+import gqlClient from './gql-client'
 
-const client = new ApolloClient({
-  uri: process.env.GQL_ENDPOINT,
-})
+import Layout from './components/Layout'
 
 setConfig({
   pureSFC: true,
@@ -21,7 +18,7 @@ setConfig({
 const theme = createMuiTheme(themeStyles)
 
 const App = () => (
-  <ApolloProvider client={client}>
+  <ApolloProvider client={gqlClient}>
     <MuiThemeProvider theme={theme}>
       <Layout />
     </MuiThemeProvider>
