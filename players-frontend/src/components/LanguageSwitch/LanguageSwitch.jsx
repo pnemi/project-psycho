@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import createUseStyles from 'react-jss-hook'
-
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-
 import * as langActions from '@reducers/lang/langActions'
+
+import React, { useEffect, useState } from 'react'
 import { load, save } from '@utils/storage'
 
+import MenuItem from '@material-ui/core/MenuItem'
+import PropTypes from 'prop-types'
+import Select from '@material-ui/core/Select'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import styles from './styles'
+import { withStyles } from '@material-ui/core/styles'
 
-const useStyles = createUseStyles(styles)
-
-const LanguageSwitch = ({ currentLang, switchLang }) => {
-  const classes = useStyles()
+const LanguageSwitch = ({ currentLang, switchLang, classes }) => {
   const [lang, setLang] = useState(currentLang)
 
   useEffect(() => save('currentLang', lang), [lang])
@@ -52,6 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 LanguageSwitch.propTypes = {
+  classes: PropTypes.object.isRequired,
   switchLang: PropTypes.func.isRequired,
   currentLang: PropTypes.string.isRequired,
 }
@@ -60,7 +58,10 @@ LanguageSwitch.defaultProps = {
   currentLang: load('currentLang', 'cs'),
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withStyles(styles)
 )(LanguageSwitch)
