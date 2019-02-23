@@ -1,19 +1,11 @@
-import React from 'react'
-import { hot, setConfig } from 'react-hot-loader'
-import { ApolloProvider } from 'react-apollo'
-
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import themeStyles from './theme'
 
-import gqlClient from './gql-client'
-
+import { ApolloProvider } from 'react-apollo'
 import Layout from './components/Layout'
-
-setConfig({
-  pureSFC: true,
-  ignoreSFC: true,
-  pureRender: true,
-})
+import React from 'react'
+import gqlClient from './gql-client'
+import { hot } from 'react-hot-loader'
+import themeStyles from './theme'
 
 const theme = createMuiTheme(themeStyles)
 

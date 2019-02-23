@@ -1,186 +1,163 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import classnames from 'classnames'
+import * as rolesActions from '@reducers/roles/rolesActions'
 
+import React, { Fragment, useEffect, useState } from 'react'
+
+import Button from '@material-ui/core/Button'
+import Checkbox from '@material-ui/core/Checkbox'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import Checkbox from '@material-ui/core/Checkbox'
-import Button from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import PropTypes from 'prop-types'
+import RolesAssigner from '@components/RolesAssigner'
+import { TextInputPicker } from '@components/Pickers'
+import classnames from 'classnames'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
+import { save } from '@utils/storage'
+import styles from './styles'
+import { truncate } from '@utils/utils'
 import { withStyles } from '@material-ui/core/styles'
 
-import styles from './styles'
-import { TextInputPicker } from '@components/Pickers'
-import RolesAssigner from '@components/RolesAssigner'
-import * as rolesActions from '@reducers/roles/rolesActions'
-import { truncate } from '@utils/utils'
-import { save } from '@utils/storage'
+const RolesList = ({
+  roles,
+  loading,
+  error,
+  classes,
+  fetchRoles,
+  toggleRole,
+}) => {
+  const [numberOfPlayers, setNumberOfPlayers] = useState(0)
+  const [requiredNumberOfPlayers, setRequiredNumberOfPlayers] = useState(0)
+  const [isAssigning, setIsAssigning] = useState(false)
 
-class RolesList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      numberOfPlayers: 0,
-      minNumberOfPlayers: 0,
-      isAssigning: false,
-    }
-  }
-
-  componentDidMount = () => {
-    this.props.fetchRoles()
-  }
-
-  componentDidUpdate = (prevProps, prevState) => {
-    const numberOfCheckedRoles = this.countMinimumPlayers()
-    if (prevState.minNumberOfPlayers !== numberOfCheckedRoles) {
-      this.setState({
-        minNumberOfPlayers: numberOfCheckedRoles,
-      })
-      if (prevState.numberOfPlayers === 0) {
-        this.setState({
-          numberOfPlayers: numberOfCheckedRoles,
-        })
-      }
-    }
-  }
-
-  countMinimumPlayers = () => {
-    const { data: roles } = this.props
-    return roles.reduce(
+  const countCheckedRoles = () =>
+    roles.reduce(
       (acc, role) => ~~(role.checked && !role.assignedDuringGame) + acc,
       0
     )
-  }
 
-  handlePlayButtonClick = () => {
-    if (this.sufficientNumberOfPlayers()) {
-      this.setState({
-        isAssigning: true,
-      })
+  useEffect(() => {
+    fetchRoles()
+  }, [])
+
+  useEffect(() => {
+    const checkedRoles = countCheckedRoles()
+    setRequiredNumberOfPlayers(checkedRoles)
+    if (numberOfPlayers === 0) {
+      setNumberOfPlayers(countCheckedRoles(checkedRoles))
+    }
+  }, [roles])
+
+  const isEnoughPlayers = () => numberOfPlayers >= requiredNumberOfPlayers
+
+  const handlePlayButtonClick = () => {
+    if (isEnoughPlayers()) {
+      setIsAssigning(true)
     } else {
-      this.setState({
-        numberOfPlayers: this.countMinimumPlayers(),
-      })
+      setNumberOfPlayers(countCheckedRoles())
     }
   }
 
-  handleStopAssigning = () => {
-    this.setState({
-      isAssigning: false,
-    })
-  }
+  const handleStopAssigning = () => setIsAssigning(false)
 
-  handleToggle = (role) => {
+  const handleToggleRole = (role) => {
     if (!role.required) {
       save(`${role.code}.checked`, !role.checked)
-      this.props.toggleRole(role.code)
+      toggleRole(role.code)
     }
   }
 
-  handleNumberOfPlayersChange = (e) => {
+  const handleNumberOfPlayersChange = (e) => {
     const { value } = e.target
-    this.setState({
-      numberOfPlayers: Number(String(value).replace(/[^0-9]/, '')),
-    })
+    setNumberOfPlayers(Number(String(value).replace(/[^0-9]/, '')))
   }
 
-  sufficientNumberOfPlayers = () => {
-    return this.state.numberOfPlayers >= this.state.minNumberOfPlayers
-  }
-
-  render() {
-    const { numberOfPlayers, minNumberOfPlayers, isAssigning } = this.state
-    const { data, loading, error, classes } = this.props
-
-    if (isAssigning) {
-      return (
-        <RolesAssigner
-          numberOfPlayers={numberOfPlayers}
-          handleStopAssigning={this.handleStopAssigning}
-        />
-      )
-    }
-
-    if (loading) {
-      return (
-        <CircularProgress className={classes.loading} size={30} thickness={5} />
-      )
-    }
-
-    if (error) {
-      return <p className={classes.error}>{error.message}</p>
-    }
-
+  if (isAssigning) {
     return (
-      <Fragment>
-        <TextInputPicker
-          numberOfPlayers={numberOfPlayers}
-          minNumberOfPlayers={minNumberOfPlayers}
-          onChange={this.handleNumberOfPlayersChange}
-        />
-        <Button
-          variant="contained"
-          size="large"
-          color="primary"
-          className={classnames({
-            [classes.button]: true,
-            [classes.refillButton]: !this.sufficientNumberOfPlayers(),
-          })}
-          onClick={this.handlePlayButtonClick}
-        >
-          {this.sufficientNumberOfPlayers()
-            ? `Play`
-            : `Set number of players to minimum of ${minNumberOfPlayers}`}
-        </Button>
-        <List className={classes.rolesList}>
-          {data.map(
-            (
-              {
-                order,
-                code,
-                name,
-                description,
-                checked,
-                required,
-                assignedDuringGame,
-              },
-              i,
-              roles
-            ) => (
-              <ListItem
-                key={code}
-                role={undefined}
-                dense
-                button
-                onClick={() => this.handleToggle(roles[i])}
-              >
-                <Checkbox
-                  disabled={required}
-                  checked={checked}
-                  tabIndex={-1}
-                  disableRipple
-                />
-                <ListItemText
-                  primary={name}
-                  secondary={truncate(description, 40)}
-                  className={classnames({
-                    [classes.assignedDuringGame]: assignedDuringGame,
-                  })}
-                />
-              </ListItem>
-            )
-          )}
-        </List>
-      </Fragment>
+      <RolesAssigner
+        numberOfPlayers={numberOfPlayers}
+        handleStopAssigning={handleStopAssigning}
+      />
     )
   }
+
+  if (loading) {
+    return (
+      <CircularProgress className={classes.loading} size={30} thickness={5} />
+    )
+  }
+
+  if (error) {
+    return <p className={classes.error}>{error.message}</p>
+  }
+
+  return (
+    <Fragment>
+      <TextInputPicker
+        numberOfPlayers={numberOfPlayers}
+        requiredNumberOfPlayers={requiredNumberOfPlayers}
+        onChange={handleNumberOfPlayersChange}
+      />
+      <Button
+        variant="contained"
+        size="large"
+        color="primary"
+        className={classnames({
+          [classes.button]: true,
+          [classes.refillButton]: !isEnoughPlayers(),
+        })}
+        onClick={handlePlayButtonClick}
+      >
+        {isEnoughPlayers()
+          ? `Play`
+          : `Set number of players to minimum of ${requiredNumberOfPlayers}`}
+      </Button>
+      <List className={classes.rolesList}>
+        {roles.map(
+          (
+            {
+              order,
+              code,
+              name,
+              description,
+              checked,
+              required,
+              assignedDuringGame,
+            },
+            i,
+            roles
+          ) => (
+            <ListItem
+              key={code}
+              role={undefined}
+              dense
+              button
+              onClick={() => handleToggleRole(roles[i])}
+            >
+              <Checkbox
+                disabled={required}
+                checked={checked}
+                tabIndex={-1}
+                disableRipple
+              />
+              <ListItemText
+                primary={name}
+                secondary={truncate(description, 40)}
+                className={classnames({
+                  [classes.assignedDuringGame]: assignedDuringGame,
+                })}
+              />
+            </ListItem>
+          )
+        )}
+      </List>
+    </Fragment>
+  )
 }
 
 const mapStateToProps = (state) => ({
-  data: state.roles.data
+  roles: state.roles.data
     .filter((role) => role.listed)
     .sort((prevRole, currRole) => prevRole.order - currRole.order)
     .sort((prevRole, currRole) => prevRole.required - currRole.required),
@@ -195,7 +172,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 RolesList.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired,
+  roles: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
   fetchRoles: PropTypes.func.isRequired,

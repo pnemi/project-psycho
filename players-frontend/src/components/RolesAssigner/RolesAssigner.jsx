@@ -1,76 +1,63 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import { randArrayItem, shuffle } from '@utils/utils'
+
 import PropTypes from 'prop-types'
+import RolesAssignerPure from './RolesAssignerPure'
 import { connect } from 'react-redux'
 
-import RolesAssignerPure from './RolesAssignerPure'
-import { shuffle, randArrayItem } from '@utils/utils'
+const RolesAssigner = ({
+  numberOfPlayers,
+  handleStopAssigning,
+  selectionRoles,
+  complementRoles,
+}) => {
+  const [numberOfAssignedRoles, setNumberOfAssignedRoles] = useState(0)
+  const [rolesPool, setRolesPool] = useState([])
+  const [assignedRole, setAssignedRole] = useState(null)
+  const [isRoleHidden, setIsRoleHidden] = useState(true)
 
-class RolesAssigner extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      numberOfAssignedRoles: 0,
-      rolesPool: [],
-      assignedRole: null,
-      isRoleHidden: true,
-    }
-  }
-
-  componentDidMount = () => {
-    this.newGame()
-  }
-
-  newGame = () => {
-    const { numberOfPlayers, selectionRoles, complementRoles } = this.props
-
-    this.setState({
-      rolesPool: shuffle([
+  const newGame = () =>
+    setRolesPool(
+      shuffle([
         ...selectionRoles,
         ...Array.from({ length: numberOfPlayers - selectionRoles.length }).map(
           () => randArrayItem(complementRoles)
         ),
-      ]),
-    })
-  }
+      ])
+    )
 
-  assignRole = () => {
-    if (this.state.rolesPool.length <= 0) return
+  useEffect(newGame, [])
 
-    const newRoles = [...this.state.rolesPool]
+  const assignRole = () => {
+    if (rolesPool.length <= 0) return
+
+    const newRoles = [...rolesPool]
     const assignedRole = newRoles.pop()
-    this.setState({
-      assignedRole,
-      rolesPool: newRoles,
-      numberOfAssignedRoles: this.state.numberOfAssignedRoles + 1,
-      isRoleHidden: false,
-    })
+
+    setAssignedRole(assignedRole)
+    setRolesPool(newRoles)
+    setNumberOfAssignedRoles(numberOfAssignedRoles + 1)
+    setIsRoleHidden(false)
   }
 
-  hideRole = () => {
-    if (!this.state.isRoleHidden) {
-      this.setState({
-        isRoleHidden: true,
-      })
+  const hideRole = () => {
+    if (!isRoleHidden) {
+      setIsRoleHidden(true)
     }
   }
 
-  render() {
-    const { numberOfPlayers, handleStopAssigning } = this.props
-    const { assignedRole, isRoleHidden, numberOfAssignedRoles } = this.state
-
-    return (
-      <RolesAssignerPure
-        numberOfPlayers={numberOfPlayers}
-        numberOfAssignedRoles={numberOfAssignedRoles}
-        assignedRole={assignedRole}
-        isRoleHidden={isRoleHidden}
-        isAssigningDone={numberOfAssignedRoles >= numberOfPlayers}
-        handleStopAssigning={handleStopAssigning}
-        handleAssignRole={this.assignRole}
-        handleHideRole={this.hideRole}
-      />
-    )
-  }
+  return (
+    <RolesAssignerPure
+      numberOfPlayers={numberOfPlayers}
+      numberOfAssignedRoles={numberOfAssignedRoles}
+      assignedRole={assignedRole}
+      isRoleHidden={isRoleHidden}
+      isAssigningDone={numberOfAssignedRoles >= numberOfPlayers}
+      handleStopAssigning={handleStopAssigning}
+      handleAssignRole={assignRole}
+      handleHideRole={hideRole}
+    />
+  )
 }
 
 RolesAssigner.propTypes = {

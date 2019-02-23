@@ -1,16 +1,14 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-
+import React from 'react'
 import TextField from '@material-ui/core/TextField'
-import { withStyles } from '@material-ui/core/styles'
-
 import styles from './TextInputStyles.js'
+import { withStyles } from '@material-ui/core/styles'
 
 const NumberOfPlayersPicker = ({
   classes,
   onChange,
   numberOfPlayers,
-  minNumberOfPlayers,
+  requiredNumberOfPlayers,
 }) => (
   <TextField
     className={classes.field}
@@ -22,7 +20,7 @@ const NumberOfPlayersPicker = ({
       shrink: true,
     }}
     inputProps={{
-      min: minNumberOfPlayers,
+      min: requiredNumberOfPlayers,
       pattern: '[0-9]*',
     }}
     margin="normal"
@@ -32,7 +30,7 @@ const NumberOfPlayersPicker = ({
 NumberOfPlayersPicker.propTypes = {
   classes: PropTypes.object.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
-  minNumberOfPlayers: PropTypes.number.isRequired,
+  requiredNumberOfPlayers: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 

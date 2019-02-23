@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
 
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
 import ArrowBack from '@material-ui/icons/ArrowBack'
+import Button from '@material-ui/core/Button'
 import DoneIcon from '@material-ui/icons/Done'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-
-import styles from './styles'
+import IconButton from '@material-ui/core/IconButton'
+import PropTypes from 'prop-types'
 import Stepper from '../Stepper'
+import Typography from '@material-ui/core/Typography'
+import styles from './styles'
+import { withStyles } from '@material-ui/core/styles'
 
 const RolesAssignerPure = ({
   classes,
