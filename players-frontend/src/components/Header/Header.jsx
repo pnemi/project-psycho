@@ -1,16 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-
-import styles from './styles'
 import LanguageSwitch from '@components/LanguageSwitch'
+import { Link } from 'react-router-dom'
+import MenuIcon from '@material-ui/icons/Menu'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import styles from './styles'
+import { withStyles } from '@material-ui/core/styles'
 
 const Header = ({ classes }) => (
   <AppBar className={classes.appBar} position="fixed" color="default">
