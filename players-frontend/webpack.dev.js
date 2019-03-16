@@ -25,7 +25,7 @@ module.exports = merge(common, {
     ],
   },
   resolve: {
-    plugins: [new DirectoryNamedWebpackPlugin()],
+    plugins: [new DirectoryNamedWebpackPlugin(true)],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
