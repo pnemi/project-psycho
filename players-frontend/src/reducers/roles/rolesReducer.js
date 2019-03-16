@@ -1,16 +1,9 @@
 import {
   FETCH_ROLES_BEGIN,
-  FETCH_ROLES_SUCCESS,
   FETCH_ROLES_FAILURE,
+  FETCH_ROLES_SUCCESS,
   TOGGLE_ROLE,
 } from './rolesActions'
-
-import { load } from '@utils/storage'
-
-const shouldRoleBeChecked = (role) => {
-  const savedChecked = load(`${role.code}.checked`)
-  return !role.required && savedChecked !== null ? savedChecked : true
-}
 
 const initialState = {
   data: [],
@@ -27,10 +20,7 @@ const reducers = {
   [FETCH_ROLES_SUCCESS]: (state, { payload }) => ({
     ...state,
     loading: false,
-    data: payload.data.map((item) => ({
-      ...item,
-      checked: shouldRoleBeChecked(item),
-    })),
+    data: payload.data,
   }),
   [FETCH_ROLES_FAILURE]: (state, { payload }) => ({
     ...state,
