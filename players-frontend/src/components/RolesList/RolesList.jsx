@@ -1,7 +1,7 @@
 import * as playersActions from '@reducers/players/playersActions'
 import * as rolesActions from '@reducers/roles/rolesActions'
 
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 
 import Checkbox from '@material-ui/core/Checkbox'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -24,14 +24,9 @@ const RolesList = ({
   loading,
   error,
   classes,
-  fetchRoles,
   toggleRole,
   isDistributing,
 }) => {
-  // useEffect(() => {
-  //   fetchRoles()
-  // }, [])
-
   const handleToggleRole = (role) => {
     if (!role.required) {
       save(`${role.code}.checked`, !role.checked)
@@ -102,7 +97,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchRoles: () => dispatch(rolesActions.fetchRoles()),
   toggleRole: (code) => dispatch(rolesActions.toggleRole(code)),
   changeNumberOfPlayers: (numberOfPlayers) =>
     dispatch(playersActions.changeNumberOfPlayers(numberOfPlayers)),
@@ -113,7 +107,6 @@ RolesList.propTypes = {
   roles: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
-  fetchRoles: PropTypes.func.isRequired,
   toggleRole: PropTypes.func.isRequired,
   isDistributing: PropTypes.bool.isRequired,
 }

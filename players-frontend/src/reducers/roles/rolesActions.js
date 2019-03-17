@@ -18,10 +18,6 @@ export const fetchRolesError = (error) => ({
   payload: { error },
 })
 
-export const fetchRoles = () => ({
-  type: FETCH_ROLES_BEGIN,
-})
-
 export const toggleRole = (code) => ({
   type: TOGGLE_ROLE,
   payload: { code },

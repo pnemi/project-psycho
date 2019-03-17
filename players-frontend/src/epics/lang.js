@@ -1,7 +1,34 @@
-import * as rolesActions from '@reducers/roles/rolesActions'
 import * as langActions from '@reducers/lang/langActions'
+import * as rolesActions from '@reducers/roles/rolesActions'
+
+import { map, mapTo, mergeMap } from 'rxjs/operators'
+
+import { from } from 'rxjs'
+import gql from 'graphql-tag'
+import { gqlQuery } from '../gql-client'
 import { ofType } from 'redux-observable'
-import { mapTo } from 'rxjs/operators'
+
+const LANGUAGES_QUERY = gql`
+  query Languages {
+    languages {
+      name
+      code
+    }
+  }
+`
+
+const unwrapLanguages = ({ data }) => data.languages
+
+export const fetchLangsEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(langActions.FETCH_LANGS_BEGIN),
+    mergeMap(() =>
+      from(gqlQuery(LANGUAGES_QUERY)).pipe(
+        map(unwrapLanguages),
+        map((languages) => langActions.fetchLangsSuccess(languages))
+      )
+    )
+  )
 
 export const switchLangEpic = (action$) =>
   action$.pipe(
