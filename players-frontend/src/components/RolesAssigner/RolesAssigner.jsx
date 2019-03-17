@@ -1,3 +1,5 @@
+import * as gameActions from '@reducers/game/gameActions'
+
 import React, { useEffect, useState } from 'react'
 import { randArrayItem, shuffle } from '@utils/utils'
 
@@ -7,7 +9,7 @@ import { connect } from 'react-redux'
 
 const RolesAssigner = ({
   numberOfPlayers,
-  handleStopAssigning,
+  stopRoleDistribution,
   selectionRoles,
   complementRoles,
 }) => {
@@ -53,7 +55,7 @@ const RolesAssigner = ({
       assignedRole={assignedRole}
       isRoleHidden={isRoleHidden}
       isAssigningDone={numberOfAssignedRoles >= numberOfPlayers}
-      handleStopAssigning={handleStopAssigning}
+      stopRoleDistribution={stopRoleDistribution}
       handleAssignRole={assignRole}
       handleHideRole={hideRole}
     />
@@ -65,11 +67,12 @@ RolesAssigner.propTypes = {
   complementRoles: PropTypes.array.isRequired,
   selectionRoles: PropTypes.array.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
-  handleStopAssigning: PropTypes.func.isRequired,
+  stopRoleDistribution: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
   return {
+    numberOfPlayers: state.players.numberOfPlayers,
     roles: state.roles.data,
     selectionRoles: state.roles.data.filter(
       (role) => role.checked && !role.assignedDuringGame
@@ -78,4 +81,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(RolesAssigner)
+const mapDispatchToProps = (dispatch) => ({
+  stopRoleDistribution: () => dispatch(gameActions.stopRoleDistribution()),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RolesAssigner)

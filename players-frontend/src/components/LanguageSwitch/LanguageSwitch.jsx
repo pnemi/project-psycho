@@ -1,6 +1,6 @@
 import * as langActions from '@reducers/lang/langActions'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { load, save } from '@utils/storage'
 
 import MenuItem from '@material-ui/core/MenuItem'
@@ -12,20 +12,17 @@ import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
 const LanguageSwitch = ({ currentLang, switchLang, classes }) => {
-  const [lang, setLang] = useState(currentLang)
-
-  useEffect(() => save('currentLang', lang), [lang])
+  useEffect(() => save('currentLang', currentLang), [currentLang])
 
   return (
     <Select
-      value={lang}
+      value={currentLang}
       classes={{
         icon: classes.icon,
         select: classes.select,
       }}
       onChange={(e) => {
         const { value } = e.target
-        setLang(value)
         switchLang(value)
       }}
       disableUnderline

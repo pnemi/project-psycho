@@ -1,16 +1,16 @@
+import * as playersActions from '@reducers/players/playersActions'
 import * as rolesActions from '@reducers/roles/rolesActions'
 
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
-import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Controls from '@components/Controls'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import PropTypes from 'prop-types'
 import RolesAssigner from '@components/RolesAssigner'
-import { TextInputPicker } from '@components/Pickers'
 import classnames from 'classnames'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
@@ -26,40 +26,11 @@ const RolesList = ({
   classes,
   fetchRoles,
   toggleRole,
+  isDistributing,
 }) => {
-  const [numberOfPlayers, setNumberOfPlayers] = useState(0)
-  const [requiredNumberOfPlayers, setRequiredNumberOfPlayers] = useState(0)
-  const [isAssigning, setIsAssigning] = useState(false)
-
-  const countCheckedRoles = () =>
-    roles.reduce(
-      (acc, role) => ~~(role.checked && !role.assignedDuringGame) + acc,
-      0
-    )
-
-  useEffect(() => {
-    fetchRoles()
-  }, [])
-
-  useEffect(() => {
-    const checkedRoles = countCheckedRoles()
-    setRequiredNumberOfPlayers(checkedRoles)
-    if (numberOfPlayers === 0) {
-      setNumberOfPlayers(countCheckedRoles(checkedRoles))
-    }
-  }, [roles])
-
-  const isEnoughPlayers = () => numberOfPlayers >= requiredNumberOfPlayers
-
-  const handlePlayButtonClick = () => {
-    if (isEnoughPlayers()) {
-      setIsAssigning(true)
-    } else {
-      setNumberOfPlayers(countCheckedRoles())
-    }
-  }
-
-  const handleStopAssigning = () => setIsAssigning(false)
+  // useEffect(() => {
+  //   fetchRoles()
+  // }, [])
 
   const handleToggleRole = (role) => {
     if (!role.required) {
@@ -68,18 +39,8 @@ const RolesList = ({
     }
   }
 
-  const handleNumberOfPlayersChange = (e) => {
-    const { value } = e.target
-    setNumberOfPlayers(Number(String(value).replace(/[^0-9]/, '')))
-  }
-
-  if (isAssigning) {
-    return (
-      <RolesAssigner
-        numberOfPlayers={numberOfPlayers}
-        handleStopAssigning={handleStopAssigning}
-      />
-    )
+  if (isDistributing) {
+    return <RolesAssigner />
   }
 
   if (loading) {
@@ -94,37 +55,11 @@ const RolesList = ({
 
   return (
     <Fragment>
-      <TextInputPicker
-        numberOfPlayers={numberOfPlayers}
-        requiredNumberOfPlayers={requiredNumberOfPlayers}
-        onChange={handleNumberOfPlayersChange}
-      />
-      <Button
-        variant="contained"
-        size="large"
-        color="primary"
-        className={classnames({
-          [classes.button]: true,
-          [classes.refillButton]: !isEnoughPlayers(),
-        })}
-        onClick={handlePlayButtonClick}
-      >
-        {isEnoughPlayers()
-          ? `Play`
-          : `Set number of players to minimum of ${requiredNumberOfPlayers}`}
-      </Button>
+      <Controls />
       <List className={classes.rolesList}>
         {roles.map(
           (
-            {
-              order,
-              code,
-              name,
-              description,
-              checked,
-              required,
-              assignedDuringGame,
-            },
+            { code, name, description, checked, required, assignedDuringGame },
             i,
             roles
           ) => (
@@ -163,11 +98,14 @@ const mapStateToProps = (state) => ({
     .sort((prevRole, currRole) => prevRole.required - currRole.required),
   loading: state.roles.loading,
   error: state.roles.error,
+  isDistributing: state.game.isDistributing,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchRoles: () => dispatch(rolesActions.fetchRoles()),
   toggleRole: (code) => dispatch(rolesActions.toggleRole(code)),
+  changeNumberOfPlayers: (numberOfPlayers) =>
+    dispatch(playersActions.changeNumberOfPlayers(numberOfPlayers)),
 })
 
 RolesList.propTypes = {
@@ -177,6 +115,7 @@ RolesList.propTypes = {
   error: PropTypes.object,
   fetchRoles: PropTypes.func.isRequired,
   toggleRole: PropTypes.func.isRequired,
+  isDistributing: PropTypes.bool.isRequired,
 }
 
 export default compose(

@@ -1,3 +1,3 @@
-import TextInput from './TextInput'
+import TextInputPicker from './TextInput'
 
-export { TextInput as TextInputPicker }
+export { TextInputPicker }

@@ -15,7 +15,7 @@ const RolesAssignerPure = ({
   classes,
   numberOfPlayers,
   numberOfAssignedRoles,
-  handleStopAssigning,
+  stopRoleDistribution,
   handleAssignRole,
   handleHideRole,
   assignedRole,
@@ -61,7 +61,7 @@ const RolesAssignerPure = ({
       <IconButton
         className={classes.backButton}
         aria-label="Back"
-        onClick={handleStopAssigning}
+        onClick={stopRoleDistribution}
       >
         <ArrowBack />
       </IconButton>
@@ -114,7 +114,7 @@ RolesAssignerPure.propTypes = {
   assignedRole: PropTypes.object,
   isRoleHidden: PropTypes.bool.isRequired,
   isAssigningDone: PropTypes.bool.isRequired,
-  handleStopAssigning: PropTypes.func.isRequired,
+  stopRoleDistribution: PropTypes.func.isRequired,
   handleHideRole: PropTypes.func.isRequired,
   handleAssignRole: PropTypes.func.isRequired,
 }
