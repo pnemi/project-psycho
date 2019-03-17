@@ -1,17 +1,13 @@
-import * as langActions from '@reducers/lang/langActions'
-
 import React, { useEffect } from 'react'
-import { load, save } from '@utils/storage'
 
 import MenuItem from '@material-ui/core/MenuItem'
 import PropTypes from 'prop-types'
 import Select from '@material-ui/core/Select'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
+import { save } from '@utils/storage'
 import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
-const LanguageSwitch = ({ currentLang, switchLang, classes }) => {
+const LanguageSwitch = ({ languages, currentLang, switchLang, classes }) => {
   useEffect(() => save('currentLang', currentLang), [currentLang])
 
   return (
@@ -27,38 +23,20 @@ const LanguageSwitch = ({ currentLang, switchLang, classes }) => {
       }}
       disableUnderline
     >
-      <MenuItem className={classes.selectItem} value="cs">
-        CZ
-      </MenuItem>
-      <MenuItem className={classes.selectItem} value="en">
-        EN
-      </MenuItem>
+      {languages.map(({ name, code }) => (
+        <MenuItem className={classes.selectItem} value={code} key={code}>
+          {name}
+        </MenuItem>
+      ))}
     </Select>
   )
 }
-
-const mapStateToProps = (state) => ({
-  currentLang: state.currentLang,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  switchLang: (lang) => dispatch(langActions.switchLang(lang)),
-})
 
 LanguageSwitch.propTypes = {
   classes: PropTypes.object.isRequired,
   switchLang: PropTypes.func.isRequired,
   currentLang: PropTypes.string.isRequired,
+  languages: PropTypes.array.isRequired,
 }
 
-LanguageSwitch.defaultProps = {
-  currentLang: load('currentLang', 'cs'),
-}
-
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  withStyles(styles)
-)(LanguageSwitch)
+export default withStyles(styles)(LanguageSwitch)
