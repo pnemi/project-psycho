@@ -1,4 +1,3 @@
-import * as playersActions from '@reducers/players/playersActions'
 import * as rolesActions from '@reducers/roles/rolesActions'
 
 import RolesList from './RolesList'
@@ -15,8 +14,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleRole: (code) => dispatch(rolesActions.toggleRole(code)),
-  changeNumberOfPlayers: (numberOfPlayers) =>
-    dispatch(playersActions.changeNumberOfPlayers(numberOfPlayers)),
 })
 
 export default connect(
