@@ -1,6 +1,7 @@
 export default {
   root: {
     marginTop: 15,
+    marginBottom: 15,
   },
   step: {
     width: 'calc((100% / var(--steps)) - 5px)',

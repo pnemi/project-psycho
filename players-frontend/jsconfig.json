@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./",
-      "paths": {
-        "@reducers/*": ["./src/reducers/"],
-        "@components/*": ["./src/components/*"],
-        "@utils/*": ["./src/utils/*"]
-      }
-    },
-    "exclude": ["node_modules", "dist"]
-  }
-  
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@reducers/*": ["./src/reducers/"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

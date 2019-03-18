@@ -51,13 +51,7 @@ const RolesAssignerPure = ({
   }
 
   return (
-    <Grid
-      container
-      className={classes.root}
-      direction="column"
-      alignItems="center"
-      justify="space-between"
-    >
+    <Fragment>
       <IconButton
         className={classes.backButton}
         aria-label="Back"
@@ -103,7 +97,7 @@ const RolesAssignerPure = ({
         </Button>
       </Grid>
       <Stepper steps={numberOfPlayers} activeStep={numberOfAssignedRoles} />
-    </Grid>
+    </Fragment>
   )
 }
 

@@ -6,7 +6,13 @@ import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
 const Main = ({ classes }) => (
-  <Grid container className={classes.main} justify="center" component="main">
+  <Grid
+    container
+    className={classes.main}
+    direction="column"
+    justify="center"
+    component="main"
+  >
     <Routes />
   </Grid>
 )
