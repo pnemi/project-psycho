@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 
 import Controls from '@components/Controls'
+import Distributor from '@components/Distributor'
 import PropTypes from 'prop-types'
-import RolesAssigner from '@components/RolesAssigner'
 import RolesList from '@components/RolesList'
 
 const Home = ({ isDistributing }) => {
   if (isDistributing) {
-    return <RolesAssigner />
+    return <Distributor />
   }
 
   return (
