@@ -1,4 +1,4 @@
-import * as langActions from '@reducers/lang/langActions'
+import * as langActions from '@store/lang/langActions'
 
 import LanguageSwitch from './LanguageSwitch'
 import { connect } from 'react-redux'

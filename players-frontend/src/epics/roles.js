@@ -1,5 +1,5 @@
-import * as playersActions from '@reducers/players/playersActions'
-import * as rolesActions from '@reducers/roles/rolesActions'
+import * as playersActions from '@store/players/playersActions'
+import * as rolesActions from '@store/roles/rolesActions'
 
 import { map, mergeMap } from 'rxjs/operators'
 

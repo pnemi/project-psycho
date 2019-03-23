@@ -1,5 +1,5 @@
-import * as gameActions from '@reducers/game/gameActions'
-import * as playersActions from '@reducers/players/playersActions'
+import * as gameActions from '@store/game/gameActions'
+import * as playersActions from '@store/players/playersActions'
 
 import Controls from './Controls'
 import { connect } from 'react-redux'

@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@reducers/*": ["./src/reducers/"],
+      "@store/*": ["./src/store/*"],
+      "@epics/*": ["./src/epics/*"],
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"],
       "@utils/*": ["./src/utils/*"]

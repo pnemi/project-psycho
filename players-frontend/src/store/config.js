@@ -2,8 +2,8 @@ import { applyMiddleware, createStore } from 'redux'
 
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createEpicMiddleware } from 'redux-observable'
-import rootEpic from './epics'
-import rootReducer from './reducers'
+import rootEpic from '@epics'
+import rootReducer from './index'
 
 export default function configureStore() {
   const epicMiddleware = createEpicMiddleware()
@@ -16,8 +16,8 @@ export default function configureStore() {
   epicMiddleware.run(rootEpic)
 
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers/index')
+    module.hot.accept('./index', () => {
+      const nextRootReducer = require('./index')
       store.replaceReducer(nextRootReducer)
     })
   }

@@ -1,5 +1,5 @@
-import * as langActions from '@reducers/lang/langActions'
-import * as rolesActions from '@reducers/roles/rolesActions'
+import * as langActions from '@store/lang/langActions'
+import * as rolesActions from '@store/roles/rolesActions'
 
 import { map, mapTo, mergeMap } from 'rxjs/operators'
 

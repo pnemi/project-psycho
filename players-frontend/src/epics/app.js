@@ -1,5 +1,5 @@
-import * as langActions from '@reducers/lang/langActions'
-import * as rolesActions from '@reducers/roles/rolesActions'
+import * as langActions from '@store/lang/langActions'
+import * as rolesActions from '@store/roles/rolesActions'
 
 import { flatMap } from 'rxjs/operators'
 import { ofType } from 'redux-observable'

@@ -1,4 +1,4 @@
-import * as rolesActions from '@reducers/roles/rolesActions'
+import * as rolesActions from '@store/roles/rolesActions'
 
 import RolesList from './RolesList'
 import { connect } from 'react-redux'

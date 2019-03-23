@@ -25,7 +25,8 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, './src/components'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@reducers': path.resolve(__dirname, './src/reducers'),
+      '@store': path.resolve(__dirname, './src/store'),
+      '@epics': path.resolve(__dirname, './src/epics'),
       '@utils': path.resolve(__dirname, './src/utils'),
     },
     extensions: ['*', '.mjs', '.js', '.jsx'],

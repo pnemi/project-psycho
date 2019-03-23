@@ -1,4 +1,4 @@
-import * as gameActions from '@reducers/game/gameActions'
+import * as gameActions from '@store/game/gameActions'
 
 import { filterComplementRoles, filterDistributableRoles } from '@utils/roles'
 
