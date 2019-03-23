@@ -9,12 +9,14 @@ const PlayButton = ({
   isEnoughPlayers,
   classes,
   requiredNumberOfPlayers,
+  changeNumberOfPlayers,
   startRoleDistribution,
 }) => {
   const handlePlayButtonClick = () => {
     if (isEnoughPlayers) {
       startRoleDistribution()
     }
+    changeNumberOfPlayers(requiredNumberOfPlayers)
   }
 
   return (
@@ -40,6 +42,7 @@ PlayButton.propTypes = {
   isEnoughPlayers: PropTypes.bool.isRequired,
   requiredNumberOfPlayers: PropTypes.number.isRequired,
   startRoleDistribution: PropTypes.func.isRequired,
+  changeNumberOfPlayers: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(PlayButton)

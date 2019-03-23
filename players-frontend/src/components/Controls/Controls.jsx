@@ -26,6 +26,7 @@ const Controls = ({
       <PlayButton
         isEnoughPlayers={isEnoughPlayers}
         requiredNumberOfPlayers={requiredNumberOfPlayers}
+        changeNumberOfPlayers={changeNumberOfPlayers}
         startRoleDistribution={startRoleDistribution}
       />
     </Fragment>
