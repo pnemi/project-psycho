@@ -3,7 +3,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { ApolloProvider } from 'react-apollo'
 import Layout from './components/Layout'
 import React from 'react'
-import gqlClient from './gql-client'
+import gqlClient from '@services/gql-client'
 import { hot } from 'react-hot-loader'
 import themeStyles from './theme'
 
