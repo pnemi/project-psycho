@@ -12,6 +12,7 @@ const Main = ({ classes }) => (
     direction="column"
     justify="center"
     component="main"
+    alignItems="center"
   >
     <Routes />
   </Grid>
