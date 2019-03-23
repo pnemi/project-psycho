@@ -2,12 +2,10 @@ import * as rolesActions from '@reducers/roles/rolesActions'
 
 import RolesList from './RolesList'
 import { connect } from 'react-redux'
+import { filterListRoles } from '@utils/roles'
 
 const mapStateToProps = (state) => ({
-  roles: state.roles.data
-    .filter((role) => role.listed)
-    .sort((prevRole, currRole) => prevRole.order - currRole.order)
-    .sort((prevRole, currRole) => prevRole.required - currRole.required),
+  roles: filterListRoles(state.roles.data),
   loading: state.roles.loading,
   error: state.roles.error,
 })

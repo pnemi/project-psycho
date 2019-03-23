@@ -13,6 +13,12 @@ export const filterDistributableRoles = (roles) =>
     (role) => role.checked && !role.assignedDuringGame && !role.complement
   )
 
+export const filterListRoles = (roles) =>
+  roles
+    .filter((role) => !role.complement)
+    .sort((prevRole, currRole) => prevRole.order - currRole.order)
+    .sort((prevRole, currRole) => prevRole.required - currRole.required)
+
 export const filterComplementRoles = (roles) =>
   roles.filter((role) => role.complement)
 

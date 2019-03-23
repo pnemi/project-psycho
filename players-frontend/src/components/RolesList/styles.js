@@ -13,10 +13,6 @@ export default {
     justifyContent: 'center',
     display: 'flex',
     flexDirection: 'column',
-  },
-  assignedDuringGame: {
-    '& span': {
-      color: '#FDCC11',
-    },
+    maxWidth: '100%',
   },
 }
