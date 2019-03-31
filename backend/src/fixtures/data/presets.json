@@ -1,20 +1,14 @@
 [
   {
     "name": "basic",
-    "roles": [
-      "director", "nurse", "detective", "psycho"
-    ]
+    "roles": ["director", "nurse", "detective", "psycho"]
   },
   {
     "name": "hospital",
-    "roles": [
-      "director", "nurse", "detective", "psycho", "addict", "doctor"
-    ]
+    "roles": ["director", "nurse", "detective", "psycho", "survivor", "doctor"]
   },
   {
     "name": "explosive",
-    "roles": [
-      "director", "nurse", "detective", "psycho", "bomber", "dealer"
-    ]
+    "roles": ["director", "nurse", "detective", "psycho", "bomber", "dealer"]
   }
 ]
