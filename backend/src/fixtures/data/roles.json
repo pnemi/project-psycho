@@ -7,16 +7,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Ředitel psychiatrické léčebny",
-        "description": "Členem pátracího týmu. Může být zástupcem u nahlášení podezřelého."
-      },
-      "en": {
-        "name": "Psychiatric Hospital Director",
-        "description": ""
-      }
-    }
+    "name": "ROLE.DIRECTOR.NAME",
+    "description": "ROLE.DIRECTOR.DESCRIPTION"
   },
   {
     "order": 2,
@@ -26,16 +18,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Staniční sestra",
-        "description": "Člen pátracího týmu. Může být zástupcem u nahlášení podezřelého."
-      },
-      "en": {
-        "name": "Head Nurse",
-        "description": ""
-      }
-    }
+    "name": "ROLE.NURSE.NAME",
+    "description": "ROLE.NURSE.DESCRIPTION"
   },
   {
     "order": 3,
@@ -45,16 +29,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Detektiv – Vedoucí pátrání",
-        "description": "Člen pátracího týmu. Může být jako zástupce u nahlášení podezřelého. Zná dokonale profil Psycho a pro jeho usvědčení nepotřebuje další svědky."
-      },
-      "en": {
-        "name": "Detective – Head of Investigation",
-        "description": ""
-      }
-    }
+    "name": "ROLE.DETECTIVE.NAME",
+    "description": "ROLE.DETECTIVE.DESCRIPTION"
   },
   {
     "order": 4,
@@ -64,16 +40,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Psycho",
-        "description": "Snaží se uprchnout a vyhladit pátrací team. Může neomezeně zabíjet. Během hry si volí zvěda a dlužníka otázkou “Budeš můj zvěd/dlužník?”. Nikdo jiný tuto otázku klást nemůže."
-      },
-      "en": {
-        "name": "Psycho",
-        "description": ""
-      }
-    }
+    "name": "ROLE.PSYCHO.NAME",
+    "description": "ROLE.PSYCHO.DESCRIPTION"
   },
   {
     "order": 5,
@@ -83,16 +51,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": true,
-    "translations": {
-      "cs": {
-        "name": "Komplic",
-        "description": "Člověk zvolený Psycho během hry. Spolupracovník Psycha, může zabít jednoho člověka ve hře. Hráč ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí."
-      },
-      "en": {
-        "name": "Accomplice",
-        "description": ""
-      }
-    }
+    "name": "ROLE.ACCOMPLICE.NAME",
+    "description": "ROLE.ACCOMPLICE.DESCRIPTION"
   },
   {
     "order": 6,
@@ -102,16 +62,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": true,
-    "translations": {
-      "cs": {
-        "name": "Zvěd",
-        "description": "Zvěda si Psycho volí během hry. Zvěd pouze spolupracuje. Člověk, který je zvolen na Zvěda ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí."
-      },
-      "en": {
-        "name": "Informant",
-        "description": ""
-      }
-    }
+    "name": "ROLE.INFORMANT.NAME",
+    "description": "ROLE.INFORMANT.DESCRIPTION"
   },
   {
     "order": 7,
@@ -121,16 +73,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Patolog",
-        "description": "Může mluvit s mrtvolami. Mrtvoly nemohou sdělit kdo je vrah. Mrtvoly mohou sdělovat, co viděli pouze během toho, co jsou mrtvé. Ostatní se za něj nemohou vydávat."
-      },
-      "en": {
-        "name": "Pathologist",
-        "description": ""
-      }
-    }
+    "name": "ROLE.PATHOLOGIST.NAME",
+    "description": "ROLE.PATHOLOGIST.DESCRIPTION"
   },
   {
     "order": 8,
@@ -140,16 +84,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Šílený anesteziolog",
-        "description": "Může uspat jednoho hráče v jeden čas, když mu řekne “Spi!”. Hráč se musí probudit až po rožnutí světla. Poté může být znovu uspán. Chová se jako mrtvola, ale nesmí odpovídat na žádnou otázku. Ostatní se za něj nemohou vydávat."
-      },
-      "en": {
-        "name": "Crazy Anesthesiologist",
-        "description": ""
-      }
-    }
+    "name": "ROLE.ANESTHESIOLOGIST.NAME",
+    "description": "ROLE.ANESTHESIOLOGIST.DESCRIPTION"
   },
   {
     "order": 9,
@@ -159,16 +95,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Kanibal",
-        "description": "Může znovu zabít ležicího člověka na zemi. Pokud člověk předstíral smrt, je mrtvý doopravdy."
-      },
-      "en": {
-        "name": "Cannibal",
-        "description": ""
-      }
-    }
+    "name": "ROLE.CANIBAL.NAME",
+    "description": "ROLE.CANIBAL.DESCRIPTION"
   },
   {
     "order": 10,
@@ -178,16 +106,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Doktor",
-        "description": "Rozpozná zda je člověk (opravdu) mrtvý nebo spí, nebo ne. Doktorovy se nesmí lhát ohledně otázky “Jsi mrtvý / Spíš?”. Nelze se za něj vydávat."
-      },
-      "en": {
-        "name": "Doctor",
-        "description": ""
-      }
-    }
+    "name": "ROLE.DOCTOR.NAME",
+    "description": "ROLE.DOCTOR.DESCRIPTION"
   },
   {
     "order": 11,
@@ -197,16 +117,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Přeživší",
-        "description": "Nemůže zemřít, pokud se jej někdo pokusí zabít, může tuto smrt ignorovat, nebo jí hrát. Posléze však nemůže jakkoliv sdělit kdo byl vrahem a nemůže ani svědčit."
-      },
-      "en": {
-        "name": "Survivor",
-        "description": ""
-      }
-    }
+    "name": "ROLE.SURVIVOR.NAME",
+    "description": "ROLE.SURVIVOR.DESCRIPTION"
   },
   {
     "order": 12,
@@ -216,16 +128,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Člověk trpící nekrofobii",
-        "description": "Jakmile tento člověk uvidí první mrtvolu dostavá panický strach, zakřičí a získává možnost jednoho libovolného zabití."
-      },
-      "en": {
-        "name": "Person Suffering From Necrofobia",
-        "description": ""
-      }
-    }
+    "name": "ROLE.NECRO.NAME",
+    "description": "ROLE.NECRO.DESCRIPTION"
   },
   {
     "order": 13,
@@ -235,16 +139,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Atentátník",
-        "description": "Pokud uvidí skupinku 3 nebo více lidí spolu, může spáchat atentát až na 2 z nich tím způsobem, že se jich dotkne rukou na rameno a řekne \"BOOM!\". Atentátník umírá spolu se svými obětmi."
-      },
-      "en": {
-        "name": "Suicide Bomber",
-        "description": ""
-      }
-    }
+    "name": "ROLE.BOMBER.NAME",
+    "description": "ROLE.BOMBER.DESCRIPTION"
   },
   {
     "order": 14,
@@ -254,16 +150,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Žebrák",
-        "description": "Pokud žebrák příjde do skupiny lidí, může začít žebrat, potom se musí ostatní lidé rozejít."
-      },
-      "en": {
-        "name": "Begger",
-        "description": ""
-      }
-    }
+    "name": "ROLE.BEGGER.NAME",
+    "description": "ROLE.BEGGER.DESCRIPTION"
   },
   {
     "order": 15,
@@ -273,16 +161,8 @@
     "listed": true,
     "complement": false,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Obchodník na černém trhu",
-        "description": "Na začátku hry umístí někam krabičky. Jeho roli tedy všichni znají.\n\nPokud člověk kontaktuje obchodníka na černém trhu, může se s ním domluvit na předání zbraně nebo lékárničky. Obchodník prozradí pouze místnost, ve které se krabička nachází. V případě zbraně člověk získá možnost jednoho zabítí. V případě lékárničky život navíc (podobně jako přeživší).\n\nObchodník může za jednu hru “prodat” pouze jednu zbraň a jednu lékárničku. Předání probíhá slovně a kupce může dále předmět darovat další osobě. Po použití o předmět přichází a nelze jej dále předat. Původní obchodník sám nemůže tyto předměty použít."
-      },
-      "en": {
-        "name": "Black Market Dealer",
-        "description": ""
-      }
-    }
+    "name": "ROLE.DEALER.NAME",
+    "description": "ROLE.DEALER.DESCRIPTION"
   },
   {
     "order": 16,
@@ -292,15 +172,7 @@
     "listed": false,
     "complement": true,
     "assignedDuringGame": false,
-    "translations": {
-      "cs": {
-        "name": "Civilista",
-        "description": "Běžný občan. Je na něm, na čí stranu se připojí."
-      },
-      "en": {
-        "name": "Civilian",
-        "description": ""
-      }
-    }
+    "name": "ROLE.CIVILIAN.NAME",
+    "description": "ROLE.CIVILIAN.DESCRIPTION"
   }
 ]

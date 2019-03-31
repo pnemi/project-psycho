@@ -1,14 +1,17 @@
 [
   {
-    "name": "basic",
+    "code": "basic",
+    "name": "PRESET.BASIC.NAME",
     "roles": ["director", "nurse", "detective", "psycho"]
   },
   {
-    "name": "hospital",
+    "code": "hospital",
+    "name": "PRESET.HOSPITAL.NAME",
     "roles": ["director", "nurse", "detective", "psycho", "survivor", "doctor"]
   },
   {
-    "name": "explosive",
+    "code": "explosive",
+    "name": "PRESET.EXPLOSIVE.NAME",
     "roles": ["director", "nurse", "detective", "psycho", "bomber", "dealer"]
   }
 ]

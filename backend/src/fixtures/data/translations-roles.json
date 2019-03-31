@@ -1,0 +1,177 @@
+[
+  {
+    "code": "ROLE.DIRECTOR.NAME",
+    "cs": "Ředitel psychiatrické léčebny",
+    "en": "Psychiatric Hospital Director"
+  },
+  {
+    "code": "ROLE.DIRECTOR.DESCRIPTION",
+    "cs": "Členem pátracího týmu. Může být zástupcem u nahlášení podezřelého.",
+    "en": "A member of the investigation team. He may be a representative to report a suspect."
+  },
+
+  {
+    "code": "ROLE.NURSE.NAME",
+    "cs": "Staniční sestra",
+    "en": "Head Nurse"
+  },
+  {
+    "code": "ROLE.NURSE.DESCRIPTION",
+    "cs": "Člen pátracího týmu. Může být zástupcem u nahlášení podezřelého.",
+    "en": "A member of the investigation team. He may be a representative to report a suspect."
+  },
+
+  {
+    "code": "ROLE.DETECTIVE.NAME",
+    "cs": "Detektiv – Vedoucí pátrání",
+    "en": "Detective – Head of Investigation"
+  },
+  {
+    "code": "ROLE.DETECTIVE.DESCRIPTION",
+    "cs": "Člen pátracího týmu. Může být jako zástupce u nahlášení podezřelého. Zná dokonale profil Psycho a pro jeho usvědčení nepotřebuje další svědky.",
+    "en": "A member of the investigation team. He may be a representative to report a suspect. He knows the profile of the psycho killer perfectly and doesn't need more witnesses to convict him."
+  },
+
+  {
+    "code": "ROLE.PSYCHO.NAME",
+    "cs": "Psycho",
+    "en": "Psycho"
+  },
+  {
+    "code": "ROLE.PSYCHO.DESCRIPTION",
+    "cs": "Snaží se uprchnout a vyhladit pátrací team. Může neomezeně zabíjet. Během hry si libovolně může vybrat komplice a/nebo zvěda otázkou \"Budeš můj komplic / zvěd?\". Nikdo jiný tuto otázku klást nemůže.",
+    "en": "Psycho's trying to escape and exterminate the investigation team. Psycho can kill indefinitely. During the game he freely chooses an accomplice and/or an informant by asking \"Will you become my accomplice / informant?\" No one else is allowed to ask that question."
+  },
+
+  {
+    "code": "ROLE.ACCOMPLICE.NAME",
+    "cs": "Komplic",
+    "en": "Accomplice"
+  },
+  {
+    "code": "ROLE.ACCOMPLICE.DESCRIPTION",
+    "cs": "Člověk zvolený Psycho během hry. Spolupracovník Psycha, může zabít jednoho člověka ve hře. Hráč ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí.",
+    "en": ""
+  },
+
+  {
+    "code": "ROLE.INFORMANT.NAME",
+    "cs": "Zvěd",
+    "en": "Informant"
+  },
+  {
+    "code": "ROLE.INFORMANT.DESCRIPTION",
+    "cs": "Zvěda si Psycho volí během hry. Zvěd nemůže zabíjet, pouze spolupracuje s týmem psycho. Člověk, který je zvolen na zvěda ztrácí svou původní roli. Nabídku lze odmítnout, ovšem odmítnutí se trestá smrtí.",
+    "en": "Informant is chosen by psycho during the game and looses his original role. Informant cannot kill. He only cooperates with the psycho team. Psycho's offer to become an informant can be rejected but the refusal is punishable by death."
+  },
+
+  {
+    "code": "ROLE.PATHOLOGIST.NAME",
+    "cs": "Patolog",
+    "en": "Pathologist"
+  },
+  {
+    "code": "ROLE.PATHOLOGIST.DESCRIPTION",
+    "cs": "Může mluvit s mrtvolami. Mrtvoly nemohou sdělit, kdo je zavraždil. Mohou sdělovat, co viděli až po jejich smrti. Ostatní role se za něj nemohou vydávat.",
+    "en": "Can talk to the corpses. The corpses cannot tell who killed them. They can tell what what they have seen after their death. Others cannot impersonate a pathologist."
+  },
+
+  {
+    "code": "ROLE.ANESTHESIOLOGIST.NAME",
+    "cs": "Šílený anesteziolog",
+    "en": "Crazy Anesthesiologist"
+  },
+  {
+    "code": "ROLE.ANESTHESIOLOGIST.DESCIPTION",
+    "cs": "Může uspat jednoho hráče v jeden čas, když mu řekne \"Spi!\". Hráč se musí probudit až po rožnutí světla, až poté může opět někoho uspat. Chová se jako mrtvola, ale nesmí odpovídat na žádnou otázku. Ostatní se za něj nemohou vydávat.",
+    "en": "He can put one person at a time to sleep when he tells somebody \"Sleep!\" The person has to wake up after turning on the light and then he can put somebody to sleep again. Anesthetized person acts like a corpse but he can't answer any questions. Others cannot impersonate an anesthesiologist."
+  },
+
+  {
+    "code": "ROLE.CANIBAL.NAME",
+    "cs": "Kanibal",
+    "en": "Cannibal"
+  },
+  {
+    "code": "ROLE.CANIBAL.DESCRIPTION",
+    "cs": "Může vykuchat člověka ležícího na zemi. Pokud hráč předstíral smrt, je nyní mrtvý doopravdy.",
+    "en": "He can gut a man lying on the ground. If a person feigned death, he's dead for real now."
+  },
+
+  {
+    "code": "ROLE.DOCTOR.NAME",
+    "cs": "Doktor",
+    "en": "Doctor"
+  },
+  {
+    "code": "ROLE.DOCTOR.DESCRIPTION",
+    "cs": "Rozpozná, zda je člověk opravdu mrtvý nebo jen spí. Doktorovy se nesmí lhát na jeho otázku \"Jsi mrtvý / Spíš?\". Nelze se za něj vydávat.",
+    "en": "He recognizes whether a person is really dead or just asleep. Persons cannot lie to his question \"Are you dead / Are you asleap?\". Others cannot impersonate a doctor."
+  },
+
+  {
+    "code": "ROLE.SURVIVOR.NAME",
+    "cs": "Přeživší",
+    "en": "Survivor"
+  },
+  {
+    "code": "ROLE.SURVIVOR.DESCRIPTION",
+    "cs": "Nemůže zemřít, pokud se jej někdo pokusí zabít. Může buď smrt ignorovat nebo ji předstírat spadnutím na zem. Posléze však nemůže jykýmkoliv způsobem sdělit, kdo byl jeho vrahem a nemůže proti němu ani svědčit.",
+    "en": "He can't die for real if someone tries to kill him. He can either ignore death or pretend it by falling to the ground. However he cannot tell or indicate in any way who was his murderer and cannot even testify against him."
+  },
+
+  {
+    "code": "ROLE.NECRO.NAME",
+    "cs": "Člověk trpící nekrofobii",
+    "en": "Person Suffering From Necrofobia"
+  },
+  {
+    "code": "ROLE.NECRO.DESCRIPTION",
+    "cs": "Jakmile tento člověk uvidí první mrtvolu dostavá panický strach, zakřičí a získává možnost jednoho libovolného zabití.",
+    "en": "As soon as necro sees the first corpse on the ground, he panics, screams and gets the chance to kill one other person."
+  },
+
+  {
+    "code": "ROLE.BOMBER.NAME",
+    "cs": "Atentátník",
+    "en": "Suicide Bomber"
+  },
+  {
+    "code": "ROLE.BOMBER.DESCRIPTION",
+    "cs": "Pokud uvidí skupinku 3 nebo více lidí spolu, může spáchat atentát až na 2 z nich tím způsobem, že se jich dotkne rukou na rameno a řekne \"BOOM!\". Atentátník umírá spolu se svými obětmi.",
+    "en": "If he sees a group of 3 or more people closely together, he can commit the assassination of up to 2 of them by touching them with his hand on their shoulders and saying \"BOOM!\". Unfortunately he dies with them."
+  },
+
+  {
+    "code": "ROLE.BEGGER.NAME",
+    "cs": "Žebrák",
+    "en": "Begger"
+  },
+  {
+    "code": "ROLE.BEGGER.DESCRIPTION",
+    "cs": "Pokud žebrák příjde do skupiny lidí, může začít žebrat, potom se musí tito lidé rozejít.",
+    "en": "If a beggar comes to a group of people, he can start begging therefore the group has to dissolve."
+  },
+
+  {
+    "code": "ROLE.DEALER.NAME",
+    "cs": "Obchodník na černém trhu",
+    "en": "Black Market Dealer"
+  },
+  {
+    "code": "ROLE.DEALER.DESCRIPTION",
+    "cs": "Před začátkem hry umístí někam dvě krabičky. Jeho roli tedy všichni znají. Pokud člověk kontaktuje obchodníka na černém trhu, může se s ním domluvit na předání zbraně nebo lékárničky. Obchodník prozradí pouze místnost, ve které se krabička nachází. V případě zbraně člověk získá možnost jednoho zabítí. V případě lékárničky život navíc (podobně jako přeživší). Obchodník může za jednu hru \"prodat\" pouze jednu zbraň a jednu lékárničku. Předání probíhá slovně a kupce může dále předmět darovat další osobě. Po použití o předmět přichází a nelze jej dále předat. Původní obchodník sám nemůže tyto předměty použít.",
+    "en": "Before the game begins he places somewhere two mysterious boxes with a weapon and a first aid kit. Therefore everyone knows who dealer is. Others can contact him in order to find out where the boxes are hidden. The dealer will only reveal the room in which one or another box is located. In the case of a weapon, one gets the chance to kill one. In the case of a first-aid kit, one earns an extra life (similar to a survivor). The dealer can only sell one weapon and one first-aid kit per game. The handover is verbal and the buyer can also donate the item to another person. After using the item it cannot be passed on. The dealer cannot use these items himself."
+  },
+
+  {
+    "code": "ROLE.CIVILIAN.NAME",
+    "cs": "Civilista",
+    "en": "Civilian"
+  },
+  {
+    "code": "ROLE.CIVILIAN.DESCRIPTION",
+    "cs": "Běžný občan. Je na něm, na čí stranu se připojí.",
+    "en": "Just a citizen. It's up to him whose side he joins."
+  }
+]

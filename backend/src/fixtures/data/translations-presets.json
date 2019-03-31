@@ -1,0 +1,17 @@
+[
+  {
+    "code": "PRESET.BASIC.NAME",
+    "cs": "Základní",
+    "en": "Basic"
+  },
+  {
+    "code": "PRESET.HOSPITAL.DESCRIPTION",
+    "cs": "Nemocniční",
+    "en": "Hospital"
+  },
+  {
+    "code": "PRESET.EXPLOSIVE.NAME",
+    "cs": "Výbušný",
+    "en": "Explosive"
+  }
+]
