@@ -35,7 +35,7 @@
     "en": "Neutral"
   },
   {
-    "code": "TEAM.NEUTRAL.NAME",
+    "code": "TEAM.NEUTRAL.DESCRIPTION",
     "cs": "Mohou se rozhodnout na čí stranu se připojí.",
     "en": "Can decide by themselves which team to join."
   }
