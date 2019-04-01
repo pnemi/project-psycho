@@ -1,22 +1,22 @@
 [
   {
     "code": "investigation",
-    "name": "TEAM.INVESTIGATION_NAME",
+    "name": "TEAM.INVESTIGATION.NAME",
     "description": "TEAM.INVESTIGATION_DESCRIPTION"
   },
   {
     "code": "psycho",
-    "name": "TEAM.PSYCHO_NAME",
+    "name": "TEAM.PSYCHO.NAME",
     "description": "TEAM.PSYCHO_DESCRIPTION"
   },
   {
     "code": "civilian",
-    "name": "TEAM.CIVILIAN_NAME",
+    "name": "TEAM.CIVILIAN.NAME",
     "description": "TEAM.CIVILIAN_DESCRIPTION"
   },
   {
     "code": "neutral",
-    "name": "TEAM.NEUTRAL_NAME",
+    "name": "TEAM.NEUTRAL.NAME",
     "description": "TEAM.NEUTRAL_DESCRIPTION"
   }
 ]
