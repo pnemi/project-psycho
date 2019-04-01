@@ -1,12 +1,14 @@
 /* eslint-disable no-console */
-import { Language, Preset, Role, Team } from '../db'
+import { Language, Preset, Role, Team, Translation } from '../db'
 
 import languages from './data/languages'
 import presets from './data/presets'
+import presetsTranslations from './data/translations-presets'
 import roles from './data/roles'
+import rolesTranslations from './data/translations-roles'
 import teams from './data/teams'
+import teamsTranslations from './data/translations-teams'
 
-const langDocs = {}
 const teamDocs = {}
 const roleDocs = {}
 
@@ -16,7 +18,6 @@ async function importLanguages() {
   return Promise.all(
     languages.map((language) => {
       const langDoc = new Language(language)
-      langDocs[language.code] = langDoc
       return langDoc
         .save()
         .then(() => console.log(`Language ${language.name} saved`))
@@ -30,14 +31,7 @@ async function importTeams() {
 
   return Promise.all(
     teams.map((team) => {
-      const teamDoc = new Team({
-        code: team.code,
-        translations: Object.keys(langDocs).map((lang) => ({
-          locale: langDocs[lang],
-          name: team.translations[lang].name,
-          description: team.translations[lang].description,
-        })),
-      })
+      const teamDoc = new Team(team)
       teamDocs[team.code] = teamDoc
       return teamDoc
         .save()
@@ -55,11 +49,6 @@ async function importRoles() {
       const roleDoc = new Role({
         ...role,
         team: teamDocs[role.team],
-        translations: Object.keys(langDocs).map((lang) => ({
-          locale: langDocs[lang],
-          name: role.translations[lang].name,
-          description: role.translations[lang].description,
-        })),
       })
       roleDocs[role.code] = roleDoc
       return roleDoc
@@ -76,12 +65,32 @@ async function importPresets() {
   return Promise.all(
     presets.map((preset) => {
       const presetDoc = new Preset({
-        name: preset.name,
+        ...preset,
         roles: preset.roles.map((role) => roleDocs[role]),
       })
       return presetDoc
         .save()
-        .then(() => console.log(`Preset ${preset.name} saved`))
+        .then(() => console.log(`Preset ${preset.code} saved`))
+        .catch((err) => console.log(err))
+    })
+  )
+}
+
+async function importTranslations() {
+  await Translation.deleteMany({})
+
+  const translations = [
+    ...presetsTranslations,
+    ...teamsTranslations,
+    ...rolesTranslations,
+  ]
+
+  return Promise.all(
+    translations.map((translation) => {
+      const translationDoc = new Translation(translation)
+      return translationDoc
+        .save()
+        .then(() => console.log(`Translations ${translation.code} saved`))
         .catch((err) => console.log(err))
     })
   )
@@ -92,9 +101,11 @@ async function importAll() {
   await importTeams()
   await importRoles()
   await importPresets()
+  await importTranslations()
 }
 
 // eslint-disable-next-line
 ;(async () => {
   await importAll()
+  process.exit()
 })()
