@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "postinstall": "./node_modules/.bin/babel src -d dist",
-    "dev": "cross-env NODE_ENV=development nodemon src/server.js --exec babel-node BABEL_DISABLE_CACHE=1",
+    "dev": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 nodemon src/server.js --exec babel-node",
     "import:dev": "cross-env NODE_ENV=development babel-node src/fixtures/import.js",
     "import:prod": "cross-env NODE_ENV=production babel-node src/fixtures/import.js",
     "lint": "eslint",
