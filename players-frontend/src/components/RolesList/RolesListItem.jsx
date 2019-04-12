@@ -4,10 +4,11 @@ import ListItemText from '@material-ui/core/ListItemText'
 import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
+import { injectIntl } from 'react-intl'
 import styles from './RolesListItemStyles'
 import { withStyles } from '@material-ui/core/styles'
 
-const RolesListItem = ({ classes, role, handleToggleRole }) => {
+const RolesListItem = ({ intl, classes, role, handleToggleRole }) => {
   return (
     <ListItem dense button onClick={() => handleToggleRole(role)}>
       <Checkbox
@@ -17,8 +18,8 @@ const RolesListItem = ({ classes, role, handleToggleRole }) => {
         disableRipple
       />
       <ListItemText
-        primary={role.name}
-        secondary={role.description}
+        primary={intl.formatMessage({ id: role.name })}
+        secondary={intl.formatMessage({ id: role.description })}
         className={classnames({
           [classes.distributedDuringGame]: role.assignedDuringGame,
           [classes.description]: true,
@@ -29,9 +30,10 @@ const RolesListItem = ({ classes, role, handleToggleRole }) => {
 }
 
 RolesListItem.propTypes = {
+  intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   role: PropTypes.object.isRequired,
   handleToggleRole: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(RolesListItem)
+export default injectIntl(withStyles(styles)(RolesListItem))

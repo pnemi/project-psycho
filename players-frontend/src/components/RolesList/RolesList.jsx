@@ -1,4 +1,3 @@
-import CircularProgress from '@material-ui/core/CircularProgress'
 import List from '@material-ui/core/List'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -18,16 +17,6 @@ const RolesList = ({ roles, loading, error, classes, toggleRole }) => {
   return (
     <List className={classes.rolesList}>
       {(() => {
-        if (loading) {
-          return (
-            <CircularProgress
-              className={classes.loading}
-              size={30}
-              thickness={5}
-            />
-          )
-        }
-
         if (error) {
           return <p className={classes.error}>{error.message}</p>
         }

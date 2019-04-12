@@ -22,11 +22,11 @@ const selectedRoles = (roles) =>
 
 const unwrapRoles = ({ data }) => data.roles
 
-export const fetchRolesEpic = (action$, state$) =>
+export const fetchRolesEpic = (action$) =>
   action$.pipe(
     ofType(rolesActions.FETCH_ROLES_BEGIN),
     mergeMap(() =>
-      from(fetchRoles(state$.value.lang.currentLang)).pipe(
+      from(fetchRoles()).pipe(
         map(unwrapRoles),
         map(selectedRoles),
         map((roles) => rolesActions.fetchRolesSuccess(roles))

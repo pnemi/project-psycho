@@ -2,21 +2,17 @@ import gql from 'graphql-tag'
 import { gqlQuery } from './gql-client'
 
 const ROLES_QUERY = gql`
-  query Roles($lang: String!) {
-    roles(lang: { code: $lang }) {
+  query Roles {
+    roles {
       order
       code
       name
       description
       required
-      listed
       complement
-      assignedDuringGame
+      distributedDuringGame
     }
   }
 `
 
-export const fetchRoles = (lang) =>
-  gqlQuery(ROLES_QUERY, {
-    lang,
-  })
+export const fetchRoles = () => gqlQuery(ROLES_QUERY)

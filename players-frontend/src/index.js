@@ -1,6 +1,6 @@
 import * as appActions from '@store/app/appActions'
 
-import App from './App'
+import App from '@components/App'
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import React from 'react'

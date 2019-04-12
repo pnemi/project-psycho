@@ -1,8 +1,4 @@
 export default {
-  loading: {
-    color: 'red',
-    alignSelf: 'center',
-  },
   error: {
     color: 'white',
     alignSelf: 'center',
