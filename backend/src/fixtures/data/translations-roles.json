@@ -51,7 +51,7 @@
   {
     "code": "ROLE.ACCOMPLICE.DESCRIPTION",
     "cs": "Člověk zvolený Psycho během hry. Spolupracovník Psycha, může zabít jednoho člověka ve hře. Hráč ztrácí svojí původní roli. Nabídku lze odmítnout, odmítnutí se trestá smrtí.",
-    "en": ""
+    "en": "Accomplice is chosen by psycho during the game and looses his original role. Accomplice can kill whoever he wants to. Psycho's offer to become an accomplice can be rejected but the refusal is punishable by death."
   },
 
   {
@@ -82,7 +82,7 @@
     "en": "Crazy Anesthesiologist"
   },
   {
-    "code": "ROLE.ANESTHESIOLOGIST.DESCIPTION",
+    "code": "ROLE.ANESTHESIOLOGIST.DESCRIPTION",
     "cs": "Může uspat jednoho hráče v jeden čas, když mu řekne \"Spi!\". Hráč se musí probudit až po rožnutí světla, až poté může opět někoho uspat. Chová se jako mrtvola, ale nesmí odpovídat na žádnou otázku. Ostatní se za něj nemohou vydávat.",
     "en": "He can put one person at a time to sleep when he tells somebody \"Sleep!\" The person has to wake up after turning on the light and then he can put somebody to sleep again. Anesthetized person acts like a corpse but he can't answer any questions. Others cannot impersonate an anesthesiologist."
   },
