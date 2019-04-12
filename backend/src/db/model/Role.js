@@ -7,8 +7,8 @@ const roleSchema = new mongoose.Schema({
   required: { type: Boolean },
   complement: { type: Boolean },
   distributedDuringGame: { type: Boolean },
-  name: { type: String, unique: true },
-  description: { type: String, unique: true },
+  name: { type: String },
+  description: { type: String },
 })
 
 const Role = mongoose.model('Role', roleSchema)

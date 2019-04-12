@@ -1,6 +1,6 @@
-import { Translation } from '../db'
+import * as TranslationService from '../services/TranslationService'
 
-const translationsResolver = async () => Translation.find({})
+const translationsResolver = async () => TranslationService.getTranslations()
 
 const translationsFieldResolver = {
   value: async (translation, { lang }) => translation[lang],

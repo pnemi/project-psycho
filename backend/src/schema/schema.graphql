@@ -1,7 +1,3 @@
-input TranslationInput {
-  code: String
-}
-
 type Team {
   code: String
   name: String
@@ -9,25 +5,25 @@ type Team {
 }
 
 type Role {
-  order: Int
   code: String
+  order: Int
+  team: Team
+  required: Boolean
+  complement: Boolean
+  distributedDuringGame: Boolean
   name: String
   description: String
-  required: Boolean
-  listed: Boolean
-  complement: Boolean
-  assignedDuringGame: Boolean
-  team: Team
 }
 
 type Preset {
+  code: String
   name: String
-  roles: [String]
+  roles: [Role]
 }
 
 type Language {
-  name: String
   code: String
+  name: String
 }
 
 type Translation {
@@ -38,14 +34,9 @@ type Translation {
 }
 
 type Query {
-  role(code: String, lang: TranslationInput): Role
-  roles(lang: TranslationInput): [Role]
-
-  team(code: String, lang: TranslationInput): Team
-  teams(lang: TranslationInput): [Team]
-
+  roles: [Role]
+  teams: [Team]
   presets: [Preset]
-
   languages: [Language]
   translations: [Translation]
 }

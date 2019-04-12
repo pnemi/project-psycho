@@ -1,7 +1,5 @@
-import { Language } from '../db'
+import * as LanguageService from '../services/LanguageService'
 
-const languagesResolver = async () => Language.find({})
+const languagesResolver = async () => LanguageService.getLanguages()
 
-export {
-  languagesResolver
-}
+export { languagesResolver }
