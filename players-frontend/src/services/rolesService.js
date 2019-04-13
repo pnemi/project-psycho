@@ -8,6 +8,7 @@ const ROLES_QUERY = gql`
       code
       name
       description
+      team
       required
       complement
       distributedDuringGame

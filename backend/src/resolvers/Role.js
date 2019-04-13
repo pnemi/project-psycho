@@ -1,5 +1,13 @@
 import * as RoleService from '../services/RoleService'
+import * as TeamService from '../services/TeamService'
 
-const rolesResolver = async () => RoleService.getRoles()
+const rolesResolver = () => RoleService.getRoles()
 
-export { rolesResolver }
+const rolesFieldResolver = {
+  team: async (role) => {
+    const team = await TeamService.getTeamById(role.team)
+    return team.code
+  },
+}
+
+export { rolesResolver, rolesFieldResolver }

@@ -7,7 +7,7 @@ type Team {
 type Role {
   code: String
   order: Int
-  team: Team
+  team: String
   required: Boolean
   complement: Boolean
   distributedDuringGame: Boolean
@@ -18,7 +18,7 @@ type Role {
 type Preset {
   code: String
   name: String
-  roles: [Role]
+  roles: [String]
 }
 
 type Language {

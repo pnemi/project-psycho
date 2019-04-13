@@ -19,7 +19,6 @@ const RoleInfoCard = ({ intl, classes, role }) => (
 
 RoleInfoCard.propTypes = {
   intl: PropTypes.object.isRequired,
-
   classes: PropTypes.object.isRequired,
   role: PropTypes.object.isRequired,
 }

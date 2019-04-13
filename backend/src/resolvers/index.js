@@ -1,8 +1,8 @@
+import { rolesFieldResolver, rolesResolver } from './Role'
 import { translationsFieldResolver, translationsResolver } from './Translation'
 
 import { languagesResolver } from './Language'
 import { presetsResolver } from './Preset'
-import { rolesResolver } from './Role'
 import { teamsResolver } from './Team'
 
 export default {
@@ -14,4 +14,5 @@ export default {
     translations: translationsResolver,
   },
   Translation: translationsFieldResolver,
+  Role: rolesFieldResolver,
 }
