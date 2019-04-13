@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { Language, Preset, Role, Team, Translation } from '../db'
 
+import appTranslations from './data/translations-app'
 import languages from './data/languages'
 import presets from './data/presets'
 import presetsTranslations from './data/translations-presets'
@@ -83,6 +84,7 @@ async function importTranslations() {
     ...presetsTranslations,
     ...teamsTranslations,
     ...rolesTranslations,
+    ...appTranslations,
   ]
 
   return Promise.all(

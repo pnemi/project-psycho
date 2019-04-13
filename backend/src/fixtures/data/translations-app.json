@@ -1,0 +1,42 @@
+[
+  {
+    "code": "APP.TEAM",
+    "cs": "Tým",
+    "en": "Team"
+  },
+  {
+    "code": "APP.NUMBER_OF_PLAYERS",
+    "cs": "Počet hráčů",
+    "en": "Number of players"
+  },
+  {
+    "code": "APP.PLAY",
+    "cs": "Hraj",
+    "en": "Play"
+  },
+  {
+    "code": "APP.SET_MINIMUM_NUMBER_OF_PLAYERS",
+    "cs": "Nastavit počet hráčů na minimum",
+    "en": "Set to required number of players"
+  },
+  {
+    "code": "APP.ASSIGN_YOURSELF_ROLE",
+    "cs": "Vylosuj si roli",
+    "en": "Assign yourself a role"
+  },
+  {
+    "code": "APP.ASSIGN_ROLE",
+    "cs": "Vylosovat roli",
+    "en": "Assign a role"
+  },
+  {
+    "code": "APP.HIDE_ROLE",
+    "cs": "Schovat roli",
+    "en": "Hide a role"
+  },
+  {
+    "code": "APP.DONE",
+    "cs": "Hotovo",
+    "en": "Done"
+  }
+]
