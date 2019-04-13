@@ -3,10 +3,12 @@ import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
+import { injectIntl } from 'react-intl'
 import styles from './DistributorControlsStyles'
 import { withStyles } from '@material-ui/core/styles'
 
 const DistributorControls = ({
+  intl,
   classes,
   handleAssignRole,
   handleHideRole,
@@ -30,7 +32,7 @@ const DistributorControls = ({
       onClick={handleAssignRole}
       disabled={distributionState === 'DONE' || distributionState !== 'HIDDEN'}
     >
-      Přiřaď mi roli
+      {intl.formatMessage({ id: 'APP.ASSIGN_ROLE' })}
     </Button>
     <Button
       variant="contained"
@@ -40,16 +42,17 @@ const DistributorControls = ({
       onClick={handleHideRole}
       disabled={distributionState === 'HIDDEN'}
     >
-      Schovej mou roli
+      {intl.formatMessage({ id: 'APP.HIDE_ROLE' })}
     </Button>
   </Grid>
 )
 
 DistributorControls.propTypes = {
+  intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   handleAssignRole: PropTypes.func.isRequired,
   handleHideRole: PropTypes.func.isRequired,
   distributionState: PropTypes.string.isRequired,
 }
 
-export default withStyles(styles)(DistributorControls)
+export default injectIntl(withStyles(styles)(DistributorControls))

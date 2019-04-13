@@ -10,10 +10,12 @@ import RoleInfoCard from '@components/RoleInfoCard'
 import Stepper from '../Stepper'
 import Typography from '@material-ui/core/Typography'
 import { getRolesDistributionPool } from '@utils/roles'
+import { injectIntl } from 'react-intl'
 import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
 const Distributor = ({
+  intl,
   classes,
   stopRoleDistribution,
   numberOfPlayers,
@@ -54,13 +56,13 @@ const Distributor = ({
       case 'DONE':
         return (
           <Typography className={classes.stateInfo} variant="h1">
-            <DoneIcon /> Hotovo
+            <DoneIcon /> {intl.formatMessage({ id: 'APP.DONE' })}
           </Typography>
         )
       case 'HIDDEN':
         return (
           <Typography className={classes.stateInfo} variant="h1">
-            Vygeneruj si roli
+            {intl.formatMessage({ id: 'APP.ASSIGN_YOURSELF_ROLE' })}
           </Typography>
         )
       case 'VISIBLE':
@@ -98,6 +100,7 @@ const Distributor = ({
 }
 
 Distributor.propTypes = {
+  intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
   stopRoleDistribution: PropTypes.func.isRequired,
@@ -105,4 +108,4 @@ Distributor.propTypes = {
   selectedRoles: PropTypes.array.isRequired,
 }
 
-export default withStyles(styles)(Distributor)
+export default injectIntl(withStyles(styles)(Distributor))
