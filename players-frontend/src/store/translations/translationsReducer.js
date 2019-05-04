@@ -6,6 +6,8 @@ import {
 
 export const initialState = {
   data: {},
+  loading: false,
+  error: null,
 }
 
 export const reducers = {
@@ -23,7 +25,7 @@ export const reducers = {
     ...state,
     loading: false,
     error: payload.error,
-    data: [],
+    data: {},
   }),
 }
 

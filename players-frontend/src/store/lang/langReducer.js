@@ -9,6 +9,8 @@ import { load } from '@utils/storage'
 
 export const initialState = {
   data: [],
+  loading: false,
+  error: null,
   currentLang: load('currentLang', 'cs'),
 }
 
