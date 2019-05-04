@@ -22,5 +22,6 @@ export default {
   },
   menuIcon: {
     color: '#DDD',
+    visibility: 'hidden',
   },
 }

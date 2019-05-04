@@ -11,7 +11,7 @@ import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
 const Header = ({ classes }) => (
-  <AppBar className={classes.appBar} position="fixed" color="default">
+  <AppBar className={classes.appBar} position="absolute" color="default">
     <Toolbar className={classes.toolbar}>
       <IconButton aria-label="Open drawer" className={classes.menuIcon}>
         <MenuIcon />
