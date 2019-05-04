@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   roles: filterListRoles(state.roles.data),
   loading: state.roles.loading,
   error: state.roles.error,
+  teams: state.teams.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -6,7 +6,7 @@ import { save } from '@utils/storage'
 import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
-const RolesList = ({ roles, loading, error, classes, toggleRole }) => {
+const RolesList = ({ roles, teams, loading, error, classes, toggleRole }) => {
   const handleToggleRole = (role) => {
     if (!role.required) {
       save(`${role.code}.checked`, !role.checked)
@@ -17,12 +17,15 @@ const RolesList = ({ roles, loading, error, classes, toggleRole }) => {
   return (
     <List className={classes.rolesList}>
       {(() => {
+        if (loading) return
+
         if (error) {
           return <p className={classes.error}>{error.message}</p>
         }
 
         return roles.map((role) => (
           <RolesListItem
+            team={teams[role.team]}
             key={role.code}
             role={role}
             handleToggleRole={handleToggleRole}
@@ -36,6 +39,7 @@ const RolesList = ({ roles, loading, error, classes, toggleRole }) => {
 RolesList.propTypes = {
   classes: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired,
+  teams: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object,
   toggleRole: PropTypes.func.isRequired,
