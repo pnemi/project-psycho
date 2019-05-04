@@ -1,10 +1,10 @@
 import * as playersActions from '@store/players/playersActions'
 import * as rolesActions from '@store/roles/rolesActions'
 
-import { map, mergeMap } from 'rxjs/operators'
+import { catchError, map, mergeMap } from 'rxjs/operators'
+import { from, of } from 'rxjs'
 
 import { fetchRoles } from '@services/rolesService'
-import { from } from 'rxjs'
 import { getRequiredNumberOfPlayers } from '@utils/roles'
 import { load } from '@utils/storage'
 import { ofType } from 'redux-observable'
@@ -29,7 +29,8 @@ export const fetchRolesEpic = (action$) =>
       from(fetchRoles()).pipe(
         map(unwrapRoles),
         map(selectedRoles),
-        map((roles) => rolesActions.fetchRolesSuccess(roles))
+        map((roles) => rolesActions.fetchRolesSuccess(roles)),
+        catchError((error) => of(rolesActions.fetchRolesError(error)))
       )
     )
   )

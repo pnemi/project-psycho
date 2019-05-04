@@ -1,9 +1,9 @@
 import * as translationsActions from '@store/translations/translationsActions'
 
-import { map, mergeMap } from 'rxjs/operators'
+import { catchError, map, mergeMap } from 'rxjs/operators'
+import { from, of } from 'rxjs'
 
 import { fetchTranslations } from '@services/translationService'
-import { from } from 'rxjs'
 import { ofType } from 'redux-observable'
 
 const unwrapTranslations = ({ data }) => data.translations
@@ -28,6 +28,9 @@ export const fetchTranslationsEpic = (action$, state$) =>
             translations,
             state$.value.lang.currentLang
           )
+        ),
+        catchError((error) =>
+          of(translationsActions.fetchTranslationsError(error))
         )
       )
     )

@@ -1,10 +1,10 @@
 import * as langActions from '@store/lang/langActions'
 import * as translationsActions from '@store/translations/translationsActions'
 
-import { map, mapTo, mergeMap, tap } from 'rxjs/operators'
+import { catchError, map, mapTo, mergeMap, tap } from 'rxjs/operators'
+import { from, of } from 'rxjs'
 
 import { fetchLanguages } from '@services/languageService'
-import { from } from 'rxjs'
 import { ofType } from 'redux-observable'
 import { setupIntl } from '@utils/language'
 
@@ -18,7 +18,8 @@ export const fetchLangsEpic = (action$) =>
       from(fetchLanguages()).pipe(
         map(unwrapLanguages),
         tap((languages) => setupIntl(languages)),
-        map((languages) => langActions.fetchLangsSuccess(languages))
+        map((languages) => langActions.fetchLangsSuccess(languages)),
+        catchError((error) => of(langActions.fetchLangsError(error)))
       )
     )
   )
