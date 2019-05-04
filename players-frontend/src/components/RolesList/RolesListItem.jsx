@@ -3,6 +3,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import PropTypes from 'prop-types'
 import React from 'react'
+import TeamBadge from '@components/TeamBadge'
 import classnames from 'classnames'
 import { injectIntl } from 'react-intl'
 import styles from './RolesListItemStyles'
@@ -19,14 +20,12 @@ const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
     <ListItemText
       primary={
         <span>
-          <span>
+          <span className={classes.name}>
             {intl.formatMessage({
               id: role.name,
             })}
           </span>
-          <span className={classnames(classes.team, classes[team.code])}>
-            {intl.formatMessage({ id: team.name })}
-          </span>
+          <TeamBadge team={team} />
         </span>
       }
       secondary={intl.formatMessage({ id: role.description })}

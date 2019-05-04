@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   numberOfPlayers: state.players.numberOfPlayers,
   selectedRoles: filterDistributableRoles(state.roles.data),
   complementRoles: filterComplementRoles(state.roles.data),
+  teams: state.teams.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({

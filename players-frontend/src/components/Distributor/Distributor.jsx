@@ -21,6 +21,7 @@ const Distributor = ({
   numberOfPlayers,
   selectedRoles,
   complementRoles,
+  teams,
 }) => {
   const [numberOfAssignedRoles, setNumberOfAssignedRoles] = useState(0)
   const [rolesPool, setRolesPool] = useState(
@@ -67,7 +68,9 @@ const Distributor = ({
         )
       case 'VISIBLE':
       default:
-        return <RoleInfoCard role={assignedRole} />
+        return (
+          <RoleInfoCard role={assignedRole} team={teams[assignedRole.team]} />
+        )
     }
   }
 
@@ -106,6 +109,7 @@ Distributor.propTypes = {
   stopRoleDistribution: PropTypes.func.isRequired,
   complementRoles: PropTypes.array.isRequired,
   selectedRoles: PropTypes.array.isRequired,
+  teams: PropTypes.object.isRequired,
 }
 
 export default injectIntl(withStyles(styles)(Distributor))
