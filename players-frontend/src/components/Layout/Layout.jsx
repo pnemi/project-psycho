@@ -9,12 +9,7 @@ import styles from './styles'
 import { withStyles } from '@material-ui/core/styles'
 
 const Layout = ({ classes, isLoading }) => (
-  <Grid
-    container
-    justify="center"
-    alignItems="center"
-    className={classes.layout}
-  >
+  <Grid className={classes.layout}>
     <CssBaseline />
     {isLoading ? (
       <LoadingScreen />
