@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const path = require('path')
 const common = require('./webpack.common.js')
 const Dotenv = require('dotenv-webpack')
-const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -23,9 +22,6 @@ module.exports = merge(common, {
         use: ['react-hot-loader/webpack'],
       },
     ],
-  },
-  resolve: {
-    plugins: [new DirectoryNamedWebpackPlugin(true)],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

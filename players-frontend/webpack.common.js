@@ -1,6 +1,7 @@
 require('dotenv').config()
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -31,6 +32,7 @@ module.exports = {
       '@utils': path.resolve(__dirname, './src/utils'),
     },
     extensions: ['*', '.mjs', '.js', '.jsx'],
+    plugins: [new DirectoryNamedWebpackPlugin(true)],
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
