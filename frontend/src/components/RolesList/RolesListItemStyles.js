@@ -5,9 +5,7 @@ export default {
     padding: '15px 0',
   },
   distributedDuringGame: {
-    '& span': {
-      color: '#FDCC11',
-    },
+    color: '#FDCC11',
   },
   name: {
     marginRight: 6,

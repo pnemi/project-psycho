@@ -22,20 +22,21 @@ const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
     />
     <ListItemText
       primary={
-        <span>
-          <span className={classes.name}>
+        <>
+          <span
+            className={classnames(classes.name, {
+              [classes.distributedDuringGame]: role.distributedDuringGame,
+            })}
+          >
             {intl.formatMessage({
               id: role.name,
             })}
           </span>
           <TeamBadge team={team} />
-        </span>
+        </>
       }
       secondary={intl.formatMessage({ id: role.description })}
-      className={classnames({
-        [classes.distributedDuringGame]: role.assignedDuringGame,
-        [classes.description]: true,
-      })}
+      className={classes.description}
     />
   </ListItem>
 )

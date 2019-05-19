@@ -12,6 +12,7 @@ export default {
   },
   psycho: {
     background: '#860b38',
+    color: 'white',
   },
   investigation: {
     background: '#009a37',
