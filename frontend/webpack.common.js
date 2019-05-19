@@ -17,6 +17,11 @@ module.exports = {
         options: { presets: ['@babel/env'] },
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
@@ -26,7 +31,7 @@ module.exports = {
     alias: {
       '@psycho': path.resolve(__dirname, './src'),
     },
-    extensions: ['*', '.mjs', '.js', '.jsx'],
+    extensions: ['*', '.mjs', '.js', '.jsx', '.ts', '.tsx'],
     plugins: [new DirectoryNamedWebpackPlugin(true)],
   },
   output: {
