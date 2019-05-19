@@ -9,6 +9,7 @@ export default {
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
     position: 'absolute',
