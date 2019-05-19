@@ -1,3 +1,5 @@
+import { SCREEN_SMALL } from '@psycho/constants/media-queries'
+
 export default {
   rolesListItem: {
     padding: '15px 0',
@@ -10,7 +12,7 @@ export default {
   name: {
     marginRight: 6,
     fontSize: '1.5rem',
-    '@media screen and (max-width: 576px)': {
+    [SCREEN_SMALL]: {
       fontSize: '1rem',
     },
   },

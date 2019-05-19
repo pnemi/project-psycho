@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@psycho/*": ["./src/*"],
       "@store/*": ["./src/store/*"],
       "@epics/*": ["./src/epics/*"],
       "@services/*": ["./src/services/*"],

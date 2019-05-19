@@ -1,3 +1,5 @@
+import { SCREEN_MEDIUM } from '@psycho/constants/media-queries'
+
 export default {
   root: {
     padding: '0 0 20px 0',
@@ -8,7 +10,7 @@ export default {
     position: 'relative',
     flex: 1,
     maxWidth: 650,
-    '@media screen and (max-width: 768px)': {
+    [SCREEN_MEDIUM]: {
       maxWidth: 'none',
     },
   },

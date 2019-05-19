@@ -1,3 +1,5 @@
+import { SCREEN_MEDIUM } from '@psycho/constants/media-queries'
+
 export default {
   '@keyframes distributor-controls-disappear': {
     to: {
@@ -16,7 +18,7 @@ export default {
     '&:first-child': {
       marginRight: 5,
     },
-    '@media screen and (max-width: 768px)': {
+    [SCREEN_MEDIUM]: {
       fontSize: 12,
     },
   },
