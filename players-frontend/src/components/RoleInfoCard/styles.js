@@ -17,5 +17,12 @@ export default {
     '@media screen and (max-width: 768px)': {
       fontSize: 14,
     },
+    '&::-webkit-scrollbar': {
+      '-webkit-appearance': 'none',
+      width: 6,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0, 0, 0, .5)',
+    },
   },
 }
