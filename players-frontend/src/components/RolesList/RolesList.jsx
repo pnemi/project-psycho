@@ -4,7 +4,7 @@ import React from 'react'
 import RolesListItem from './RolesListItem'
 import { save } from '@utils/storage'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const RolesList = ({ roles, teams, loading, error, classes, toggleRole }) => {
   const handleToggleRole = (role) => {

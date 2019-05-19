@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Routes from '@components/Routes'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const Main = ({ classes }) => (
   <Grid

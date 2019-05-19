@@ -3,7 +3,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { injectIntl } from 'react-intl'
 import styles from './TextInputStyles.js'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const TextInputPicker = ({ intl, classes, onChange, numberOfPlayers }) => (
   <TextField

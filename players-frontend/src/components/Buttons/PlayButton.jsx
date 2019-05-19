@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { injectIntl } from 'react-intl'
 import styles from './PlayButtonStyles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const PlayButton = ({
   intl,

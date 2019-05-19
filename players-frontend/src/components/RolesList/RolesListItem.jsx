@@ -7,7 +7,7 @@ import TeamBadge from '@components/TeamBadge'
 import classnames from 'classnames'
 import { injectIntl } from 'react-intl'
 import styles from './RolesListItemStyles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
   <ListItem

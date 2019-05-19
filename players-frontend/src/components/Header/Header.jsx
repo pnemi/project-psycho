@@ -8,7 +8,7 @@ import React from 'react'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const Header = ({ classes }) => (
   <AppBar className={classes.appBar} position="absolute" color="default">

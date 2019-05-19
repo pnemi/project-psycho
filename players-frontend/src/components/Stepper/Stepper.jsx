@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const Stepper = ({ classes, steps, activeStep }) => (
   <Grid className={classes.root} container justify="space-between">

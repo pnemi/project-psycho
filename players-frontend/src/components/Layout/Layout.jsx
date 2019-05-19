@@ -6,7 +6,7 @@ import Main from '@components/Main'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const Layout = ({ classes, isLoading }) => (
   <Grid className={classes.layout}>

@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import { getRolesDistributionPool } from '@utils/roles'
 import { injectIntl } from 'react-intl'
 import styles from './styles'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from 'react-jss'
 
 const Distributor = ({
   intl,
