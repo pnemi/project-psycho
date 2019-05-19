@@ -1,4 +1,7 @@
 export default {
+  rolesListItem: {
+    padding: '15px 0',
+  },
   distributedDuringGame: {
     '& span': {
       color: '#FDCC11',
@@ -6,6 +9,10 @@ export default {
   },
   name: {
     marginRight: 6,
+    fontSize: '1.5rem',
+    '@media screen and (max-width: 576px)': {
+      fontSize: '1rem',
+    },
   },
   description: {
     '& p': {

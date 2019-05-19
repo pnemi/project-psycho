@@ -10,7 +10,10 @@ import styles from './RolesListItemStyles'
 import { withStyles } from '@material-ui/core/styles'
 
 const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
-  <ListItem dense button onClick={() => handleToggleRole(role)}>
+  <ListItem
+    className={classes.rolesListItem}
+    onClick={() => handleToggleRole(role)}
+  >
     <Checkbox
       disabled={role.required}
       checked={role.checked}
