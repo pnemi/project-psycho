@@ -40,7 +40,7 @@ const DistributorControls = ({
       className={classes.assignerButtons}
       size="large"
       onClick={handleHideRole}
-      disabled={distributionState === 'HIDDEN'}
+      disabled={distributionState === 'DONE' || distributionState === 'HIDDEN'}
     >
       {intl.formatMessage({ id: 'APP.HIDE_ROLE' })}
     </Button>

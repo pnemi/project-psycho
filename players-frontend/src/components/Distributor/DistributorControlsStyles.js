@@ -1,7 +1,15 @@
 export default {
+  '@keyframes distributor-controls-disappear': {
+    to: {
+      opacity: '0',
+      display: 'none',
+    },
+    from: {
+      opacity: '1',
+    },
+  },
   hidden: {
-    transition: 'opacity 0.5s',
-    opacity: 0,
+    animation: `distributor-controls-disappear 1s forwards 1s`,
   },
   assignerButtons: {
     whiteSpace: 'nowrap',
