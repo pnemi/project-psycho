@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom'
 
-import Home from '@pages/Home'
-import NotFound from '@components/NotFound'
+import Home from '@psycho/pages/Home'
+import NotFound from '@psycho/components/NotFound'
 import React from 'react'
-import Rules from '@components/Rules'
+import Rules from '@psycho/components/Rules'
 
 const Routes = () => (
   <Switch>

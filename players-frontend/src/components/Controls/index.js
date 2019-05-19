@@ -1,9 +1,9 @@
-import * as gameActions from '@store/game/gameActions'
-import * as playersActions from '@store/players/playersActions'
+import * as gameActions from '@psycho/store/game/gameActions'
+import * as playersActions from '@psycho/store/players/playersActions'
 
 import Controls from './Controls'
 import { connect } from 'react-redux'
-import { getRequiredNumberOfPlayers } from '@utils/roles'
+import { getRequiredNumberOfPlayers } from '@psycho/utils/roles'
 
 const mapStateToProps = (state) => ({
   numberOfPlayers: state.players.numberOfPlayers,

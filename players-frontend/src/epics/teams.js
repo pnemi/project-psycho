@@ -1,10 +1,10 @@
-import * as teamsActions from '@store/teams/teamsActions'
+import * as teamsActions from '@psycho/store/teams/teamsActions'
 
 import { catchError, map, mergeMap } from 'rxjs/operators'
 import { from, of } from 'rxjs'
 
 import _ from 'lodash'
-import { fetchTeams } from '@services/teamsService'
+import { fetchTeams } from '@psycho/services/teamsService'
 import { ofType } from 'redux-observable'
 
 const unwrapTeams = ({ data }) => data.teams

@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from 'redux'
 
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createEpicMiddleware } from 'redux-observable'
-import rootEpic from '@epics'
+import rootEpic from '@psycho/epics'
 import rootReducer from './index'
 
 export default function configureStore() {

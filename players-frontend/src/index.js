@@ -1,6 +1,6 @@
-import * as appActions from '@store/app/appActions'
+import * as appActions from '@psycho/store/app/appActions'
 
-import App from '@components/App'
+import App from '@psycho/components/App'
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import React from 'react'

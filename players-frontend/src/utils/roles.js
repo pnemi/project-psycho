@@ -1,4 +1,4 @@
-import { randArrayItem, shuffle } from '@utils/utils'
+import { randArrayItem, shuffle } from '@psycho/utils/utils'
 
 export const getRequiredNumberOfPlayers = (roles) =>
   roles.reduce(

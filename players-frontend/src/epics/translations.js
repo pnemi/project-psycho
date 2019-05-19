@@ -1,9 +1,9 @@
-import * as translationsActions from '@store/translations/translationsActions'
+import * as translationsActions from '@psycho/store/translations/translationsActions'
 
 import { catchError, map, mergeMap } from 'rxjs/operators'
 import { from, of } from 'rxjs'
 
-import { fetchTranslations } from '@services/translationService'
+import { fetchTranslations } from '@psycho/services/translationService'
 import { ofType } from 'redux-observable'
 
 const unwrapTranslations = ({ data }) => data.translations

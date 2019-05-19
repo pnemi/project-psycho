@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
-import TeamBadge from '@components/TeamBadge'
+import TeamBadge from '@psycho/components/TeamBadge'
 import Typography from '@material-ui/core/Typography'
 import { injectIntl } from 'react-intl'
 import styles from './styles'

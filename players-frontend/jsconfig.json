@@ -2,13 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@psycho/*": ["./src/*"],
-      "@store/*": ["./src/store/*"],
-      "@epics/*": ["./src/epics/*"],
-      "@services/*": ["./src/services/*"],
-      "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@psycho/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

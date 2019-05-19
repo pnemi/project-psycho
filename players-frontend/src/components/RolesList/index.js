@@ -1,8 +1,8 @@
-import * as rolesActions from '@store/roles/rolesActions'
+import * as rolesActions from '@psycho/store/roles/rolesActions'
 
 import RolesList from './RolesList'
 import { connect } from 'react-redux'
-import { filterListRoles } from '@utils/roles'
+import { filterListRoles } from '@psycho/utils/roles'
 
 const mapStateToProps = (state) => ({
   roles: filterListRoles(state.roles.data),

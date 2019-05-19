@@ -1,6 +1,6 @@
-import * as gameActions from '@store/game/gameActions'
+import * as gameActions from '@psycho/store/game/gameActions'
 
-import { filterComplementRoles, filterDistributableRoles } from '@utils/roles'
+import { filterComplementRoles, filterDistributableRoles } from '@psycho/utils/roles'
 
 import Distributor from './Distributor'
 import { connect } from 'react-redux'

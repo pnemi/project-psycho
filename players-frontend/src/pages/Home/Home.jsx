@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 
-import Controls from '@components/Controls'
-import Distributor from '@components/Distributor'
+import Controls from '@psycho/components/Controls'
+import Distributor from '@psycho/components/Distributor'
 import PropTypes from 'prop-types'
-import RolesList from '@components/RolesList'
+import RolesList from '@psycho/components/RolesList'
 
 const Home = ({ isDistributing }) => {
   if (isDistributing) {

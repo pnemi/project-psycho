@@ -1,12 +1,12 @@
-import * as langActions from '@store/lang/langActions'
-import * as translationsActions from '@store/translations/translationsActions'
+import * as langActions from '@psycho/store/lang/langActions'
+import * as translationsActions from '@psycho/store/translations/translationsActions'
 
 import { catchError, map, mapTo, mergeMap, tap } from 'rxjs/operators'
 import { from, of } from 'rxjs'
 
-import { fetchLanguages } from '@services/languageService'
+import { fetchLanguages } from '@psycho/services/languageService'
 import { ofType } from 'redux-observable'
-import { setupIntl } from '@utils/language'
+import { setupIntl } from '@psycho/utils/language'
 
 const unwrapLanguages = ({ data }) => data.languages
 

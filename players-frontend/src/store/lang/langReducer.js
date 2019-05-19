@@ -5,7 +5,7 @@ import {
   SWITCH_LANG,
 } from './langActions'
 
-import { load } from '@utils/storage'
+import { load } from '@psycho/utils/storage'
 
 export const initialState = {
   data: [],

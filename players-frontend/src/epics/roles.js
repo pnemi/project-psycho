@@ -1,12 +1,12 @@
-import * as playersActions from '@store/players/playersActions'
-import * as rolesActions from '@store/roles/rolesActions'
+import * as playersActions from '@psycho/store/players/playersActions'
+import * as rolesActions from '@psycho/store/roles/rolesActions'
 
 import { catchError, map, mergeMap } from 'rxjs/operators'
 import { from, of } from 'rxjs'
 
-import { fetchRoles } from '@services/rolesService'
-import { getRequiredNumberOfPlayers } from '@utils/roles'
-import { load } from '@utils/storage'
+import { fetchRoles } from '@psycho/services/rolesService'
+import { getRequiredNumberOfPlayers } from '@psycho/utils/roles'
+import { load } from '@psycho/utils/storage'
 import { ofType } from 'redux-observable'
 
 const shouldRoleBeChecked = (role) => {

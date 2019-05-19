@@ -2,7 +2,7 @@ import List from '@material-ui/core/List'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RolesListItem from './RolesListItem'
-import { save } from '@utils/storage'
+import { save } from '@psycho/utils/storage'
 import styles from './styles'
 import withStyles from 'react-jss'
 

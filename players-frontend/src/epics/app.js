@@ -1,8 +1,8 @@
-import * as appActions from '@store/app/appActions'
-import * as langActions from '@store/lang/langActions'
-import * as rolesActions from '@store/roles/rolesActions'
-import * as teamsActions from '@store/teams/teamsActions'
-import * as translationsActions from '@store/translations/translationsActions'
+import * as appActions from '@psycho/store/app/appActions'
+import * as langActions from '@psycho/store/lang/langActions'
+import * as rolesActions from '@psycho/store/roles/rolesActions'
+import * as teamsActions from '@psycho/store/teams/teamsActions'
+import * as translationsActions from '@psycho/store/translations/translationsActions'
 
 import { flatMap, mapTo, take } from 'rxjs/operators'
 

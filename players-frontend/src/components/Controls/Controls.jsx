@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 
-import PlayButton from '@components/Buttons/PlayButton'
+import PlayButton from '@psycho/components/Buttons/PlayButton'
 import PropTypes from 'prop-types'
-import { TextInputPicker } from '@components/Pickers'
+import { TextInputPicker } from '@psycho/components/Pickers'
 
 const Controls = ({
   changeNumberOfPlayers,

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import MenuItem from '@material-ui/core/MenuItem'
 import PropTypes from 'prop-types'
 import Select from '@material-ui/core/Select'
-import { save } from '@utils/storage'
+import { save } from '@psycho/utils/storage'
 import styles from './styles'
 import withStyles from 'react-jss'
 

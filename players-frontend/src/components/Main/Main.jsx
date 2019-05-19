@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Routes from '@components/Routes'
+import Routes from '@psycho/components/Routes'
 import styles from './styles'
 import withStyles from 'react-jss'
 

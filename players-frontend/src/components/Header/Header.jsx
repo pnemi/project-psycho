@@ -1,6 +1,6 @@
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
-import LanguageSwitch from '@components/LanguageSwitch'
+import LanguageSwitch from '@psycho/components/LanguageSwitch'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
 import PropTypes from 'prop-types'

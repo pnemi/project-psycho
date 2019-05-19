@@ -2,10 +2,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 import { ApolloProvider } from 'react-apollo'
 import { IntlProvider } from 'react-intl'
-import Layout from '@components/Layout'
+import Layout from '@psycho/components/Layout'
 import PropTypes from 'prop-types'
 import React from 'react'
-import gqlClient from '@services/gql-client'
+import gqlClient from '@psycho/services/gql-client'
 import { hot } from 'react-hot-loader'
 import themeStyles from '../../theme'
 
