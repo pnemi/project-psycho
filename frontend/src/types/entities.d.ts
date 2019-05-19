@@ -1,0 +1,11 @@
+type Role = {
+  code: string
+  order: number
+  team: string
+  required: boolean
+  complement: boolean
+  distributedDuringGame: boolean
+  checked: boolean
+  name: string
+  description: string
+}
