@@ -2,7 +2,7 @@ export default {
   name: {
     fontSize: 36,
     fontWeight: 800,
-    marginRight: 15,
+    marginBottom: 15,
     '@media screen and (max-width: 768px)': {
       fontSize: 22,
     },

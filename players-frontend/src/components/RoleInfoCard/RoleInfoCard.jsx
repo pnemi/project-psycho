@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core'
 
 const RoleInfoCard = ({ intl, classes, role, team }) => (
   <Fragment>
-    <Grid container alignItems="center" justify="center">
+    <Grid container alignItems="center" justify="center" direction="column">
       <Typography className={classes.name}>
         {intl.formatMessage({ id: role.name })}
       </Typography>

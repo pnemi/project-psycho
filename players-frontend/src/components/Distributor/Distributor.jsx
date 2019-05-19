@@ -76,13 +76,6 @@ const Distributor = ({
 
   return (
     <Fragment>
-      <IconButton
-        className={classes.backButton}
-        aria-label="Back"
-        onClick={stopRoleDistribution}
-      >
-        <ArrowBack />
-      </IconButton>
       <Grid
         container
         className={classes.infoWrapper}
@@ -90,6 +83,13 @@ const Distributor = ({
         justify="center"
         alignItems="center"
       >
+        <IconButton
+          className={classes.backButton}
+          aria-label="Back"
+          onClick={stopRoleDistribution}
+        >
+          <ArrowBack />
+        </IconButton>
         {renderState()}
       </Grid>
       <DistributorControls

@@ -5,10 +5,11 @@ export default {
   infoWrapper: {
     textAlign: 'center',
     alignSelf: 'center',
+    position: 'relative',
     flex: 1,
     maxWidth: 650,
     '@media screen and (max-width: 768px)': {
-      maxWidth: 'auto',
+      maxWidth: 'none',
     },
   },
   stateInfo: {
@@ -16,7 +17,9 @@ export default {
   },
   backButton: {
     color: 'white',
-    alignSelf: 'flex-start',
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   stepper: {
     background: 'none',
