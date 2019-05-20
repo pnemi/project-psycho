@@ -9,3 +9,8 @@ type Role = {
   name: string
   description: string
 }
+
+type Language = {
+  code: string
+  name: string
+}
