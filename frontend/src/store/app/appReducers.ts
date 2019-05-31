@@ -1,6 +1,6 @@
 import { APP_INIT_SUCCESS, AppActionTypes } from './appActions'
 
-interface AppState {
+export interface AppState {
   isLoaded: boolean
 }
 

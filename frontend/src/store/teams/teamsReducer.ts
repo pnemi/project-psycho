@@ -6,7 +6,7 @@ import {
   TeamsActionTypes,
 } from './teamsActions'
 
-interface TeamsState extends FetchableState {
+export interface TeamsState extends FetchableState {
   data: {
     [language: string]: TeamDictionary
   }

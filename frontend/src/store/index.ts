@@ -1,11 +1,24 @@
-import app from './app/appReducers'
+import app, { AppState } from './app/appReducers'
+import game, { GameState } from './game/gameReducer'
+import lang, { LanguageState } from './lang/langReducer'
+import players, { PlayersState } from './players/playersReducer'
+import roles, { RolesState } from './roles/rolesReducer'
+import teams, { TeamsState } from './teams/teamsReducer'
+import translations, {
+  TranslationsState,
+} from './translations/translationsReducer'
+
 import { combineReducers } from 'redux'
-import game from './game/gameReducer'
-import lang from './lang/langReducer'
-import players from './players/playersReducer'
-import roles from './roles/rolesReducer'
-import teams from './teams/teamsReducer'
-import translations from './translations/translationsReducer'
+
+export type StoreState = {
+  app: AppState
+  game: GameState
+  roles: RolesState
+  players: PlayersState
+  lang: LanguageState
+  teams: TeamsState
+  translations: TranslationsState
+}
 
 const reducers = combineReducers({
   app,

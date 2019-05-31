@@ -4,7 +4,7 @@ import {
   STOP_ROLE_DISTRIBUTION,
 } from './gameActions'
 
-interface GameState {
+export interface GameState {
   isDistributing: boolean
 }
 

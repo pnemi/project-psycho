@@ -8,7 +8,7 @@ import {
 
 import { load } from '@psycho/utils/storage'
 
-interface LanguageState extends FetchableState {
+export interface LanguageState extends FetchableState {
   data: Array<Language>
   currentLang: string
 }

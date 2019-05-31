@@ -6,7 +6,7 @@ import {
   TOGGLE_ROLE,
 } from './rolesActions'
 
-interface RolesState extends FetchableState {
+export interface RolesState extends FetchableState {
   data: Array<Role>
 }
 

@@ -5,7 +5,7 @@ import Distributor from '@psycho/components/Distributor'
 import PropTypes from 'prop-types'
 import RolesList from '@psycho/components/RolesList'
 
-const Home = ({ isDistributing }) => {
+const Home = ({ isDistributing }: HomeProps) => {
   if (isDistributing) {
     return <Distributor />
   }
@@ -16,6 +16,10 @@ const Home = ({ isDistributing }) => {
       <RolesList />
     </Fragment>
   )
+}
+
+interface HomeProps {
+  isDistributing: boolean
 }
 
 Home.propTypes = {

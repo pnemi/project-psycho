@@ -6,7 +6,7 @@ import {
   TranslationsActionTypes,
 } from './translationsActions'
 
-interface TranslationsState extends FetchableState {
+export interface TranslationsState extends FetchableState {
   data: {
     [language: string]: TranslationDictionary
   }

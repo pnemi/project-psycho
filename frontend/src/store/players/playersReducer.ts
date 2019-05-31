@@ -1,6 +1,6 @@
 import { CHANGE_NUMBER_OF_PLAYERS, PlayersActionTypes } from './playersActions'
 
-interface PlayersState {
+export interface PlayersState {
   numberOfPlayers: number
 }
 
