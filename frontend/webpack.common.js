@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   node: {
     fs: 'empty',
   },

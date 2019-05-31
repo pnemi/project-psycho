@@ -10,6 +10,12 @@ type Role = {
   description: string
 }
 
+type Team = {
+  code: string
+  name: string
+  description: string
+}
+
 type Language = {
   code: string
   name: string
