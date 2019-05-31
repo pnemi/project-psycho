@@ -4,12 +4,15 @@ import * as rolesActions from '@psycho/store/roles/rolesActions'
 import * as teamsActions from '@psycho/store/teams/teamsActions'
 import * as translationsActions from '@psycho/store/translations/translationsActions'
 
+import { ActionsObservable, Epic, ofType } from 'redux-observable'
 import { flatMap, mapTo, take } from 'rxjs/operators'
 
-import { ofType } from 'redux-observable'
+import { StoreState } from '@psycho/store'
 import { zip } from 'rxjs'
 
-export const appInitEpic = (action$) =>
+export const appInitEpic = (
+  action$: ActionsObservable<appActions.AppActionTypes>
+) =>
   action$.pipe(
     ofType(appActions.APP_INIT_BEGIN),
     flatMap(() => [
@@ -20,7 +23,11 @@ export const appInitEpic = (action$) =>
     ])
   )
 
-export const appInitSuccessEpic = (action$) =>
+export const appInitSuccessEpic: Epic<
+  appActions.AppActionTypes,
+  appActions.AppActionTypes,
+  StoreState
+> = (action$: ActionsObservable<any>) =>
   zip(
     action$.pipe(ofType(langActions.FETCH_LANGS_SUCCESS)),
     action$.pipe(ofType(rolesActions.FETCH_ROLES_SUCCESS)),

@@ -6,7 +6,7 @@ import rootEpic from '@psycho/epics'
 import rootReducer from './index'
 
 export default function configureStore() {
-  const epicMiddleware = createEpicMiddleware()
+  const epicMiddleware = createEpicMiddleware<any, any, any, any>()
 
   const store = createStore(
     rootReducer,

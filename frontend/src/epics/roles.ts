@@ -1,28 +1,31 @@
 import * as playersActions from '@psycho/store/players/playersActions'
 import * as rolesActions from '@psycho/store/roles/rolesActions'
 
+import { ActionsObservable, StateObservable, ofType } from 'redux-observable'
 import { catchError, map, mergeMap } from 'rxjs/operators'
 import { from, of } from 'rxjs'
 
+import { StoreState } from '@psycho/store'
 import { fetchRoles } from '@psycho/services/rolesService'
 import { getRequiredNumberOfPlayers } from '@psycho/utils/roles'
 import { load } from '@psycho/utils/storage'
-import { ofType } from 'redux-observable'
 
-const shouldRoleBeChecked = (role) => {
+const shouldRoleBeChecked = (role: Role) => {
   const savedChecked = load(`${role.code}.checked`)
   return !role.required && savedChecked !== null ? savedChecked : true
 }
 
-const selectedRoles = (roles) =>
+const selectedRoles = (roles: Array<Role>) =>
   roles.map((role) => ({
     ...role,
     checked: shouldRoleBeChecked(role),
   }))
 
-const unwrapRoles = ({ data }) => data.roles
+const unwrapRoles = ({ data }: { data: { roles: Array<Role> } }) => data.roles
 
-export const fetchRolesEpic = (action$) =>
+export const fetchRolesEpic = (
+  action$: ActionsObservable<rolesActions.RolesActionTypes>
+) =>
   action$.pipe(
     ofType(rolesActions.FETCH_ROLES_BEGIN),
     mergeMap(() =>
@@ -35,7 +38,10 @@ export const fetchRolesEpic = (action$) =>
     )
   )
 
-export const fetchRolesSuccessEpic = (action$, state$) =>
+export const fetchRolesSuccessEpic = (
+  action$: ActionsObservable<rolesActions.RolesActionTypes>,
+  state$: StateObservable<StoreState>
+) =>
   action$.pipe(
     ofType(rolesActions.FETCH_ROLES_SUCCESS),
     map(() =>
