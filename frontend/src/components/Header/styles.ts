@@ -11,7 +11,7 @@ export default {
     alignItems: 'center !important',
   },
   title: {
-    lineHeight: '56px',
+    lineHeight: '56px !important',
     position: 'absolute',
     left: '50%',
     transform: 'translate(-50%)',
