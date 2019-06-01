@@ -12,7 +12,12 @@ import Typography from '@material-ui/core/Typography'
 import styles from './styles'
 
 const Header: React.FC<HeaderProps> = ({ classes }) => (
-  <AppBar className={classes.appBar} position="absolute" color="default">
+  <AppBar
+    className={classes.appBar}
+    position="absolute"
+    color="inherit"
+    elevation={0}
+  >
     <Toolbar className={classes.toolbar}>
       <IconButton aria-label="Open drawer" className={classes.menuIcon}>
         <MenuIcon />

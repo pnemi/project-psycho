@@ -19,7 +19,9 @@ const RolesListItem: React.FC<RolesListProps> = ({
   handleToggleRole,
 }) => (
   <ListItem
+    button
     className={classes.rolesListItem}
+    disableGutters
     onClick={() => handleToggleRole(role)}
   >
     <Checkbox

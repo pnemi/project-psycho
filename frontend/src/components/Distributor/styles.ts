@@ -15,11 +15,11 @@ export default {
     },
   },
   stateInfo: {
-    fontSize: '32px',
+    fontSize: '32px !important',
   },
   backButton: {
-    color: 'white',
-    position: 'absolute',
+    color: 'white !important',
+    position: 'absolute !important',
     top: 0,
     left: 0,
   },

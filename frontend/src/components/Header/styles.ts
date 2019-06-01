@@ -3,7 +3,6 @@ export default {
     margin: 0,
     background: '#38383A',
     borderBottom: '1px solid #5D5E5F',
-    boxShadow: 'none',
   },
   toolbar: {
     position: 'relative',

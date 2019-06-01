@@ -1,15 +1,13 @@
 export default {
   button: {
-    boxShadow: 'none',
     width: '100%',
     margin: '15px 0',
   },
-  playButton: {},
   refillButton: {
-    background: '#FDCC11',
-    color: '#333',
+    backgroundColor: '#FDCC11 !important',
+    color: '#333 !important',
     '&:hover': {
-      background: '#FDD83B',
+      backgroundColor: '#FDD83B !important',
     },
   },
 }

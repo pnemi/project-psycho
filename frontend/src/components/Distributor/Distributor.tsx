@@ -60,13 +60,13 @@ const Distributor: React.FC<DistributorProps> = ({
     switch (distributionState) {
       case 'DONE':
         return (
-          <Typography className={classes.stateInfo} variant="h1">
+          <Typography className={classes.stateInfo}>
             <DoneIcon /> {intl.formatMessage({ id: 'APP.DONE' })}
           </Typography>
         )
       case 'HIDDEN':
         return (
-          <Typography className={classes.stateInfo} variant="h1">
+          <Typography className={classes.stateInfo}>
             {intl.formatMessage({ id: 'APP.ASSIGN_YOURSELF_ROLE' })}
           </Typography>
         )

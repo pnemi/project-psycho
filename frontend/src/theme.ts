@@ -1,8 +1,4 @@
 export default {
-  typography: {
-    useNextVariants: true,
-    suppressDeprecationWarnings: true,
-  },
   palette: {
     background: {
       default: '#38383A',

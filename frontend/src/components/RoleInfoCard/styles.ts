@@ -2,19 +2,18 @@ import { SCREEN_MEDIUM } from '@psycho/constants/media-queries'
 
 export default {
   name: {
-    fontSize: 36,
-    fontWeight: 800,
-    marginBottom: 15,
+    fontSize: '36px !important',
+    fontWeight: '800 !important',
+    marginBottom: '15px !important',
     [SCREEN_MEDIUM]: {
       fontSize: 22,
     },
   },
   description: {
-    fontSize: 18,
-    fontWeight: 400,
+    fontSize: '18px !important',
     color: '#A9A9A9',
     maxHeight: '30vh',
-    marginTop: 15,
+    marginTop: '15px !important',
     overflow: 'auto',
     [SCREEN_MEDIUM]: {
       fontSize: 14,

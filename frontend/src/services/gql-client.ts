@@ -1,4 +1,4 @@
-import ApolloClient, { ApolloQueryResult } from 'apollo-boost'
+import ApolloClient, { ApolloQueryResult } from 'apollo-boost/lib/index'
 
 const client: ApolloClient<{}> = new ApolloClient({
   uri: process.env.GQL_ENDPOINT,
