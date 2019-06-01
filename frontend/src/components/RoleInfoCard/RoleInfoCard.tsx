@@ -1,14 +1,20 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
 import React, { Fragment } from 'react'
+import withStyles, { WithSheet } from 'react-jss'
 
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import TeamBadge from '@psycho/components/TeamBadge'
 import Typography from '@material-ui/core/Typography'
-import { injectIntl } from 'react-intl'
+import { compose } from 'recompose'
 import styles from './styles'
-import { withStyles } from '@material-ui/core'
 
-const RoleInfoCard = ({ intl, classes, role, team }) => (
+const RoleInfoCard: React.FC<RoleInfoCardProps> = ({
+  intl,
+  classes,
+  role,
+  team,
+}) => (
   <Fragment>
     <Grid container alignItems="center" justify="center" direction="column">
       <Typography className={classes.name}>
@@ -22,6 +28,12 @@ const RoleInfoCard = ({ intl, classes, role, team }) => (
   </Fragment>
 )
 
+interface RoleInfoCardProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  role: Role
+  team: Team
+}
+
 RoleInfoCard.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -29,4 +41,7 @@ RoleInfoCard.propTypes = {
   team: PropTypes.object.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(RoleInfoCard))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(RoleInfoCard)

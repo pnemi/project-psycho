@@ -1,12 +1,14 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
+import withStyles, { WithSheet } from 'react-jss'
+
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
-import { injectIntl } from 'react-intl'
+import { compose } from 'recompose'
 import styles from './PlayButtonStyles'
-import withStyles from 'react-jss'
 
-const PlayButton = ({
+const PlayButton: React.FC<PlayButtonProps> = ({
   intl,
   classes,
   isEnoughPlayers,
@@ -41,6 +43,14 @@ const PlayButton = ({
   )
 }
 
+interface PlayButtonProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  isEnoughPlayers: boolean
+  requiredNumberOfPlayers: number
+  changeNumberOfPlayers: Function
+  startRoleDistribution: Function
+}
+
 PlayButton.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -50,4 +60,7 @@ PlayButton.propTypes = {
   changeNumberOfPlayers: PropTypes.func.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(PlayButton))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(PlayButton)

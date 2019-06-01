@@ -1,4 +1,6 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
 import React, { Fragment, useState } from 'react'
+import withStyles, { WithSheet } from 'react-jss'
 
 import ArrowBack from '@material-ui/icons/ArrowBack'
 import DistributorControls from './DistributorControls'
@@ -8,13 +10,13 @@ import IconButton from '@material-ui/core/IconButton'
 import PropTypes from 'prop-types'
 import RoleInfoCard from '@psycho/components/RoleInfoCard'
 import Stepper from '../Stepper'
+import { TeamDictionary } from '@psycho/store/teams/teamsActions'
 import Typography from '@material-ui/core/Typography'
+import { compose } from 'recompose'
 import { getRolesDistributionPool } from '@psycho/utils/roles'
-import { injectIntl } from 'react-intl'
 import styles from './styles'
-import withStyles from 'react-jss'
 
-const Distributor = ({
+const Distributor: React.FC<DistributorProps> = ({
   intl,
   classes,
   stopRoleDistribution,
@@ -23,12 +25,14 @@ const Distributor = ({
   complementRoles,
   teams,
 }) => {
-  const [numberOfAssignedRoles, setNumberOfAssignedRoles] = useState(0)
-  const [rolesPool, setRolesPool] = useState(
+  const [numberOfAssignedRoles, setNumberOfAssignedRoles] = useState<number>(0)
+  const [rolesPool, setRolesPool] = useState<Array<Role>>(
     getRolesDistributionPool(numberOfPlayers, selectedRoles, complementRoles)
   )
-  const [assignedRole, setAssignedRole] = useState(null)
-  const [distributionState, setDistributionState] = useState('HIDDEN')
+  const [assignedRole, setAssignedRole] = useState<Role>(null)
+  const [distributionState, setDistributionState] = useState<DistributorState>(
+    'HIDDEN'
+  )
 
   const handleAssignRole = () => {
     if (rolesPool.length <= 0) return
@@ -102,6 +106,17 @@ const Distributor = ({
   )
 }
 
+export type DistributorState = 'DONE' | 'HIDDEN' | 'VISIBLE'
+
+interface DistributorProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  stopRoleDistribution: React.MouseEventHandler
+  numberOfPlayers: number
+  complementRoles: Array<Role>
+  selectedRoles: Array<Role>
+  teams: TeamDictionary
+}
+
 Distributor.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -112,4 +127,7 @@ Distributor.propTypes = {
   teams: PropTypes.object.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(Distributor))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(Distributor)

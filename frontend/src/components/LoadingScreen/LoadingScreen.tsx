@@ -1,11 +1,14 @@
+import withStyles, { WithSheet } from 'react-jss'
+
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './styles'
-import withStyles from 'react-jss'
 
-const LoadingScreen = ({ classes }) => (
+const LoadingScreen: React.FC<LoadingScreenProps> = ({
+  classes,
+}) => (
   <Grid
     container
     justify="center"
@@ -16,8 +19,11 @@ const LoadingScreen = ({ classes }) => (
   </Grid>
 )
 
+interface LoadingScreenProps extends WithSheet<typeof styles> {}
+
 LoadingScreen.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
+// @ts-ignore
 export default withStyles(styles)(LoadingScreen)

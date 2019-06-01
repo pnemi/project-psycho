@@ -1,13 +1,22 @@
+import withStyles, { WithSheet } from 'react-jss'
+
 import List from '@material-ui/core/List'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RolesListItem from './RolesListItem'
+import { TeamDictionary } from '@psycho/store/teams/teamsActions'
 import { save } from '@psycho/utils/storage'
 import styles from './styles'
-import withStyles from 'react-jss'
 
-const RolesList = ({ roles, teams, loading, error, classes, toggleRole }) => {
-  const handleToggleRole = (role) => {
+const RolesList: React.FC<RolesListProps> = ({
+  roles,
+  teams,
+  loading,
+  error,
+  classes,
+  toggleRole,
+}) => {
+  const handleToggleRole = (role: Role) => {
     if (!role.required) {
       save(`${role.code}.checked`, !role.checked)
       toggleRole(role.code)
@@ -36,6 +45,14 @@ const RolesList = ({ roles, teams, loading, error, classes, toggleRole }) => {
   )
 }
 
+interface RolesListProps extends WithSheet<typeof styles> {
+  roles: Array<Role>
+  teams: TeamDictionary
+  loading: boolean
+  error: any
+  toggleRole: Function
+}
+
 RolesList.propTypes = {
   classes: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired,
@@ -45,4 +62,5 @@ RolesList.propTypes = {
   toggleRole: PropTypes.func.isRequired,
 }
 
+// @ts-ignore
 export default withStyles(styles)(RolesList)

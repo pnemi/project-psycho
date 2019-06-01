@@ -1,3 +1,6 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
+import withStyles, { WithSheet } from 'react-jss'
+
 import Checkbox from '@material-ui/core/Checkbox'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -5,11 +8,16 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import TeamBadge from '@psycho/components/TeamBadge'
 import classnames from 'classnames'
-import { injectIntl } from 'react-intl'
+import { compose } from 'recompose'
 import styles from './RolesListItemStyles'
-import withStyles from 'react-jss'
 
-const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
+const RolesListItem: React.FC<RolesListProps> = ({
+  intl,
+  classes,
+  role,
+  team,
+  handleToggleRole,
+}) => (
   <ListItem
     className={classes.rolesListItem}
     onClick={() => handleToggleRole(role)}
@@ -41,6 +49,13 @@ const RolesListItem = ({ intl, classes, role, team, handleToggleRole }) => (
   </ListItem>
 )
 
+interface RolesListProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  role: Role
+  team: Team
+  handleToggleRole: Function
+}
+
 RolesListItem.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -49,4 +64,7 @@ RolesListItem.propTypes = {
   handleToggleRole: PropTypes.func.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(RolesListItem))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(RolesListItem)

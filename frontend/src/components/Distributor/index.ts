@@ -1,18 +1,23 @@
 import * as gameActions from '@psycho/store/game/gameActions'
 
-import { filterComplementRoles, filterDistributableRoles } from '@psycho/utils/roles'
+import {
+  filterComplementRoles,
+  filterDistributableRoles,
+} from '@psycho/utils/roles'
 
+import { Dispatch } from 'redux'
 import Distributor from './Distributor'
+import { StoreState } from '@psycho/store'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StoreState) => ({
   numberOfPlayers: state.players.numberOfPlayers,
   selectedRoles: filterDistributableRoles(state.roles.data),
   complementRoles: filterComplementRoles(state.roles.data),
   teams: state.teams.data,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   stopRoleDistribution: () => dispatch(gameActions.stopRoleDistribution()),
 })
 

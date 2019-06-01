@@ -1,13 +1,18 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
+import withStyles, { WithSheet } from 'react-jss'
+
 import Button from '@material-ui/core/Button'
+import { DistributorState } from './Distributor'
 import Grid from '@material-ui/core/Grid'
 import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
-import { injectIntl } from 'react-intl'
+import { compose } from 'recompose'
 import styles from './DistributorControlsStyles'
-import withStyles from 'react-jss'
 
-const DistributorControls = ({
+const DistributorControls: React.FC<
+  DistributorControlsProps
+> = ({
   intl,
   classes,
   handleAssignRole,
@@ -47,6 +52,13 @@ const DistributorControls = ({
   </Grid>
 )
 
+interface DistributorControlsProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  handleAssignRole: React.MouseEventHandler
+  handleHideRole: React.MouseEventHandler
+  distributionState: DistributorState
+}
+
 DistributorControls.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -55,4 +67,7 @@ DistributorControls.propTypes = {
   distributionState: PropTypes.string.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(DistributorControls))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(DistributorControls)

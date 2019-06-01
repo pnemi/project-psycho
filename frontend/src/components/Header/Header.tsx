@@ -1,3 +1,5 @@
+import withStyles, { WithSheet } from 'react-jss'
+
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import LanguageSwitch from '@psycho/components/LanguageSwitch'
@@ -8,9 +10,8 @@ import React from 'react'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import styles from './styles'
-import withStyles from 'react-jss'
 
-const Header = ({ classes }) => (
+const Header: React.FC<HeaderProps> = ({ classes }) => (
   <AppBar className={classes.appBar} position="absolute" color="default">
     <Toolbar className={classes.toolbar}>
       <IconButton aria-label="Open drawer" className={classes.menuIcon}>
@@ -24,8 +25,11 @@ const Header = ({ classes }) => (
   </AppBar>
 )
 
+interface HeaderProps extends WithSheet<typeof styles> {}
+
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
+// @ts-ignore
 export default withStyles(styles)(Header)

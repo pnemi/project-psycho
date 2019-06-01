@@ -1,11 +1,18 @@
+import { InjectedIntl, injectIntl } from 'react-intl'
+import withStyles, { WithSheet } from 'react-jss'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
-import { injectIntl } from 'react-intl'
-import styles from './TextInputStyles.js'
-import withStyles from 'react-jss'
+import { compose } from 'recompose'
+import styles from './TextInputStyles'
 
-const TextInputPicker = ({ intl, classes, onChange, numberOfPlayers }) => (
+const TextInputPicker: React.FC<TextInputPickerProps> = ({
+  intl,
+  classes,
+  onChange,
+  numberOfPlayers,
+}) => (
   <TextField
     className={classes.field}
     label={intl.formatMessage({ id: 'APP.NUMBER_OF_PLAYERS' })}
@@ -22,6 +29,12 @@ const TextInputPicker = ({ intl, classes, onChange, numberOfPlayers }) => (
   />
 )
 
+interface TextInputPickerProps extends WithSheet<typeof styles> {
+  intl: InjectedIntl
+  onChange: React.ChangeEventHandler
+  numberOfPlayers: number
+}
+
 TextInputPicker.propTypes = {
   intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
@@ -29,4 +42,7 @@ TextInputPicker.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
 
-export default injectIntl(withStyles(styles)(TextInputPicker))
+export default compose(
+  injectIntl,
+  withStyles(styles)
+)(TextInputPicker)

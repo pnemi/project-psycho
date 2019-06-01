@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
+import withStyles, { WithSheet } from 'react-jss'
 
 import MenuItem from '@material-ui/core/MenuItem'
 import PropTypes from 'prop-types'
 import Select from '@material-ui/core/Select'
 import { save } from '@psycho/utils/storage'
 import styles from './styles'
-import withStyles from 'react-jss'
 
-const LanguageSwitch = ({ languages, currentLang, switchLang, classes }) => {
+const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
+  languages,
+  currentLang,
+  switchLang,
+  classes,
+}) => {
   useEffect(() => save('currentLang', currentLang), [currentLang])
 
   return (
@@ -32,6 +37,12 @@ const LanguageSwitch = ({ languages, currentLang, switchLang, classes }) => {
   )
 }
 
+interface LanguageSwitchProps extends WithSheet<typeof styles> {
+  languages: Array<Language>
+  currentLang: string
+  switchLang: Function
+}
+
 LanguageSwitch.propTypes = {
   classes: PropTypes.object.isRequired,
   switchLang: PropTypes.func.isRequired,
@@ -39,4 +50,5 @@ LanguageSwitch.propTypes = {
   languages: PropTypes.array.isRequired,
 }
 
+// @ts-ignore
 export default withStyles(styles)(LanguageSwitch)
