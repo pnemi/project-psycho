@@ -11,10 +11,11 @@ export default {
     alignItems: 'center !important',
   },
   title: {
+    lineHeight: '56px',
     position: 'absolute',
     left: '50%',
     transform: 'translate(-50%)',
-    textTransform: 'uppercase',
+    textTransform: 'lowercase',
     '& a': {
       textDecoration: 'none',
       color: '#666',
