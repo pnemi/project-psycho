@@ -8,7 +8,7 @@ export default {
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center !important',
   },
   title: {
     position: 'absolute',

@@ -6,7 +6,7 @@ export default {
     fontWeight: '800 !important',
     marginBottom: '15px !important',
     [SCREEN_MEDIUM]: {
-      fontSize: 22,
+      fontSize: '22px !important',
     },
   },
   description: {
@@ -16,7 +16,7 @@ export default {
     marginTop: '15px !important',
     overflow: 'auto',
     [SCREEN_MEDIUM]: {
-      fontSize: 14,
+      fontSize: '14px !important',
     },
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',

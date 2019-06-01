@@ -16,6 +16,9 @@ export default {
   },
   stateInfo: {
     fontSize: '32px !important',
+    [SCREEN_MEDIUM]: {
+      fontSize: '26px !important',
+    },
   },
   backButton: {
     color: 'white !important',
