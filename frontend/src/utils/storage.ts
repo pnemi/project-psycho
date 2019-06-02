@@ -2,7 +2,9 @@ const prefix = 'psycho'
 
 export const save = (key: string, value: any): void => {
   const serializedValue = JSON.stringify(value)
-  window.localStorage.setItem(`${prefix}_${key}`, serializedValue)
+  if (serializedValue) {
+    window.localStorage.setItem(`${prefix}_${key}`, serializedValue)
+  }
 }
 
 export const load = (key: string, def: any = null): any => {
