@@ -1,20 +1,30 @@
 import { randArrayItem, shuffle } from '@psycho/utils/utils'
-
+/**
+ * Returns number of players required to start a game.
+ */
 export const getRequiredNumberOfPlayers = (roles: Array<Role>): number =>
-  roles.reduce(
-    (numberOfPlayers: number, role: Role) =>
-      Number(role.checked && !role.distributedDuringGame && !role.complement) +
-      numberOfPlayers,
-    0
-  )
+  filterSelectedRoles(roles).length
 
-export const filterDistributableRoles = (roles: Array<Role>): Array<Role> =>
+/**
+ * Returns list of visibly selected roles.
+ */
+export const filterSelectedRoles = (roles: Array<Role>): Array<Role> =>
   roles.filter(
     (role: Role) =>
-      role.checked && !role.distributedDuringGame && !role.complement
+      role.required ||
+      (role.checked && !role.distributedDuringGame && !role.complement)
   )
 
-export const filterListRoles = (roles: Array<Role>): Array<Role> =>
+/**
+ * Returns list of complement roles.
+ */
+export const filterComplementRoles = (roles: Array<Role>): Array<Role> =>
+  roles.filter((role: Role) => role.complement)
+
+/**
+ * Returns sorted list of all visibly selectable roles.
+ */
+export const getSortedRolesList = (roles: Array<Role>): Array<Role> =>
   roles
     .filter((role: Role) => !role.complement)
     .sort((prevRole: Role, currRole: Role) => prevRole.order - currRole.order)
@@ -23,9 +33,9 @@ export const filterListRoles = (roles: Array<Role>): Array<Role> =>
         Number(prevRole.required) - Number(currRole.required)
     )
 
-export const filterComplementRoles = (roles: Array<Role>): Array<Role> =>
-  roles.filter((role: Role) => role.complement)
-
+/**
+ * Returns merged list of selected and complement roles.
+ */
 export const getRolesDistributionPool = (
   numberOfPlayers: number,
   selectedRoles: Array<Role>,

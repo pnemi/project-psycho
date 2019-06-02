@@ -4,10 +4,10 @@ import { Dispatch } from 'redux'
 import RolesList from './RolesList'
 import { StoreState } from '@psycho/store'
 import { connect } from 'react-redux'
-import { filterListRoles } from '@psycho/utils/roles'
+import { getSortedRolesList } from '@psycho/utils/roles'
 
 const mapStateToProps = (state: StoreState) => ({
-  roles: filterListRoles(state.roles.data),
+  roles: getSortedRolesList(state.roles.data),
   loading: state.roles.loading,
   error: state.roles.error,
   teams: state.teams.data,
