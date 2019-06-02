@@ -28,6 +28,7 @@ Project Psycho is a web application tool for easier distribution of roles for ro
 * Bundling: **webpack**
 * Transpiling: **Babel**
 * Type checking: **TypeScript**
+* Unit testing: **Jest**
 
 ## Development
 
