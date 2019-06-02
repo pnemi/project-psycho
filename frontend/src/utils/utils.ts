@@ -7,7 +7,7 @@ export const shuffle = (array: Array<any>): Array<any> => {
 }
 
 export const truncate = (str: string, n: number): string =>
-  `${str.substr(0, n - 1)}${str.length > n ? '...' : ''}`
+  `${str.substr(0, n)}${str.length > n ? '...' : ''}`
 
 export const randArrayItem = (arr: Array<any>) =>
   arr[Math.floor(Math.random() * arr.length)]
