@@ -54,8 +54,8 @@ const DistributorControls: React.FC<
 
 interface DistributorControlsProps extends WithSheet<typeof styles> {
   intl: InjectedIntl
-  handleAssignRole: React.MouseEventHandler
-  handleHideRole: React.MouseEventHandler
+  handleAssignRole: () => void
+  handleHideRole: () => void
   distributionState: DistributorState
 }
 

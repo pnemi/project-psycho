@@ -110,7 +110,7 @@ export type DistributorState = 'DONE' | 'HIDDEN' | 'VISIBLE'
 
 interface DistributorProps extends WithSheet<typeof styles> {
   intl: InjectedIntl
-  stopRoleDistribution: React.MouseEventHandler
+  stopRoleDistribution: () => void
   numberOfPlayers: number
   complementRoles: Array<Role>
   selectedRoles: Array<Role>
