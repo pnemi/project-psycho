@@ -1,4 +1,4 @@
-import '@babel/polyfill'
+import '@babel/polyfill/noConflict'
 import config from 'config'
 import express from 'express'
 import { ApolloServer, gql } from 'apollo-server-express'
