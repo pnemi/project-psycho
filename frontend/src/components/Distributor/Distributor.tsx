@@ -1,4 +1,3 @@
-import { InjectedIntl, injectIntl } from 'react-intl'
 import React, { Fragment, useState } from 'react'
 import withStyles, { WithSheet } from 'react-jss'
 
@@ -15,9 +14,9 @@ import Typography from '@material-ui/core/Typography'
 import { compose } from 'recompose'
 import { getRolesDistributionPool } from '@psycho/utils/roles'
 import styles from './styles'
+import { useIntl } from 'react-intl'
 
 const Distributor: React.FC<DistributorProps> = ({
-  intl,
   classes,
   stopRoleDistribution,
   numberOfPlayers,
@@ -25,6 +24,8 @@ const Distributor: React.FC<DistributorProps> = ({
   complementRoles,
   teams,
 }) => {
+  const intl = useIntl()
+
   const [numberOfAssignedRoles, setNumberOfAssignedRoles] = useState<number>(0)
   const [rolesPool, setRolesPool] = useState<Array<Role>>(
     getRolesDistributionPool(numberOfPlayers, selectedRoles, complementRoles)
@@ -109,7 +110,6 @@ const Distributor: React.FC<DistributorProps> = ({
 export type DistributorState = 'DONE' | 'HIDDEN' | 'VISIBLE'
 
 interface DistributorProps extends WithSheet<typeof styles> {
-  intl: InjectedIntl
   stopRoleDistribution: () => void
   numberOfPlayers: number
   complementRoles: Array<Role>
@@ -118,7 +118,6 @@ interface DistributorProps extends WithSheet<typeof styles> {
 }
 
 Distributor.propTypes = {
-  intl: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   numberOfPlayers: PropTypes.number.isRequired,
   stopRoleDistribution: PropTypes.func.isRequired,
@@ -127,7 +126,4 @@ Distributor.propTypes = {
   teams: PropTypes.object.isRequired,
 }
 
-export default compose(
-  injectIntl,
-  withStyles(styles)
-)(Distributor)
+export default compose(withStyles(styles))(Distributor)
