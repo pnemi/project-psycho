@@ -7,7 +7,6 @@ import { from, of } from 'rxjs'
 
 import { StoreState } from '@psycho/store'
 import { fetchLanguages } from '@psycho/services/languageService'
-import { setupIntl } from '@psycho/utils/language'
 
 const unwrapLanguages = ({ data }: { data: { languages: Array<Language> } }) =>
   data.languages
@@ -23,7 +22,6 @@ export const fetchLangsEpic: Epic<
     mergeMap(() =>
       from(fetchLanguages()).pipe(
         map(unwrapLanguages),
-        tap((languages) => setupIntl(languages)),
         map((languages) => langActions.fetchLangsSuccess(languages)),
         catchError((error) => of(langActions.fetchLangsError(error)))
       )
