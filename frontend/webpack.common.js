@@ -25,6 +25,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/auto',
+      }
     ],
   },
   resolve: {
