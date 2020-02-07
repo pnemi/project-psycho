@@ -4,9 +4,9 @@
   "description": "Players frontend for Project Psycho game.",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
     "test": "jest ./src",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "deploy": "yarn run build && gh-pages -d dist"
   },
   "repository": {

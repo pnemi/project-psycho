@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/",
-    "allowJs": true,
     "noImplicitAny": true,
     "sourceMap": true,
     "target": "es5",

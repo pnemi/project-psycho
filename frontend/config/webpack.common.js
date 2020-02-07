@@ -20,7 +20,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@psycho': path.resolve(__dirname, './src'),
+      '@psycho': path.resolve(__dirname, '../src'),
     },
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     plugins: [new DirectoryNamedWebpackPlugin(true)],
