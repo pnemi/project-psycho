@@ -1,6 +1,4 @@
 {
-  "prettier.eslintIntegration": true,
   "sort-imports.on-save": true,
-  "editor.formatOnSave": true,
-  "prettier.tslintIntegration": true
+  "editor.formatOnSave": true
 }
