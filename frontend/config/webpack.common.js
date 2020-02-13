@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
+const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -19,11 +19,12 @@ module.exports = {
     ],
   },
   resolve: {
-    alias: {
-      '@psycho': path.resolve(__dirname, '../src'),
-    },
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
-    plugins: [new DirectoryNamedWebpackPlugin(true)],
+    plugins: [
+      new TSConfigPathsPlugin({
+        configFile: path.resolve(__dirname, '../tsconfig.json'),
+      }),
+    ],
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
