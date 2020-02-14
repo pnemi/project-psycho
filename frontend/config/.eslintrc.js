@@ -12,7 +12,13 @@ module.exports = {
     sourceType: 'module',
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['prettier', 'react', 'react-hooks', 'jsx-a11y', '@typescript-eslint'],
+  plugins: [
+    'prettier',
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+    '@typescript-eslint',
+  ],
   extends: [
     'standard',
     'eslint:recommended',
@@ -20,6 +26,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
   settings: {
     'import/parsers': {
@@ -32,21 +39,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        printWidth: 100,
-        tabWidth: 2,
-        useTabs: false,
-        semi: false,
-        singleQuote: true,
-        jsxSingleQuote: false,
-        trailingComma: "es5",
-        bracketSpacing: true,
-        jsxBracketSameLine: false,
-        arrowParens: "always"
-      }
-    ],
+  rules: {
+    'prettier/prettier': 'error',
   },
 }
