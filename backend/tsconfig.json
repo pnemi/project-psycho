@@ -4,13 +4,11 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noImplicitAny": true,
-    "allowJs": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
     "target": "ES2020",
-    "module": "CommonJS",
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    "module": "CommonJS"
   },
   "exclude": ["node_modules", "dist"],
   "include": ["src", "config"]

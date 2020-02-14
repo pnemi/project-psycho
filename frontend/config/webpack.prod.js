@@ -12,7 +12,7 @@ module.exports = merge(common, {
       systemvars: true,
     }),
     new CopyWebpackPlugin([
-      { from: 'public', to: '../dist', ignore: ['index.html'] }
-    ])
-  ]
-});
+      { from: 'public', to: '../dist', ignore: ['index.html'] },
+    ]),
+  ],
+})

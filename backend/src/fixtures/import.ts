@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 import { Language, Preset, Role, Team, Translation } from '../db'
 
-import appTranslations from './data/translations-app'
-import languages from './data/languages'
-import presets from './data/presets'
-import presetsTranslations from './data/translations-presets'
-import roles from './data/roles'
-import rolesTranslations from './data/translations-roles'
-import teams from './data/teams'
-import teamsTranslations from './data/translations-teams'
+import appTranslations from './data/translations-app.json'
+import languages from './data/languages.json'
+import presets from './data/presets.json'
+import presetsTranslations from './data/translations-presets.json'
+import roles from './data/roles.json'
+import rolesTranslations from './data/translations-roles.json'
+import teams from './data/teams.json'
+import teamsTranslations from './data/translations-teams.json'
 
 const teamDocs = {}
 const roleDocs = {}
@@ -106,7 +106,6 @@ async function importAll() {
   await importTranslations()
 }
 
-// eslint-disable-next-line
 ;(async () => {
   await importAll()
   process.exit()

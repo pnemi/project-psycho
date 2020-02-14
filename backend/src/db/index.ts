@@ -6,7 +6,7 @@ import Translation from './model/Translation'
 import config from 'config'
 import mongoose from 'mongoose'
 
-const MONGO_CONNECTION_STRING = config.get('MONGO_CONNECTION_STRING')
+const MONGO_CONNECTION_STRING: string = config.get('MONGO_CONNECTION_STRING')
 
 const mongooseConfig = {
   useNewUrlParser: true,

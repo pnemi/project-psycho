@@ -17,7 +17,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include: /node_modules/,
         use: ['react-hot-loader/webpack'],
       },
