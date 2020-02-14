@@ -1,15 +1,10 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "dist",
-    "noImplicitAny": true,
-    "sourceMap": true,
     "target": "ES5",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "paths": {
       "@psycho/*": ["./src/*"]
