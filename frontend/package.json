@@ -81,11 +81,10 @@
     "redux-observable": "^1.1.0",
     "rxjs": "^6.5.2"
   },
-  "importSort": {
-    ".ts, .tsx": {
-      "parser": "typescript",
-      "style": "eslint"
-    }
+  "engines": {
+    "yarn": "1",
+    "npm": "unsupported",
+    "node": "10"
   },
   "eslintConfig": {
     "extends": "./config/.eslintrc.js"

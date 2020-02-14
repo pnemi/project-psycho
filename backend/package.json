@@ -51,6 +51,11 @@
     "mocha": "^6.2.0",
     "standard": "^13.1.0"
   },
+  "engines": {
+    "yarn": "1",
+    "npm": "unsupported",
+    "node": "10"
+  },
   "eslintConfig": {
     "extends": "./config/.eslintrc.js"
   }
