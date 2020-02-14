@@ -1,4 +1,15 @@
 {
-  "sort-imports.on-save": true,
-  "editor.formatOnSave": true
+  "eslint.workingDirectories": [
+    {
+      "directory": "./frontend",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./backend",
+      "changeProcessCWD": true
+    }
+  ],
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true
 }
