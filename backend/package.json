@@ -9,8 +9,7 @@
     "dev": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 nodemon src/server.js --exec babel-node",
     "import:dev": "cross-env NODE_ENV=development babel-node src/fixtures/import.js",
     "import:prod": "cross-env NODE_ENV=production babel-node src/fixtures/import.js",
-    "lint": "eslint",
-    "test": "standard && cross-env NODE_ENV=test mocha --require @babel/register"
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -23,11 +22,6 @@
   },
   "homepage": "https://github.com/pnemi/project-psycho#readme",
   "dependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.5.5",
     "apollo-server-express": "^2.8.1",
     "config": "^3.2.2",
     "cors": "^2.8.5",
@@ -38,18 +32,20 @@
     "nodemon": "^1.19.1"
   },
   "devDependencies": {
-    "@babel/register": "^7.5.5",
-    "axios": "^0.19.0",
-    "babel-plugin-inline-import": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-config-standard": "^13.0.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "mocha": "^6.2.0",
-    "standard": "^13.1.0"
+    "prettier": "^1.19.1",
+    "standard": "^13.1.0",
+    "typescript": "^3.7.5"
   },
   "engines": {
     "yarn": "1",
