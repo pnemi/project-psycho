@@ -10,8 +10,9 @@
     "import:dev": "tsnd src/fixtures/import.ts",
     "import:prod": "tsnd src/fixtures/import.ts",
     "lint": "eslint --ext .ts ./src",
-    "ts:build": "tsc",
-    "ts:check": "tsc --noEmit"
+    "ts:build": "tsc && yarn copy-graphql-schema",
+    "ts:check": "tsc --noEmit",
+    "copy-graphql-schema": "cp src/schema/schema.graphql dist/schema/schema.graphql"
   },
   "repository": {
     "type": "git",
