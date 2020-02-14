@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack')
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, '../public/'),
     host: '0.0.0.0',
     port: 3333,
     disableHostCheck: true,
