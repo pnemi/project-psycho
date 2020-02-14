@@ -33,6 +33,7 @@ async function importTeams() {
   return Promise.all(
     teams.map((team) => {
       const teamDoc = new Team(team)
+      // @ts-ignore
       teamDocs[team.code] = teamDoc
       return teamDoc
         .save()
@@ -49,8 +50,10 @@ async function importRoles() {
     roles.map((role) => {
       const roleDoc = new Role({
         ...role,
+        // @ts-ignore
         team: teamDocs[role.team],
       })
+      // @ts-ignore
       roleDocs[role.code] = roleDoc
       return roleDoc
         .save()
@@ -67,6 +70,7 @@ async function importPresets() {
     presets.map((preset) => {
       const presetDoc = new Preset({
         ...preset,
+        // @ts-ignore
         roles: preset.roles.map((role) => roleDocs[role]),
       })
       return presetDoc

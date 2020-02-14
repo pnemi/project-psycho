@@ -3,7 +3,7 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
