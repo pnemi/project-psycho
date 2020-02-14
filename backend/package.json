@@ -55,7 +55,6 @@
   },
   "engines": {
     "yarn": "1",
-    "npm": "unsupported",
     "node": "10"
   },
   "eslintConfig": {
