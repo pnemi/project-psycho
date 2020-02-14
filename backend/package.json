@@ -4,7 +4,7 @@
   "description": "Backend for Project Psycho game.",
   "main": "src/server.ts",
   "scripts": {
-    "start": "node dist/server.ts",
+    "start": "node dist/server.js",
     "dev": "tsnd src/server.ts",
     "postinstall": "yarn ts:build",
     "import:dev": "tsnd src/fixtures/import.ts",
