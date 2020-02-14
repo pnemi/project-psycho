@@ -16,7 +16,7 @@ Project Psycho is a web application tool for easier distribution of roles for ro
 * API: **GraphQL (Apollo)**
 * Linting: **ESLint**
 * Prettifying: **Prettier**
-* Transpiling: **Babel**
+* Compiling: **TypeScript**
 
 ### Frontend
 
@@ -26,7 +26,7 @@ Project Psycho is a web application tool for easier distribution of roles for ro
 * Linting: **ESLint**
 * Prettifying: **Prettier**
 * Bundling: **webpack**
-* Transpiling: **Babel**
+* Transpiling: **TypeScript**
 * Type checking: **TypeScript**
 * Unit testing: **Jest**
 

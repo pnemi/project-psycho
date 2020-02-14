@@ -4,9 +4,9 @@
   "description": "Players frontend for Project Psycho game.",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "dev": "webpack-dev-server --config config/webpack.dev.js",
     "test": "jest --config ./config/jest.config.js ./src",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "build": "webpack --config config/webpack.prod.js",
     "deploy": "yarn run build && gh-pages -d dist"
   },
   "repository": {
@@ -62,7 +62,6 @@
     "apollo-boost": "^0.4.3",
     "apollo-client": "^2.6.3",
     "classnames": "^2.2.6",
-    "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "dotenv-webpack": "^1.7.0",
     "graphql": "^14.4.2",
